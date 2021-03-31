@@ -1,0 +1,87 @@
+@import '../Common/common.scss';
+
+.place-card {
+    $v-padding: 10px;
+    $h-padding: 15px;
+    $border: 1px;
+    $active-border: 3px;
+
+    margin-top: 15px;
+    padding: $v-padding $h-padding;
+    border-radius: 5px;
+    border: solid $border $line-grey;
+    display: flex;
+    cursor: pointer;
+
+    &.thick {
+        padding: 15px $h-padding;  
+    }
+
+    &.freeze {
+        background-color: $back-grey2;
+        pointer-events: none;
+    }
+
+    &.selected,
+    &:active {        
+        border: solid $active-border $line-grey4;
+        $adjusted: $active-border - $border;
+        padding: $v-padding - $adjusted $h-padding - $adjusted;
+        background-color: $back-grey;
+    }
+
+    > * {
+        display: inline-block;
+    }
+
+    > div.left {
+        margin-right: $h-padding;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 35px;
+        position: relative;
+        top: 1px;
+
+        > img {
+            width: 30px;
+            background-color: #fff;
+            border-radius: 30px;
+        }
+    
+        > div.label {
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }    
+    }
+
+    > div.right {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        
+        > div.name {
+            > div {
+                font-size: 18px;
+                font-weight: bold;
+                display: flex;
+                align-items: center;    
+        
+                > span.current {
+                    font-size: 14px;
+                    font-weight: normal;
+                }    
+            }
+
+            > div.description {
+                font-size: 14px;
+                color: $font-grey2;
+            }    
+        }
+
+        > img {
+            margin-left: auto;
+        }
+    }
+}

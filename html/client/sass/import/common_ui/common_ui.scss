@@ -1,0 +1,92 @@
+@charset "utf-8";
+
+/***************************************************************************************
+   Common UI : Stats
+***************************************************************************************/
+.common-ui-status {
+	display:inline-block;
+	vertical-align:top;
+
+	.status-icon {
+		width:rem(40);
+		height:rem(40);
+	}
+	.txt-status {
+		display:block;
+		margin-top:rem(4);
+		text-align:center;
+		line-height:rem(20);
+		font-size:rem(14);
+		font-weight:500;
+	}
+
+	// 양호
+	&.type-a {
+		.status-icon > span {
+			@include get-sprite($icon_status_a);
+		}
+		.txt-status {
+			color:#00be9f;
+		}
+	}
+
+	// 보통
+	&.type-b {
+		.status-icon > span {
+			@include get-sprite($icon_status_b);
+		}
+		.txt-status {
+			color:#ef8100;
+		}
+	}
+
+	// 주의
+	&.type-c {
+		.status-icon > span {
+			@include get-sprite($icon_status_c);
+		}
+		.txt-status {
+			color:#ef8100;
+		}
+	}
+
+	// 위험
+	&.type-d {
+		.status-icon > span {
+			@include get-sprite($icon_status_d);
+		}
+		.txt-status {
+			color:#f53d5a;
+		}
+	}
+
+	// 심각
+	&.type-e {
+		.status-icon > span {
+			@include get-sprite($icon_status_e);
+		}
+		.txt-status {
+			color:#6d0c8f;
+		}
+	}
+}
+
+/***************************************************************************************
+   Map : Stats Risk color
+***************************************************************************************/
+$status-risk: (
+	'a' #00be9f rgba(0, 190, 159, 0.1),
+	'b' #ef8100 rgba(250, 135, 0, 0.1),
+	'c' #ef8100 rgba(250, 135, 0, 0.1),
+	'd' #f53d5a rgba(245, 61, 90, 0.1),
+	'e' #6d0c8f rgba(109, 12, 143, 0.1)
+);
+
+%status-risk {
+	@each $class, $color, $bg in $status-risk {
+		&.type-#{$class} {
+			background-color:$bg;
+			color:$color;
+		}
+	}
+}

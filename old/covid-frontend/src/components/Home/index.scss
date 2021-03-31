@@ -1,0 +1,47 @@
+@import '../Common/common.scss';
+
+.home {
+    .tab {
+        > div {
+            display: inline-flex;
+            width: calc(100% / 3);
+            height: 67px;
+            vertical-align: top;
+            border-bottom: 3px solid $line-grey;
+            align-items: flex-end;
+            justify-content: center;
+            cursor: pointer;
+
+            &.active {
+                border-bottom: 3px solid $main-purple;
+
+                > span {
+                    color: #000;
+
+                    &.highlight {
+                        > span {
+                            color: #{$main-orange};
+                        }
+                    }
+                }
+            }
+            
+            > span {
+                font-size: 16px;
+                font-weight: 600;
+                color: $line-grey;
+                margin-bottom: 8px;
+                text-align: center;
+
+                &.highlight {
+                    font-size: 18px;
+                    font-weight: 700;
+                    
+                    > span {
+                        color: #{$main-orange}55;
+                    }
+                }
+            }
+        }
+    }
+}

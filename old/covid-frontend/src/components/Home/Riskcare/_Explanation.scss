@@ -1,0 +1,94 @@
+@import '../../Common/common.scss';
+
+.explanation {
+    @include common-background;
+
+    .inner {
+        position: absolute;
+        top: $header-height;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: white;
+        text-align: center;
+        padding-bottom: 0;
+        
+        .close {
+            position: absolute;
+            top: $horizontal-padding;
+            right: $horizontal-padding;
+        }
+
+        .scroll {
+            overflow-y: scroll;
+            height: 100%;
+
+            .emoji {
+                width: 100px;
+                height: 100px;            
+            }
+    
+            .address {
+                font-size: 14px;
+                margin-top: $vertical-margin;
+            }
+    
+            .name {
+                span {
+                    font-size: 16px;
+                    font-weight: bold;    
+                    margin: 0 30px;
+                }
+    
+                > * {
+                    vertical-align: middle;
+                }
+            }
+    
+            .label {
+                margin-top: 10px;
+                font-size: 28px;
+                font-weight: bold;
+                color: $main-orange;
+            }
+    
+            ul.description {
+                $padding: 25px;
+                padding: $padding;
+                background-color: $back-grey2;
+                margin: 0;
+                margin-top: $vertical-margin;
+    
+                li {
+                    margin-left: $padding;
+                    text-align: left;
+                    color: $font-dark;
+                    line-height: 1.5;
+                    font-size: 16px;
+
+                    &:not(:last-of-type) {
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+    
+            .information {
+                margin-top: $vertical-margin;
+                text-align: left;
+    
+                span {
+                    font-size: 12px;
+                    margin-right: 10px;
+                }
+    
+                > * {
+                    vertical-align: middle;
+                }
+            }
+    
+            .bottom {
+                margin-top: $vertical-padding;
+            }  
+        }  
+    }
+}

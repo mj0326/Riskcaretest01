@@ -1,0 +1,78 @@
+@mixin background-size($width, $height) {
+-webkit-background-size: $width $height;
+-moz-background-size: $width $height;
+background-size: $width $height;
+}
+
+	%sprite2x-image {
+	$sprite-total-width: 384px;
+	$sprite-total-height: 350px;
+	display: inline-block;
+	background-image: url(../images/riskcare_sprite.png);
+	background-repeat: no-repeat;
+	@include background-size($sprite-total-width/2, $sprite-total-height/2);
+	}
+
+	@mixin sprite-width($sprite) {
+	$sprite-width: nth($sprite, 5);
+	width: $sprite-width/2;
+	}
+
+	@mixin sprite-height($sprite) {
+	$sprite-height: nth($sprite, 6);
+	height: $sprite-height/2;
+	}
+
+	@mixin sprite-position($sprite) {
+	$sprite-offset-x: nth($sprite, 3);
+	$sprite-offset-y: nth($sprite, 4);
+	background-position: $sprite-offset-x/2  $sprite-offset-y/2;
+	}
+
+	@mixin get-sprite($sprite) {
+	@extend %sprite2x-image;
+	@include sprite-position($sprite);
+	@include sprite-width($sprite);
+	@include sprite-height($sprite);
+	}
+
+	$arr_fold: 344px 44px -344px -44px 32px 32px 384px 350px '../images/riskcare_sprite.png';
+	$arr_next: 264px 34px -264px -34px 20px 20px 384px 350px '../images/riskcare_sprite.png';
+	$arr_prev: 264px 58px -264px -58px 20px 20px 384px 350px '../images/riskcare_sprite.png';
+	$arr_selectbox: 260px 266px -260px -266px 40px 40px 384px 350px '../images/riskcare_sprite.png';
+	$arr_unfold: 344px 80px -344px -80px 32px 32px 384px 350px '../images/riskcare_sprite.png';
+	$icon_btn_add: 344px 116px -344px -116px 32px 32px 384px 350px '../images/riskcare_sprite.png';
+	$icon_btn_delete: 159px 214px -159px -214px 48px 48px 384px 350px '../images/riskcare_sprite.png';
+	$icon_btn_drag: 211px 214px -211px -214px 48px 48px 384px 350px '../images/riskcare_sprite.png';
+	$icon_btn_edit: 344px 152px -344px -152px 32px 32px 384px 350px '../images/riskcare_sprite.png';
+	$icon_btn_more: 344px 188px -344px -188px 32px 32px 384px 350px '../images/riskcare_sprite.png';
+	$icon_current_location: 344px 224px -344px -224px 32px 32px 384px 350px '../images/riskcare_sprite.png';
+	$icon_emoji_a: 344px 260px -344px -260px 32px 32px 384px 350px '../images/riskcare_sprite.png';
+	$icon_emoji_b: 252px 130px -252px -130px 32px 32px 384px 350px '../images/riskcare_sprite.png';
+	$icon_emoji_c: 252px 166px -252px -166px 32px 32px 384px 350px '../images/riskcare_sprite.png';
+	$icon_emoji_d: 304px 266px -304px -266px 32px 32px 384px 350px '../images/riskcare_sprite.png';
+	$icon_emoji_e: 0px 318px 0px -318px 32px 32px 384px 350px '../images/riskcare_sprite.png';
+	$icon_emoji_f: 36px 318px -36px -318px 32px 32px 384px 350px '../images/riskcare_sprite.png';
+	$icon_emoji_g: 72px 318px -72px -318px 32px 32px 384px 350px '../images/riskcare_sprite.png';
+	$icon_emoji_h: 108px 318px -108px -318px 32px 32px 384px 350px '../images/riskcare_sprite.png';
+	$icon_gnb_close: 292px 0px -292px 0px 48px 48px 384px 350px '../images/riskcare_sprite.png';
+	$icon_gnb_intro: 292px 52px -292px -52px 48px 48px 384px 350px '../images/riskcare_sprite.png';
+	$icon_gnb_notice: 292px 104px -292px -104px 48px 48px 384px 350px '../images/riskcare_sprite.png';
+	$icon_gnb_portal: 292px 156px -292px -156px 48px 48px 384px 350px '../images/riskcare_sprite.png';
+	$icon_header_back: 292px 208px -292px -208px 48px 48px 384px 350px '../images/riskcare_sprite.png';
+	$icon_header_like: 0px 266px 0px -266px 48px 48px 384px 350px '../images/riskcare_sprite.png';
+	$icon_header_like_on: 52px 266px -52px -266px 48px 48px 384px 350px '../images/riskcare_sprite.png';
+	$icon_header_map: 104px 266px -104px -266px 48px 48px 384px 350px '../images/riskcare_sprite.png';
+	$icon_header_menu: 156px 266px -156px -266px 48px 48px 384px 350px '../images/riskcare_sprite.png';
+	$icon_header_share: 208px 266px -208px -266px 48px 48px 384px 350px '../images/riskcare_sprite.png';
+	$icon_input_clear: 344px 0px -344px 0px 40px 40px 384px 350px '../images/riskcare_sprite.png';
+	$icon_like_large: 0px 34px 0px -34px 92px 92px 384px 350px '../images/riskcare_sprite.png';
+	$icon_map_my_location: 0px 214px 0px -214px 49px 48px 384px 350px '../images/riskcare_sprite.png';
+	$icon_map_zoom_in: 53px 214px -53px -214px 49px 48px 384px 350px '../images/riskcare_sprite.png';
+	$icon_map_zoom_out: 106px 214px -106px -214px 49px 48px 384px 350px '../images/riskcare_sprite.png';
+	$icon_status_a: 96px 34px -96px -34px 80px 80px 384px 350px '../images/riskcare_sprite.png';
+	$icon_status_b: 180px 34px -180px -34px 80px 80px 384px 350px '../images/riskcare_sprite.png';
+	$icon_status_c: 0px 130px 0px -130px 80px 80px 384px 350px '../images/riskcare_sprite.png';
+	$icon_status_d: 84px 130px -84px -130px 80px 80px 384px 350px '../images/riskcare_sprite.png';
+	$icon_status_e: 168px 130px -168px -130px 80px 80px 384px 350px '../images/riskcare_sprite.png';
+	$logo: 0px 0px 0px 0px 288px 30px 384px 350px '../images/riskcare_sprite.png';

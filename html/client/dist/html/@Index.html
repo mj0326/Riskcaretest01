@@ -1,0 +1,250 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script>
+		$(function () {
+			var $selector = $('.cp-index-nav li');
+
+			$selector.on('click', function (e) {
+				var $this = $(e.currentTarget);
+				var $target = $('#iframe');
+				var $headingTitle = $('.cp-index-content h2');
+				var type = $this.attr('data-url');
+				var fileName = $this.attr('data-file');
+
+				$selector.removeClass('cp-selected');
+				$this.addClass('cp-selected');
+
+				if (type == undefined || type == null) {
+					$headingTitle.text(fileName + ".html");
+					$target.attr('src', fileName + '.html');
+				} else {
+					$headingTitle.text(type + ' / ' + fileName + ".html");
+					$target.attr('src', type + '/' + fileName + '.html');
+				}
+			});
+
+			$('h1.is-selected + ul li').eq(0).trigger('click');
+
+			$('.cp-page-index h1').on('click', function (e) {
+				var $this = $(e.currentTarget);
+
+				$('.cp-page-index h1').removeClass('is-selected');
+				$('.cp-page-index ul').attr('aria-expanded', 'false');
+				$selector.removeClass('cp-selected');
+
+				$this.addClass('is-selected');
+				$this.next('ul').attr('aria-expanded', 'true');
+				$this.next('ul').children('li').eq(0).trigger('click');
+			});
+		});
+	</script>
+	<title>RISK CARE : INDEX</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body.cp-page-index {
+		}
+
+		body.cp-page-index .cp-index-nav {
+			position: fixed;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			width: 250px;
+			border-right: 2px solid #cdcdcd;
+			background-color: #fff;
+			-webkit-box-sizing: border-box;
+			overflow-y: auto;
+		}
+
+		body.cp-page-index .cp-index-nav h1 {
+			position: relative;
+			padding: 8px 12px 7px 5px;
+			border-bottom: 1px solid #cdcdcd;
+			font-size: 15px;
+			color: #424242;
+			font-weight: normal;
+			letter-spacing: -1px;
+			cursor: pointer;
+		}
+
+		body.cp-page-index .cp-index-nav ul {
+			padding: 5px;
+			border-bottom: 1px solid #cdcdcd;
+		}
+
+		body.cp-page-index .cp-index-nav ul li {
+			padding: 5px;
+			font-size: 12px;
+			color: #666;
+			cursor: pointer;
+			word-break: break-all;
+			word-wrap: break-word;
+		}
+
+		body.cp-page-index .cp-index-nav ul li:hover {
+			color: #000;
+			background-color: #ebebeb;
+		}
+
+		body.cp-page-index .cp-index-nav ul li.cp-selected {
+			color: #11386e;
+			background-color: #f1f1f1;
+			font-weight: bold;
+			text-decoration: underline;
+		}
+
+		body.cp-page-index .cp-index-nav ul[aria-expanded="false"] {
+			display: none;
+		}
+
+		body.cp-page-index .cp-index-nav ul[aria-expanded="true"] {
+			display: block;
+		}
+
+		body.cp-page-index .cp-index-nav h1 {
+			opacity: 0.4;
+		}
+
+		body.cp-page-index .cp-index-nav h1:hover {
+			background-color: #f1f1f1;
+			color: #273550;
+			opacity: 0.8;
+		}
+
+		body.cp-page-index .cp-index-nav h1:after {
+			position: absolute;
+			right: 5px;
+			top: 8px;
+			font-size: 12px;
+			content: '▼';
+		}
+
+		body.cp-page-index .cp-index-nav h1.is-selected {
+			background-color: #273550;
+			color: #fff;
+			opacity: 1;
+		}
+
+		body.cp-page-index .cp-index-nav h1.is-selected:after {
+			content: '▲';
+		}
+
+		body.cp-page-index .cp-index-content {
+			position: absolute;
+			left: 250px;
+			right: 0;
+			top: 50px;
+			bottom: 0;
+		}
+
+		body.cp-page-index .cp-index-content h2 {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: -50px;
+			height: 50px;
+			padding: 0 20px;
+			color: #232323;
+			font-size: 18px;
+			line-height: 50px;
+			border-bottom: 2px solid #cdcdcd;
+			background-color: #ededed;
+			z-index: 2;
+			-webkit-box-sizing: border-box;
+		}
+
+		body.cp-page-index .cp-index-content iframe {
+			position: absolute;
+			left: 50%;
+			top: 5%;
+			width: 414px;
+			height: 90%;
+			border:4px solid #c4c4c4;
+			transform: translateX(-50%);
+		}
+
+		body.cp-page-index .btn-index {
+			display: block;
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			z-index: 10;
+			padding: 5px 10px;
+			background-color: #11386e;
+			text-align: center;
+			font-size: 14px;
+			color: #fff;
+			text-decoration: none;
+		}
+	</style>
+</head>
+
+<body class="cp-page-index">
+
+<!--a href="@Index_Common.html" class="btn-index">공통 INDEX 이동</a-->
+
+<div class="cp-index-nav">
+	<h1>LAYOUT</h1>
+	<ul aria-expanded="false">
+		<li data-url="_LAYOUT" data-file="LAYOUT">LAYOUT</li>
+		<li data-url="_LAYOUT" data-file="LAYOUT_SUB">LAYOUT SUB</li>
+		<li data-url="_LAYOUT" data-file="LAYOUT_BOTTOM_FIXED">LAYOUT 하단 정보영역</li>
+	</ul>
+
+	<h1>COMMON UI</h1>
+	<ul aria-expanded="false">
+		<li data-url="_COMMON" data-file="COMMON_UI">COMMON UI</li>
+		<li data-url="_COMMON" data-file="Button">Button</li>
+		<li data-url="_COMMON" data-file="Input">Input</li>
+		<li data-url="_COMMON" data-file="Tab">Tab</li>
+	</ul>
+
+	<h1>Home</h1>
+	<ul aria-expanded="true">
+		<li data-url="Page_Home" data-file="Home">홈</li>
+	</ul>
+
+	<h1>Add Location</h1>
+	<ul aria-expanded="false">
+		<li data-url="Page_Location" data-file="Location_List">장소 목록</li>
+		<li data-url="Page_Location" data-file="Location_Edit">관심 장소 편집</li>
+		<li data-url="Page_Location" data-file="Location_Add">관심 장소 검색</li>
+
+		<li data-url="Page_Location" data-file="Detail_View">상세 화면</li>
+	</ul>
+
+	<h1>지도</h1>
+	<ul aria-expanded="false">
+		<li data-url="Page_Map" data-file="Map">지도</li>
+	</ul>
+
+	<h1>서비스 소개</h1>
+	<ul aria-expanded="false">
+		<li data-url="Page_Service" data-file="Service_01">개요</li>
+		<li data-url="Page_Service" data-file="Service_02">분석 데이터</li>
+		<li data-url="Page_Service" data-file="Service_03">코로나19 위험도</li>
+		<li data-url="Page_Service" data-file="Service_04">주요 지표</li>
+	</ul>
+
+	<h1>공지사항</h1>
+	<ul aria-expanded="false">
+		<li data-url="Page_Notice" data-file="Notice">공지사항</li>
+	</ul>
+</div>
+<div class="cp-index-content">
+	<h2></h2>
+	<iframe id="iframe" src="" frameborder="0" scrollbars="auto"></iframe>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>COVID-19</title>
+</head>
+<script>
+// 폰트를 위한 모바일 OS 체크
+(function iOSversion() {
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const html = document.querySelector('html');
+    if (isIOS) {
+        html.classList.add('ios');
+    } else {
+        html.classList.add('not-ios');
+    }
+})();
+</script>
+<body>
+    <div id="wrap" class="wrap">
+        <header class="header">
+            <div class="header__in">
+                <h1 class="logo"><img src="./img/logo@3x.png" alt="covid 19"></h1>
+                <button type="button" class="hd-all-menu"><span class="blind">전체메뉴 열기</span></button>
+                <button type="button" class="btn-hd-sch"><span class="blind">검색</span></button>
+            </div>
+            <nav id="nav" class="nav">
+                <div class="nav__in">
+                    <ul class="all-menu">
+                        <li class="all-menu__item location">위치 동의 상태 <button type="button" class="loc-toggle js-loc"><span class="blind">위치 동의 하기</span></button></li>
+                        <li class="all-menu__item notice">알림<span class="badge">3</span></li>
+                        <li class="all-menu__item report">확진자 리포트</li>
+                        <li class="all-menu__item info">위험 단계 정보</li>
+                        <li class="all-menu__item recieve">정보 수신 설정</li>
+                        <li class="all-menu__item logout">로그아웃</li>
+                    </ul>
+                </div>
+                <button type="button" class="btn-am-close"><span class="blind">메뉴 닫기</span></button>
+            </nav>
+        </header>
+        <main class="main container">
+            <div class="realtime">
+                <h2 class="realtime__tit">실시간 현황</h2>
+                <div class="realtime__info">
+                    <span class="realtime__area">서울시 강남구</span>
+                    <span class="realtime__cnt">1명 추가</span>
+                    <span class="realtime__time">22분 전</span>
+                </div>
+            </div>
+            <div class="confirmed">
+                <h2 class="confirmed__tit">확진자 현황</h2>
+                <div class="confirmed__info">
+                    <div class="confirmed__col">
+                        <p class="confirmed__txt1">총 확진자 수</p>
+                        <div class="confirmed__cnt-wrap">
+                            <span class="confirmed__cnt jost">1,234</span>
+                            <span class="confirmed__cnt2 up jost">125</span>
+                        </div>
+                        <p class="confirmed__txt2">10월 29일 10시 기준</p>
+                    </div>
+                    <div class="confirmed__col">
+                        <p class="confirmed__txt1">금일 실시간 추가 확진자 수</p>
+                        <div class="confirmed__cnt-wrap">
+                            <span class="confirmed__cnt jost">35</span>
+                            <span class="confirmed__cnt2 down jost">2</span>
+                        </div>
+                        <p class="confirmed__txt2">오늘발생 40명 중 5명 어제 집계</p>
+                    </div>
+                </div>
+            </div>
+            <div class="main-graph">
+                <h2 class="main-graph__tit">그래프 현황</h2>
+                <ul class="status-btn clearfix">
+                    <li class="status-btn__list"><button type="button" class="status-btn__btn active js-main-graph">오늘</button></li>
+                    <li class="status-btn__list"><button type="button" class="status-btn__btn js-main-graph">일별</button></li>
+                </ul>
+                <div class="main-graph__chart"></div>
+                <ul class="main-graph-cnt">
+                    <li class="main-graph-cnt__item yesterday">어제<strong>75명</strong></li>
+                    <li class="main-graph-cnt__item today">오늘<strong>75명</strong></li>
+                </ul>
+            </div>
+            <div class="area-status">
+                <h2 class="area-status__tit">지역별 현황</h2>
+                <ul class="status-btn clearfix">
+                    <li class="status-btn__list"><button type="button" class="status-btn__btn active js-area">리스트</button></li>
+                    <li class="status-btn__list"><button type="button" class="status-btn__btn js-area">지도</button></li>
+                </ul>
+                <table class="area-status__tbl">
+                    <caption>지역별 확진자 현황 게시판</caption>
+                    <colgroup>
+                        <col class="area-status__col1">
+                        <col class="area-status__col2">
+                        <col class="area-status__col3">
+                        <col class="area-status__col4">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="row">지역</th>
+                            <th scope="row">총 확진자</th>
+                            <th scope="row">오늘</th>
+                            <th scope="row">업데이트 시간</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#none" class="js-pop-loc">서울</a></td>
+                            <td>
+                                <div class="area-status__cnt">
+                                    <span class="area-status__cnt-num1">132</span>
+                                    <span class="area-status__cnt-txt">명</span>
+                                    <span class="area-status__cnt-num2 up">23</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="area-status__cnt">
+                                    <span class="area-status__cnt-num1">12</span>
+                                    <span class="area-status__cnt-txt">명</span>
+                                    <span class="area-status__cnt-num2 down">5</span>
+                                </div>
+                            </td>
+                            <td><span class="time">22분 전</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#none" class="js-pop-loc">경기</a></td>
+                            <td>
+                                <div class="area-status__cnt">
+                                    <span class="area-status__cnt-num1">1,132</span>
+                                    <span class="area-status__cnt-txt">명</span>
+                                    <span class="area-status__cnt-num2 up">23</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="area-status__cnt">
+                                    <span class="area-status__cnt-num1">12</span>
+                                    <span class="area-status__cnt-txt">명</span>
+                                    <span class="area-status__cnt-num2 down">5</span>
+                                </div>
+                            </td>
+                            <td><span class="time">22분 전</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#none" class="js-pop-loc">대구</a></td>
+                            <td>
+                                <div class="area-status__cnt">
+                                    <span class="area-status__cnt-num1">1,132</span>
+                                    <span class="area-status__cnt-txt">명</span>
+                                    <span class="area-status__cnt-num2 up">23</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="area-status__cnt">
+                                    <span class="area-status__cnt-num1">12</span>
+                                    <span class="area-status__cnt-txt">명</span>
+                                    <span class="area-status__cnt-num2 down">5</span>
+                                </div>
+                            </td>
+                            <td><span class="time">22분 전</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#none" class="js-pop-loc">부산</a></td>
+                            <td>
+                                <div class="area-status__cnt">
+                                    <span class="area-status__cnt-num1">1,132</span>
+                                    <span class="area-status__cnt-txt">명</span>
+                                    <span class="area-status__cnt-num2 up">23</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="area-status__cnt">
+                                    <span class="area-status__cnt-num1">12</span>
+                                    <span class="area-status__cnt-txt">명</span>
+                                    <span class="area-status__cnt-num2 down">5</span>
+                                </div>
+                            </td>
+                            <td><span class="time">22분 전</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#none" class="js-pop-loc">광주</a></td>
+                            <td>
+                                <div class="area-status__cnt">
+                                    <span class="area-status__cnt-num1">1,132</span>
+                                    <span class="area-status__cnt-txt">명</span>
+                                    <span class="area-status__cnt-num2 up">23</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="area-status__cnt">
+                                    <span class="area-status__cnt-num1">12</span>
+                                    <span class="area-status__cnt-txt">명</span>
+                                    <span class="area-status__cnt-num2 down">5</span>
+                                </div>
+                            </td>
+                            <td><span class="time">22분 전</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#none" class="js-pop-loc">제주</a></td>
+                            <td>
+                                <div class="area-status__cnt">
+                                    <span class="area-status__cnt-num1">1,132</span>
+                                    <span class="area-status__cnt-txt">명</span>
+                                    <span class="area-status__cnt-num2 up">23</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="area-status__cnt">
+                                    <span class="area-status__cnt-num1">12</span>
+                                    <span class="area-status__cnt-txt">명</span>
+                                    <span class="area-status__cnt-num2 down">5</span>
+                                </div>
+                            </td>
+                            <td><span class="time">22분 전</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <div class="pop-loc-wrap">
+            <div class="pop-loc">
+                <div class="pop-loc__in city">
+                    <h2 class="popl__tit">서울시</h2>
+                    <div class="popl-condition">
+                        <dl class="popl-condition__col">
+                            <dt class="popl-condition__tit">오늘 발생</dt>
+                            <dd class="popl-condition__data jost today">74</dd>
+                        </dl>
+                        <dl class="popl-condition__col">
+                            <dt class="popl-condition__tit">어제 집계</dt>
+                            <dd class="popl-condition__data jost yesterday">17</dd>
+                        </dl>
+                        <dl class="popl-condition__col popl-condition__col--add-today">
+                            <dt class="popl-condition__tit">오늘 추가 확진</dt>
+                            <dd class="popl-condition__data jost add-today">57</dd>
+                        </dl>
+                        <dl class="popl-condition__col">
+                            <dt class="popl-condition__tit">확인중</dt>
+                            <dd class="popl-condition__data jost checking">1</dd>
+                        </dl>
+                    </div>
+                    <div class="popl-tab">
+                        <ul class="popl-tab__list">
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn active js-popl-tab"><strong>전체</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>서울</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>경기</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>충남</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>충북</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>강원</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>경북</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>경남</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>전북</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>전남</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>제주</strong>33건</a></li>
+                        </ul>
+                    </div>
+                    <ul class="popl-loc-list">
+                        <li class="popl-loc-list__row">
+                            <a href="#none" class="popl-loc-list__btn">
+                                <div class="popl-loc-list__col-left">
+                                    <strong class="popl-loc-list__name">서울시 강남구</strong>
+                                    <span class="popl-loc-list__time">22분전</span>
+                                </div>
+                                <div class="popl-loc-list__col-right">
+                                    <strong>1</strong>명 확진
+                                </div>
+                            </a>
+                        </li>
+                        <li class="popl-loc-list__row">
+                            <a href="#none" class="popl-loc-list__btn">
+                                <div class="popl-loc-list__col-left">
+                                    <strong class="popl-loc-list__name">서울시 강남구</strong>
+                                    <span class="popl-loc-list__time">22분전</span>
+                                </div>
+                                <div class="popl-loc-list__col-right">
+                                    <strong>1</strong>명 확진
+                                </div>
+                            </a>
+                        </li>
+                        <li class="popl-loc-list__row">
+                            <a href="#none" class="popl-loc-list__btn">
+                                <div class="popl-loc-list__col-left">
+                                    <strong class="popl-loc-list__name">서울시 강남구</strong>
+                                    <span class="popl-loc-list__time">22분전</span>
+                                </div>
+                                <div class="popl-loc-list__col-right">
+                                    <strong>1</strong>명 확진
+                                </div>
+                            </a>
+                        </li>
+                        <li class="popl-loc-list__row">
+                            <a href="#none" class="popl-loc-list__btn">
+                                <div class="popl-loc-list__col-left">
+                                    <strong class="popl-loc-list__name">서울시 강남구</strong>
+                                    <span class="popl-loc-list__time">22분전</span>
+                                </div>
+                                <div class="popl-loc-list__col-right">
+                                    <strong>1</strong>명 확진
+                                </div>
+                            </a>
+                        </li>
+                        <li class="popl-loc-list__row">
+                            <a href="#none" class="popl-loc-list__btn">
+                                <div class="popl-loc-list__col-left">
+                                    <strong class="popl-loc-list__name">서울시 강남구</strong>
+                                    <span class="popl-loc-list__time">22분전</span>
+                                </div>
+                                <div class="popl-loc-list__col-right">
+                                    <strong>1</strong>명 확진
+                                </div>
+                            </a>
+                        </li>
+                        <li class="popl-loc-list__row">
+                            <a href="#none" class="popl-loc-list__btn">
+                                <div class="popl-loc-list__col-left">
+                                    <strong class="popl-loc-list__name">서울시 강남구</strong>
+                                    <span class="popl-loc-list__time">22분전</span>
+                                </div>
+                                <div class="popl-loc-list__col-right">
+                                    <strong>1</strong>명 확진
+                                </div>
+                            </a>
+                        </li>
+                        <li class="popl-loc-list__row">
+                            <a href="#none" class="popl-loc-list__btn">
+                                <div class="popl-loc-list__col-left">
+                                    <strong class="popl-loc-list__name">서울시 강남구</strong>
+                                    <span class="popl-loc-list__time">22분전</span>
+                                </div>
+                                <div class="popl-loc-list__col-right">
+                                    <strong>1</strong>명 확진
+                                </div>
+                            </a>
+                        </li>
+                        <li class="popl-loc-list__row">
+                            <a href="#none" class="popl-loc-list__btn">
+                                <div class="popl-loc-list__col-left">
+                                    <strong class="popl-loc-list__name">서울시 강남구</strong>
+                                    <span class="popl-loc-list__time">22분전</span>
+                                </div>
+                                <div class="popl-loc-list__col-right">
+                                    <strong>1</strong>명 확진
+                                </div>
+                            </a>
+                        </li>
+                        <li class="popl-loc-list__row">
+                            <a href="#none" class="popl-loc-list__btn">
+                                <div class="popl-loc-list__col-left">
+                                    <strong class="popl-loc-list__name">서울시 강남구</strong>
+                                    <span class="popl-loc-list__time">22분전</span>
+                                </div>
+                                <div class="popl-loc-list__col-right">
+                                    <strong>1</strong>명 확진
+                                </div>
+                            </a>
+                        </li>
+                        <li class="popl-loc-list__row">
+                            <a href="#none" class="popl-loc-list__btn">
+                                <div class="popl-loc-list__col-left">
+                                    <strong class="popl-loc-list__name">서울시 강남구</strong>
+                                    <span class="popl-loc-list__time">22분전</span>
+                                </div>
+                                <div class="popl-loc-list__col-right">
+                                    <strong>1</strong>명 확진
+                                </div>
+                            </a>
+                        </li>
+                        <li class="popl-loc-list__row">
+                            <a href="#none" class="popl-loc-list__btn">
+                                <div class="popl-loc-list__col-left">
+                                    <strong class="popl-loc-list__name">서울시 강남구</strong>
+                                    <span class="popl-loc-list__time">22분전</span>
+                                </div>
+                                <div class="popl-loc-list__col-right">
+                                    <strong>1</strong>명 확진
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pop-loc__in town hide">
+                    <h2 class="popl__tit"><button type="button" class="popl-prev js-popl-prev"><span class="blind">이전으로</span></button>강남구</h2>
+                    <div class="popl-condition">
+                        <dl class="popl-condition__col">
+                            <dt class="popl-condition__tit">오늘 발생</dt>
+                            <dd class="popl-condition__data jost today">74</dd>
+                        </dl>
+                        <dl class="popl-condition__col">
+                            <dt class="popl-condition__tit">어제 집계</dt>
+                            <dd class="popl-condition__data jost yesterday">17</dd>
+                        </dl>
+                        <dl class="popl-condition__col popl-condition__col--add-today">
+                            <dt class="popl-condition__tit">오늘 추가 확진</dt>
+                            <dd class="popl-condition__data jost add-today">57</dd>
+                        </dl>
+                        <dl class="popl-condition__col">
+                            <dt class="popl-condition__tit">확인중</dt>
+                            <dd class="popl-condition__data jost checking">1</dd>
+                        </dl>
+                    </div>
+                    <div class="popl-tab">
+                        <ul class="popl-tab__list">
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn active js-popl-tab"><strong>전체</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>서울</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>경기</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>충남</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>충북</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>강원</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>경북</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>경남</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>전북</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>전남</strong>33건</a></li>
+                            <li class="popl-tab__item"><a href="#none" class="popl-tab__btn js-popl-tab"><strong>제주</strong>33건</a></li>
+                        </ul>
+                    </div>
+                    <div class="popl-detail">
+                        <p class="popl-detail__day"><strong>10월 26일 월요일</strong></p>
+                        <ul class="popl-detail__list">
+                            <li class="popl-detail__item">
+                                <p class="popl-detail__txt">SRC 재활병원 관련 추가 확진자 1명(광주 214번) 발생. 추후 확인사항은 홈페이지에 공개하겠습니다.</p>
+                                <p class="popl-detail__time">32분 전 (20시 08분 업데이트)</p>
+                            </li>
+                            <li class="popl-detail__item">
+                                <p class="popl-detail__txt">SRC 재활병원 관련 추가 확진자 1명(광주 214번) 발생. 추후 확인사항은 홈페이지에 공개하겠습니다.</p>
+                                <p class="popl-detail__time">32분 전 (20시 08분 업데이트)</p>
+                            </li>
+                            <li class="popl-detail__item">
+                                <p class="popl-detail__txt">SRC 재활병원 관련 추가 확진자 1명(광주 214번) 발생. 추후 확인사항은 홈페이지에 공개하겠습니다.</p>
+                                <p class="popl-detail__time">32분 전 (20시 08분 업데이트)</p>
+                            </li>
+                            <li class="popl-detail__item">
+                                <p class="popl-detail__txt">SRC 재활병원 관련 추가 확진자 1명(광주 214번) 발생. 추후 확인사항은 홈페이지에 공개하겠습니다.</p>
+                                <p class="popl-detail__time">32분 전 (20시 08분 업데이트)</p>
+                            </li>
+                            <li class="popl-detail__item">
+                                <p class="popl-detail__txt">SRC 재활병원 관련 추가 확진자 1명(광주 214번) 발생. 추후 확인사항은 홈페이지에 공개하겠습니다.</p>
+                                <p class="popl-detail__time">32분 전 (20시 08분 업데이트)</p>
+                            </li>
+                            <li class="popl-detail__item">
+                                <p class="popl-detail__txt">SRC 재활병원 관련 추가 확진자 1명(광주 214번) 발생. 추후 확인사항은 홈페이지에 공개하겠습니다.</p>
+                                <p class="popl-detail__time">32분 전 (20시 08분 업데이트)</p>
+                            </li>
+                            <li class="popl-detail__item">
+                                <p class="popl-detail__txt">SRC 재활병원 관련 추가 확진자 1명(광주 214번) 발생. 추후 확인사항은 홈페이지에 공개하겠습니다.</p>
+                                <p class="popl-detail__time">32분 전 (20시 08분 업데이트)</p>
+                            </li>
+                            <li class="popl-detail__item">
+                                <p class="popl-detail__txt">SRC 재활병원 관련 추가 확진자 1명(광주 214번) 발생. 추후 확인사항은 홈페이지에 공개하겠습니다.</p>
+                                <p class="popl-detail__time">32분 전 (20시 08분 업데이트)</p>
+                            </li>
+                            <li class="popl-detail__item">
+                                <p class="popl-detail__txt">SRC 재활병원 관련 추가 확진자 1명(광주 214번) 발생. 추후 확인사항은 홈페이지에 공개하겠습니다.</p>
+                                <p class="popl-detail__time">32분 전 (20시 08분 업데이트)</p>
+                            </li>
+                            <li class="popl-detail__item">
+                                <p class="popl-detail__txt">SRC 재활병원 관련 추가 확진자 1명(광주 214번) 발생. 추후 확인사항은 홈페이지에 공개하겠습니다.</p>
+                                <p class="popl-detail__time">32분 전 (20시 08분 업데이트)</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <button type="button" class="pop-loc__close"><span class="blind">지역 정보 닫기</span></button>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // 메뉴 열기
+    const openMenu = document.querySelector('.hd-all-menu');
+    openMenu.onclick = () => {
+        const html = document.querySelector('html');
+        const menu = document.querySelector('.nav');
+        html.classList.add('ovh');
+        menu.classList.add('active');
+    }
+    // 메뉴 닫기
+    const closeMenu = document.querySelector('.btn-am-close');
+    closeMenu.onclick = () => {
+        const html = document.querySelector('html');
+        const menu = document.querySelector('.nav');
+        html.classList.remove('ovh');
+        menu.classList.remove('active');
+    }
+
+    //위치 동의 상태
+    const locAgree = document.querySelector('.js-loc');
+    locAgree.onclick = () => {
+        locAgree.classList.toggle('active');
+    }
+
+    // 그래프 현황
+    const mGraphBtn = document.querySelectorAll('.js-main-graph');
+    mGraphBtn[0].onclick = () => {
+        console.log('그래프 현황 : 오늘');
+        mGraphBtn[1].classList.remove('active');
+        mGraphBtn[0].classList.add('active');
+    }
+    mGraphBtn[1].onclick = () => {
+        console.log('그래프 현황 : 일별');
+        mGraphBtn[0].classList.remove('active');
+        mGraphBtn[1].classList.add('active');
+    }
+
+    // 지역별 현황
+    const areaBtn = document.querySelectorAll('.js-area');
+    areaBtn[0].onclick = () => {
+        console.log('지역별 현황 : 리스트');
+        areaBtn[1].classList.remove('active');
+        areaBtn[0].classList.add('active');
+    }
+    areaBtn[1].onclick = () => {
+        console.log('지역별 현황 : 지도');
+        areaBtn[0].classList.remove('active');
+        areaBtn[1].classList.add('active');
+    }
+
+    //팝업 열기
+    const popOpen = function () {
+        //const popBtnOpen = document.querySelectorAll('.js-pop-loc');
+        const popBtnOpenTr = document.querySelectorAll('.area-status__tbl');
+        for (let i=0;i<popBtnOpenTr.length;i++) {
+            popBtnOpenTr[i].onclick = () => {
+                const popWrap = document.querySelector('.pop-loc-wrap').classList.add('active');
+            }
+        }
+    }();
+    
+
+    // 팝업 지역 탭 활성
+    const popAreaTab = function () {
+        const tabBtn = document.querySelectorAll('.js-popl-tab');
+        for (let i=0;i<tabBtn.length;i++) {
+            tabBtn[i].onclick = () => {
+                for (let j=0;j<tabBtn.length;j++) {
+                    tabBtn[j].classList.remove('active');
+                }
+                tabBtn[i].classList.add('active');
+            }
+        }
+    }();
+
+    //팝업 닫기
+    const popClose = document.querySelector('.pop-loc__close').onclick = () => {
+        const popWrap = document.querySelector('.pop-loc-wrap').classList.remove('active');
+    }
+    //팝업 지역 상세내용
+    const popDetail = function () {
+        const popDetailBtn = document.querySelectorAll('.popl-loc-list__btn');
+        for (let i=0;i<popDetailBtn.length;i++) {
+            popDetailBtn[i].onclick = () => {
+                const popCity = document.querySelector('.city').classList.add('hide');
+                const popTown = document.querySelector('.town').classList.remove('hide');
+            }
+        }
+    }();
+
+    //팝업 이전
+    const popPrev = document.querySelector('.js-popl-prev').onclick = () => {
+        const popCity = document.querySelector('.city').classList.remove('hide');
+        const popTown = document.querySelector('.town').classList.add('hide');
+    }
+    
+
+</script>
+</body>
+</html>

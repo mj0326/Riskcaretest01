@@ -1,0 +1,161 @@
+@charset "utf-8";
+
+/***************************************************************************************
+   Page : 지도
+***************************************************************************************/
+.page-map {
+	overflow:hidden;
+	position:relative;
+	height:100vh;
+
+	&.is-show {
+		.section-button {
+			bottom:140px;
+		}
+		.section-info {
+			bottom:10px;
+			opacity:1;
+		}
+	}
+
+	.section-map {
+		height:100vh;
+	}
+
+	// 지역, 전체
+	.section-mode {
+		overflow:hidden;
+		position:absolute;
+		left:50%;
+		top:84px;
+		height:46px;
+		background-color:#fff;
+		font-size:0;
+		line-height:0;
+
+		@include radius(23px);
+		@include translate(-50%, 0);
+		@include box-shadow(0 4px 4px 0 rgba(0, 0, 0, 0.25));
+
+		.btn-map-mode {
+			display:inline-block;
+			height:46px;
+			padding:0 5px 0 20px;
+			vertical-align:top;
+			line-height:46px;
+			font-size:16px;
+			color:#888a8f;
+
+			&[aria-selected="true"] {
+				color:#111;
+				font-weight:bold;
+			}
+		}
+		.btn-map-mode + .btn-map-mode {
+			padding:0 20px 0 5px;
+		}
+	}
+
+	// 기능 버튼
+	.section-button {
+		position:fixed;
+		right:15px;
+		bottom:30px;
+
+		@include transition(bottom 0.3s cubic-bezier(0.550, 0.085, 0.680, 0.530));
+
+		.btn-map {
+			display:block;
+			position:relative;
+			width:40px;
+			height:40px;
+			background-color:#fff;
+
+			@include radius(50%);
+			@include box-shadow(0 1px 6px 0 rgba(0, 0, 0, 0.25));
+
+			& + .btn-map {
+				margin-top:15px;
+			}
+
+			&:before {
+				position:absolute;
+				left:50%;
+				top:50%;
+				content:'';
+
+				@include translate(-50%,-50%);
+			}
+
+			&.type-zoomin:before {
+				@include get-sprite($icon_map_zoom_in);
+			}
+			&.type-zoomout:before {
+				@include get-sprite($icon_map_zoom_out);
+			}
+			&.type-mylocation:before {
+				@include get-sprite($icon_map_my_location);
+			}
+		}
+	}
+
+	// 위험도 정보
+	.section-info {
+		position:fixed;
+		left:10px;
+		right:10px;
+		bottom:-110px;
+		height:100px;
+		background-color:rgba(255,255,255,0.8);
+		opacity:0;
+
+		@include radius(10px);
+		@include transition(opacity 0.3s ease, bottom 0.35s ease-in-out);
+
+		&:active {
+			background-color:rgba(0,152,255,0.1);
+		}
+
+		.info-area {
+			display:flex;
+			flex-direction:row;
+			flex-wrap:nowrap;
+			height:100%;
+			padding:0 rem(30);
+			align-items:center;
+
+			.location-block {
+				overflow:hidden;
+				flex:1 1 auto;
+				padding-right:rem(18);
+				line-height:30px;
+				font-size:20px;
+				color:#111;
+				font-weight:bold;
+			}
+			.risk-block {
+				flex:0 1 auto;
+
+				.risk-info {
+					background-color:transparent !important;
+					text-align:center;
+
+					@extend %status-risk;
+
+					.txt-data {
+						display:block;
+						line-height:36px;
+						font-size:40px;
+						font-weight:500;
+					}
+					.txt-status {
+						display:block;
+						margin-top:5px;
+						font-size:14px;
+						font-weight:bold;
+					}
+				}
+			}
+		}
+	}
+}

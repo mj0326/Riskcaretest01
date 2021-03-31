@@ -1,0 +1,129 @@
+@import "../Common/common.scss";
+
+.introduction {
+    width: calc(100vw - #{$horizontal-padding} * 2);
+    height: 600px;
+    padding-top: $horizontal-padding !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    .title {
+        text-align: center;
+        line-height: 1;
+        margin-bottom: $horizontal-padding;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .common-data-tab {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+
+        > div {
+            width: calc(100% / 3);
+            margin: 0;
+            height: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .scroll {
+        overflow-y: scroll;
+        padding: $vertical-padding $horizontal-padding;
+        height: 477px;
+
+        > div.btn {
+            font-size: 14px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin: 35px 0 10px;
+            font-weight: bold;
+            
+            img {
+                $size: 10px;        
+                width: $size;
+                height: $size;    
+                margin-left: 5px;
+                position: relative;
+                top: 1px;
+            }
+        }
+    }
+
+    .risk {
+        > div.head {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        ul {
+            padding-left: 30px;
+        
+            li {
+                font-size: 14px;
+    
+                &:not(:last-child) {
+                    margin-bottom: 5px;
+                }
+               
+                > span {
+                    text-decoration: underline;
+                }
+
+                .labels {
+                    $margin: 20px;
+
+                    margin: $margin 0;
+                    
+                    > div {
+                        display: inline-block;
+                        text-align: center;
+                        
+                        &:not(:last-child) {
+                            margin-right: $margin;
+                        }
+
+                        > img {
+                            $size: 40px;
+                            width: $size;
+                            height: $size;
+                        }
+
+                        > div {
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }                
+        }
+    }
+
+    .contact {
+        > .description {
+            margin: 0;
+            font-size: 14px;
+            padding-left: 20px;
+            
+        }
+
+        .contents {
+            margin-top: 20px;
+
+            > .head {
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+            > .desc {
+                margin-top: 5px;
+                font-size: 14px;
+                margin-left: 20px;
+            }
+        }
+    }
+}

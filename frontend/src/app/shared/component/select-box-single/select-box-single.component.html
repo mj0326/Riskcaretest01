@@ -1,0 +1,24 @@
+<!-- Component : SelectBox -->
+<div [ngClass]="optionalClass"
+     [attr.aria-expanded]="isOpen"
+     [attr.type-up]="typeUp"
+     [class.is-error]="isError"
+     [class.is-disabled]="isDisabled"
+     (click)="toggleSelectBox($event)">
+
+  <label class="txt-label">{{selectedItem.label}}</label>
+
+  <!-- Layer : Options -->
+  <div class="layer-options">
+    <ul class="list-options">
+      <li *ngFor="let item of itemList let i = index" (click)="onClickRadio(item)">
+        <div class="item-options">
+          <input type="radio" id="{{radioUUIDList[i]}}" name="options" [checked]="item.checked === undefined ? false : item.checked" >
+          <label class="txt-label" for="{{radioUUIDList[i]}}">{{item.label}}</label>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!-- //Layer : Options -->
+</div>
+<!-- //Component : SelectBox -->

@@ -1,0 +1,45 @@
+<!--<div class="component-input {{optionalClass}}"-->
+<!--     [class.type-label]="hasLabel"-->
+<!--     [class.is-error]="isError"-->
+<!--     [class.type-max]="useTextCount">-->
+<!--  <div class="box-input">-->
+<!--    &lt;!&ndash; [D] Input Value length > 0 : is-not-empty 클래스 추가 &ndash;&gt;-->
+<!--    <input class="input-text" autocomplete="off" #inputElement-->
+<!--           [attr.type]="inputType"-->
+<!--           [attr.tabIndex]="tabIndex != -1 ? tabIndex : null"-->
+<!--           [class.is-not-empty]="text.length > 0"-->
+<!--           [id]="inputUUID"-->
+<!--           [(ngModel)]="text"-->
+<!--           [attr.maxlength]="maxlength ? maxlength : useTextCount ? 100 : null"-->
+<!--           [attr.placeholder]="placeholder"-->
+<!--           [attr.disabled]="disabled ? true : null"-->
+<!--           (focus)="onFocus($event)"-->
+<!--           (blur)="onFocusOut($event)"-->
+<!--           (custom-keyup)="onKeyup($event)">-->
+<!--    <label *ngIf="hasLabel" class="txt-label" [for]="inputUUID">{{label}}</label>-->
+
+<!--    &lt;!&ndash; 부가 기능 &ndash;&gt;-->
+<!--    <div class="sub-block" *ngIf="useTextCount || useSuccessIcon || useClearBtn">-->
+<!--      <div class="max-size" *ngIf="useTextCount">{{text? text.length : 0}}/{{maxlength? maxlength : 100}}</div>-->
+<!--      <i class="icon-success" *ngIf="useSuccessIcon"></i>-->
+<!--      <a href="javascript:;" class="btn-clear" *ngIf="useClearBtn && isFocusIn" (click)="text = ''"></a>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; //부가 기능 &ndash;&gt;-->
+<!--  </div>-->
+<!--  <span class="txt-message">{{ errorMessage }}</span>-->
+<!--</div>-->
+<!--&lt;!&ndash; Common UI : Input &ndash;&gt;-->
+
+<!-- [D] Input Focus : is-focus 클래스 추가 -->
+<div class="common-ui-input {{optionalClass}}" [class.is-focus]="isFocusIn">
+  <input type="text" class="input-text" #inputElement
+         [attr.placeholder]="placeholder"
+         [id]="inputUUID"
+         [attr.maxlength]="maxlength ? maxlength : 100"
+         (focus)="onFocus($event)"
+         (blur)="onFocusOut($event)"
+         [(ngModel)]="text"
+         (custom-keyup)="onKeyup($event)">
+    <button type="button" class="btn-clear" *ngIf="useClearBtn && isFocusIn && text.length > 0"></button>
+</div>
+<!-- //Common UI : Input -->

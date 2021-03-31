@@ -1,0 +1,400 @@
+@charset "utf-8";
+
+/***************************************************************************************
+   LAYOUT
+***************************************************************************************/
+html,body {
+	background-color:#f7f7f9;
+
+	@include response('sm') {
+		font-size:13px;
+	}
+	@include response('md') {
+		font-size:14px;
+	}
+	@include response('lg') {
+		font-size:16px;
+	}
+}
+
+.care-wrap {
+	.layout-header {
+		position:fixed;
+		left:0;
+		top:0;
+		z-index:5;
+		width:100%;
+		height:54px;
+		background-color:#f7f7f9;
+	}
+
+	.layout-content {
+		//overflow-y:auto;
+		//overflow-x:hidden;
+		min-height:100vh;
+		padding:54px 0 rem(30);
+
+		&.is-bottom-fixed {
+			padding-bottom:150px;
+		}
+	}
+}
+
+/***************************************************************************************
+   LAYOUT : Header
+***************************************************************************************/
+.care-wrap .layout-header {
+	.container-header {
+		position:relative;
+		height:100%;
+
+		.section-title {
+			line-height:54px;
+			text-align:center;
+
+			.txt-logo {
+				position:relative;
+				top:1px;
+
+				@include get-sprite($logo);
+			}
+			.txt-title {
+				display:block;
+				position:relative;
+				top:1px;
+				font-size:20px;
+				color:#111;
+			}
+		}
+
+		.section-left,
+		.section-right {
+			position:absolute;
+			top:6px;
+
+			&:after {
+				@include clear();
+			}
+			[class^="btn-"] {
+				display:flex;
+				align-items:center;
+				justify-content:center;
+				float:left;
+				width:42px;
+				height:42px;
+
+				&:before {
+					content:'';
+
+					//@include response('sm') {
+					//	transform:scale(0.77);
+					//}
+					//@include response('md') {
+					//	transform:scale(0.86);
+					//}
+					//@include response('lg') {
+					//	transform:scale(1);
+					//}
+				}
+			}
+		}
+		.section-left {
+			left:rem(8);
+		}
+		.section-right {
+			right:rem(8);
+		}
+		.btn-back:before {
+			@include get-sprite($icon_header_back);
+		}
+		.btn-menu:before {
+			@include get-sprite($icon_header_menu);
+		}
+		.btn-map:before {
+			@include get-sprite($icon_header_map);
+		}
+		.btn-share:before {
+			@include get-sprite($icon_header_share);
+		}
+		.btn-like {
+			&:before {
+				@include get-sprite($icon_header_like);
+			}
+			&.is-active:before {
+				@include get-sprite($icon_header_like_on);
+			}
+		}
+	}
+}
+
+/***************************************************************************************
+   LAYOUT : GNB
+***************************************************************************************/
+.care-wrap .layout-gnb {
+	position:fixed;
+	left:-100%;
+	top:0;
+	z-index:50;
+	width:100%;
+	height:100vh;
+	background-color:rgba(0, 0, 0, 0.3);
+
+	.container-gnb {
+		position:fixed;
+		left:-100%;
+		top:0;
+		width:rem(360);
+		height:100vh;
+		background-color:#fff;
+	}
+
+	&[aria-expanded="true"] {
+		left:0;
+
+		.container-gnb {
+			left:0;
+			transition-delay:0.1s;
+
+			@include transition(left 0.4s cubic-bezier(0.550, 0.085, 0.680, 0.530));
+		}
+
+		.section-nav .item-nav {
+			left:0;
+			opacity:1;
+		}
+	}
+	&[aria-expanded="false"] {
+		.container-gnb {
+			left:-100%;
+
+			@include transition(left 0.4s cubic-bezier(0.550, 0.085, 0.680, 0.530));
+		}
+	}
+
+	.section-top {
+		display:flex;
+		flex-direction:row;
+		flex-wrap:nowrap;
+		align-items:center;
+		height:64px;
+		padding:0 6px 0 rem(30);
+
+		.logo-area {
+			flex:1 0 auto;
+
+			.txt-logo {
+				@include get-sprite($logo);
+			}
+		}
+		.close-area {
+			flex:0 1 42px;
+
+			.btn-close {
+				display:block;
+				position:relative;
+				width:42px;
+				height:42px;
+
+				&:before {
+					position:absolute;
+					left:50%;
+					top:50%;
+					content:'';
+
+					@include translate(-50%, -50%);
+					@include get-sprite($icon_gnb_close);
+				}
+			}
+		}
+	}
+	.section-nav {
+		margin-top:20px;
+
+		.item-nav {
+			display:block;
+			position:relative;
+			left:-30px;
+			height:rem(70);
+			padding:0 6px 0 rem(30);
+			line-height:rem(70);
+			font-size:18px;
+			color:#495057;
+			font-weight:bold;
+			opacity:0;
+
+			@include transition(left 0.3s ease, opacity 0.2s ease-in-out);
+
+			&:before {
+				display:inline-block;
+				margin:22px rem(16) 0 0;
+				vertical-align:top;
+				content:'';
+			}
+
+			&.type-intro:before {
+				@include get-sprite($icon_gnb_intro);
+			}
+			&.type-portal:before {
+				@include get-sprite($icon_gnb_portal);
+			}
+			&.type-notice:before {
+				@include get-sprite($icon_gnb_notice);
+			}
+
+			$total : 3;
+			@for $i from 1 through $total {
+				$delay : ($i * 0.05) + 0.3;
+
+				&:nth-child(#{$i}) {
+					transition-delay:#{$delay}s;
+				}
+			}
+		}
+	}
+
+	.section-bottom {
+		position:absolute;
+		left:0;
+		bottom:0;
+		padding:0 0 rem(28) rem(30);
+
+		[class^="txt-"] {
+			display:block;
+			line-height:14px;
+			font-size:12px;
+			color:#a0a0a0;
+		}
+		[class^="txt-"] + [class^="txt-"] {
+			margin-top:8px;
+		}
+	}
+}
+
+/***************************************************************************************
+   LAYOUT : 지도
+***************************************************************************************/
+.care-wrap.type-map {
+	.layout-header {
+		background-color:rgba(247, 247, 249, 0.8);
+	}
+	.layout-content {
+		height:100vh;
+		padding:0;
+
+		.container-content {
+			height:100vh;
+		}
+	}
+}
+
+/***************************************************************************************
+   LAYOUT : 하단 확진자 수, 백신 접종자 수
+***************************************************************************************/
+.care-wrap .layout-fixed-bottom {
+	overflow:hidden;
+	position:fixed;
+	left:0;
+	bottom:0;
+	z-index:20;
+	width:100vw;
+	height:120px;
+	min-height:120px;
+	background-color:#fff;
+
+	@include radius(15px 15px 0 0);
+	@include box-shadow(0 0 8px 0 rgba(15, 40, 75, 0.1));
+
+	&[aria-expanded="true"] {
+		height:90vh;
+		max-height:90vh;
+	}
+	&.is-animate {
+		@include transition(height 0.3s cubic-bezier(0.550, 0.085, 0.680, 0.530));
+	}
+
+	.section-target {
+		height:30px;
+		text-align:center;
+		line-height:0;
+		font-size:0;
+
+		&:before {
+			display:inline-block;
+			width:50px;
+			height:6px;
+			margin-top:14px;
+			background-color:#e0e0e0;
+			vertical-align:top;
+			content:'';
+
+			@include radius(3px);
+		}
+	}
+
+	// 확진, 백신 접종
+	.section-summary {
+		&:after {
+			@include clear();
+		}
+		.summary-area {
+			position:relative;
+			float:left;
+			width:50%;
+			text-align:center;
+
+			&.type-vaccine {
+				float:right;
+
+				&:before {
+					display:block;
+					position:absolute;
+					left:0;
+					top:50%;
+					width:1px;
+					height:32px;
+					margin-top:-16px;
+					background-color:rgba(0, 0, 0, 0.1);
+					content:'';
+				}
+				.txt-data {
+					background-color:rgba(8, 207, 174, 0.1);
+					color:#00be9f;
+				}
+			}
+
+			.txt-label {
+				display:block;
+				line-height:18px;
+				font-size:14px;
+				color:#888a8f;
+			}
+			.txt-total {
+				display:block;
+				margin-top:5px;
+				line-height:26px;
+				font-size:28px;
+				color:#111;
+				font-weight:500;
+				letter-spacing:-0.5px;
+
+				> em {
+					font-size:12px;
+					color:#888a8f;
+				}
+			}
+			.txt-data {
+				display:inline-block;
+				height:20px;
+				vertical-align:top;
+				margin-top:5px;
+				padding:0 8px;
+				background-color:rgba(245, 61, 90, 0.1);
+				line-height:20px;
+				font-size:14px;
+				color:#f53d5a;
+
+				@include radius(10px);
+			}
+		}
+	}
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="18px" viewBox="0 0 15 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 3</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="150" height="38" rx="4"></rect>
+        <filter x="-4.7%" y="-13.2%" width="109.3%" height="136.8%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.129411765   0 0 0 0 0.145098039   0 0 0 0 0.160784314  0 0 0 0.06 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <polygon id="path-3" points="0 0 15 0 15 18 0 18"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="01-copy-4" transform="translate(-52.000000, -1093.000000)">
+            <g id="Icon-/-Filled-/-done-Copy-2" transform="translate(23.000000, 1083.000000)">
+                <g id="BG">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <rect stroke="#CDD1D7" stroke-width="0.794117647" stroke-linejoin="square" fill="#FFFFFF" fill-rule="evenodd" x="0.397058824" y="0.397058824" width="149.205882" height="37.2058824" rx="4"></rect>
+                </g>
+                <g id="Group-3" transform="translate(29.000000, 10.000000)">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <path d="M13.7148936,14.9033362 L10.2085106,16.4091302 L10.2085106,3.46807968 L13.7234043,2.00842731 L13.7148936,14.9033362 Z M5.55425532,14.5443315 L5.55425532,1.62466366 L9.35638298,3.44332073 L9.35638298,16.3461074 L5.55425532,14.5443315 Z M1.27765957,15.9634692 L1.27765957,3.11020038 L4.70212766,1.62241285 L4.70212766,14.5510839 L1.27765957,15.9634692 Z M13.6382979,0.591540398 L9.98191489,2.13447285 C9.87340426,2.17386208 9.75319149,2.1941194 9.64042553,2.14572692 L5.33297872,0.0265862832 C5.24361702,-0.0105521347 5.09255319,-0.0105521347 4.99148936,0.0378403493 L0.312765957,2.06919927 C0.124468085,2.15473017 0,2.36067958 0,2.59138793 L0,16.2853355 C0,17.3263366 0.892553191,17.5784277 1.27765957,17.4096167 L4.99361702,15.863308 C5.15319149,15.8014107 5.22021277,15.8137901 5.33085106,15.8543048 L9.64042553,17.9745708 C9.72978723,18.0150854 9.89468085,18.0038314 9.98191489,17.9644421 L14.6787234,15.9465881 C14.8680851,15.8610572 14.9914894,15.6539824 14.9914894,15.4243994 L15,1.63704313 C15,0.910030467 14.3957447,0.305687121 13.6382979,0.591540398 L13.6382979,0.591540398 Z" id="Fill-1" fill="#FA6400" mask="url(#mask-4)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

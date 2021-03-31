@@ -1,0 +1,18 @@
+<div class="layout-gnb" [attr.aria-expanded]="isLnbOpened">
+  <div class="container-gnb">
+
+    <div class="section-top">
+      <div class="logo-area"><h1 class="txt-logo"></h1></div>
+      <div class="close-area">
+        <button type="button" class="btn-close" (click)="onClickClose()"></button>
+      </div>
+    </div>
+
+    <div class="section-nav">
+      <a href="javascript:;" class="item-nav type-intro" (click)="onClickMenu(UrlPath.SERVICE_INTRODUCE.ROUTE.ROOT)">서비스 소개</a>
+      <a href="javascript:;" class="item-nav type-portal" >API 포털로 이동</a>
+      <a href="javascript:;" class="item-nav type-notice" (click)="onClickMenu(UrlPath.NOTICE.ROUTE.ROOT)">공지사항</a>
+    </div>
+
+  </div>
+</div>

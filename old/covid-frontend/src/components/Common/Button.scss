@@ -1,0 +1,29 @@
+@import '../Common/common.scss';
+
+.button {
+    $border: 1px;
+    $active: 3px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(33, 37, 41, 0.06);
+    border: solid $border #cdd1d7;
+    background-color: #ffffff;  
+    padding: 8px;
+
+    > img {
+        margin-right: 10px;
+    }
+
+    > span {
+        font-size: 14px;
+        font-weight: bold;
+    }    
+
+    &:active {
+        border-width: 3px;
+        padding: 8px - ($active - $border);
+    }
+}

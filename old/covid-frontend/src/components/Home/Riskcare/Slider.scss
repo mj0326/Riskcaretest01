@@ -1,0 +1,49 @@
+@import '../../Common/common.scss';
+
+.slider {
+    margin-top: $vertical-margin;
+
+    .title {
+        text-align: left;
+        font-size: 16px;
+        font-weight: 600;
+    }   
+
+    .bar {
+        position: relative;
+        $bar-height: 8px;
+        margin-top: 15px;
+        $height: $bar-height;
+        width: 100%;
+        height: $height;
+        border-radius: $height;
+        // border: 1px solid $main-orange;
+        // background-image: linear-gradient(to left, $main-orange, $main-orange-light);
+        border: 1px solid $font-grey3;
+        background-image: linear-gradient(to left, $font-grey3, $back-grey);
+
+        .point {
+            // transition: 0.5s;
+            position: absolute;
+            $size: 18px;
+            width: $size;
+            height: $size;
+            border-radius: $size;
+            background-color: #fff;
+            top: calc(0px - (#{$size} - #{$bar-height}) / 2 - 1px);
+            border: 2px solid $main-orange;
+            // box-shadow: 0 0 0 9px $main-orange-trans;
+        }
+    }
+
+    .axis {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5px;
+
+        > span {
+            color: $font-grey4;
+            font-size: 12px;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="29px" viewBox="0 0 33 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Filled / user</title>
+    <defs>
+        <filter x="-4.3%" y="-2.4%" width="108.6%" height="104.8%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="23" transform="translate(-15.000000, -491.000000)">
+            <rect fill="#FFFFFF" x="0" y="0" width="360" height="720"></rect>
+            <g id="bg" transform="translate(23.000000, 65.000000)">
+                <g id="2" transform="translate(0.000000, 317.000000)">
+                    <g id="Group" transform="translate(9.000000, 0.000000)"></g>
+                </g>
+            </g>
+            <rect id="Rectangle" fill="#FFFFFF" x="0" y="65" width="244" height="655"></rect>
+            <g id="LNB" filter="url(#filter-1)" transform="translate(0.000000, 81.000000)" fill="#8E8E93">
+                <g id="Filled-/-user" transform="translate(20.000000, 413.000000)">
+                    <path d="M13.4419927,2.4 C18.5782476,2.4 22.7419927,6.56374512 22.7419927,11.7 C22.7419927,16.8362549 18.5782476,21 13.4419927,21 C9.51503904,21 6.16384272,18.5626465 4.8,15.1210693 L4.8,15.1210693 L6.77570796,15.1210693 C8.0219238,17.5393799 10.5392578,19.2 13.4419927,19.2 C17.5775396,19.2 20.9419927,15.8355469 20.9419927,11.7 C20.9419927,7.56445308 17.5775396,4.2 13.4419927,4.2 C10.539331,4.2 8.0219238,5.86062012 6.77570796,8.27885748 L6.77570796,8.27885748 L4.8,8.27885748 C6.16384272,4.83735348 9.51511224,2.4 13.4419927,2.4 Z M3.42143604,8.27885748 L3.42143604,10.7999268 L10.2027104,10.7999268 L10.2027104,12.5999268 L3.42143604,12.5999268 L3.42143604,15.1210693 L-1.59872116e-14,11.7056396 L3.42143604,8.27885748 Z" id="Combined-Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,51 @@
+<!-- Page : Location Edit -->
+<div class="page-location">
+  <ng-container *ngIf="!searchFlag">
+    <div class="section-search">
+      <!-- Common UI : Input -->
+      <div custom-input
+           [text]="searchText"
+           [useClearBtn]="true"
+           [placeholder]="'관심 장소로 추가할 주소를 입력하세요'"
+           (textChange)="textChanged($event)"
+           [focus]="focusIn"
+           (keyupEvent)="searchLocation()"></div>
+      <!-- //Common UI : Input -->
+    </div>
+
+    <div class="section-button">
+      <button type="button" class="btn-action" (click)="searchLocation()">장소 검색</button>
+    </div>
+  </ng-container>
+
+  <div class="section-result" *ngIf="searchFlag">
+    <!-- Common UI : Selectbox -->
+    <!-- [D] 옵션 목록 노출 : aria-expanded=true -->
+    <div class="common-ui-selectbox" aria-expanded="true" >
+      <div class="txt-label" (click)="returnToSearch($event)">
+        {{searchText}}
+        <em></em>
+      </div>
+
+      <!-- Option List -->
+      <div class="selectbox-option">
+        <ul class="list-options">
+          <li *ngFor="let location of searchResult">
+            <a href="javascript:;" class="item-option"
+              (click)="addInterestPlace(location);">
+											<span class="txt-location">
+												<strong>{{ location.dong }}</strong>
+											</span>
+              <span class="txt-address">
+                {{ location.siDo }} {{ location.siGunGu }} {{ location.dong }}
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- //Option List -->
+    </div>
+    <!-- //Common UI : Selectbox -->
+  </div>
+</div>
+<!-- //Page : Location Edit -->

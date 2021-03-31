@@ -1,0 +1,33 @@
+<div *ngIf="noticeList$ | async as noticeList" class="page-notice">
+
+  <!-- Item : Notice -->
+  <!-- [D] 공지사항 펼침 : aria-expanded=true -->
+  <div *ngFor="let notice of noticeList" class="section-notice" [attr.aria-expanded]="notice.isOpened">
+    <div class="title-area">
+      <h2 class="txt-title">
+        {{ notice.title }}
+      </h2>
+      <span class="txt-date">{{ notice.createdDt }}</span>
+    </div>
+
+    <!-- 공지사항 내용 영역 -->
+    <div class="content-area">
+      <p class="img-block"><img src="../../images/img_sample.png"></p>
+
+      <div class="content-block">
+        {{ notice.content }}
+      </div>
+    </div>
+    <!-- //공지사항 내용 영역 -->
+
+    <div class="button-area">
+      <button type="button"
+              class="btn-expand"
+              (click)="notice.isOpened = !notice.isOpened"
+              [class.type-unfold]="!notice.isOpened"
+              [class.type-fold]="notice.isOpened">{{ notice.isOpened ? '닫기' : '열기'}}</button>
+    </div>
+  </div>
+  <!-- Item : Notice -->
+
+</div>

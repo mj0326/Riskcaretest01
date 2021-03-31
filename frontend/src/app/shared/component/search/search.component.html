@@ -1,0 +1,20 @@
+<!-- Component : Search -->
+<!-- [D] 초기화 버튼 노출 : is-clear 클래스 추가-->
+<div class="component-search" [class.is-clear]="showClearButton">
+    <div class="search-area">
+      <input #inputElement
+             class="input-search"
+             placeholder="{{ placeHolder === '' ? 'Search company, username or account' : placeHolder }}"
+             type="text"
+             [value]="keyword"
+             [ngModel]="keyword"
+             (ngModelChange)="onChangeKeyword($event)"
+             (custom-keyup)="onKeyup($event)" >
+      <a href="javascript:" class="btn-clear" (click)="clear()"></a>
+    </div>
+    <div class="button-area">
+      <button type="button" class="btn-basic type-icon type-search" (click)="submit()">검색</button>
+    </div>
+</div>
+<!-- //Component : Search -->
+

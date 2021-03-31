@@ -1,0 +1,64 @@
+@import "../../Common/common.scss";
+
+.section {
+    padding-top: $vertical-padding;
+
+    > .panel {
+        margin-top: 10px;
+        background-color: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $back-grey2;
+
+        > .count {
+            text-align: center;
+            padding: 25px 5px;
+
+            > .text { 
+                font-size: 12px;
+            }
+
+            > .number {
+                margin-top: 2px;
+                font-size: 19px;
+                font-weight: 600;
+
+                > span {
+                    font-size: 10px;
+                }
+            }
+
+            &.score {
+                width: 24%;
+            }
+            &.rank {
+                width: 37%;
+            }
+        }
+
+        > .divider {
+            width: 1px;
+            height: 50px;
+            background-color: $font-grey;
+        }
+    }
+
+    .common-title {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .slider {
+        > .title {
+            font-size: 14px;
+            font-weight: 400;    
+        }
+    }
+
+    .reference {
+        margin-top: 20px;
+    }
+
+    @include common-chart-style;
+}

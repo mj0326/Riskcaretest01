@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Fill 2</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="07(11/20일-정리)" transform="translate(-325.000000, -93.000000)">
+            <rect id="Rectangle" fill-opacity="0.6" fill="#000000" x="0" y="0" width="359" height="725"></rect>
+            <polygon id="Rectangle-Copy-7" fill="#FFFFFF" points="0 65 360 65 360 720 0 720"></polygon>
+            <polygon id="Fill-2" fill="#979797" points="340.8256 94.3992 340.9516 94.272 339.6808 93 332.9764 99.7044 326.4004 93.126 326.272 93 325 94.272 331.7044 100.9752 325.1272 107.5524 325 107.6796 326.272 108.9516 332.9764 102.2472 339.5524 108.8244 339.6808 108.9516 340.9516 107.6796 334.2484 100.9752"></polygon>
+        </g>
+    </g>
+</svg>

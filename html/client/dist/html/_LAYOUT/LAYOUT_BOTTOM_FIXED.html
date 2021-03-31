@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no,email=no,address=no">
+	<link rel="stylesheet" href="../../css/riskcare.css"/>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="../../js/ui.js"></script>
+	<title>Risk Care</title>
+</head>
+
+<body>
+
+	<!-- Wrap -->
+	<div class="care-wrap">
+
+		<!-- Header -->
+		<div class="layout-header">
+			<div class="container-header">
+				<div class="section-left">
+					<button type="button" class="btn-menu"></button>
+				</div>
+				<h1 class="section-title">
+					<span class="txt-logo" aria-label="Covid-19 Riskcare"></span>
+				</h1>
+				<div class="section-right">
+					<button type="button" class="btn-map"></button>
+				</div>
+			</div>
+		</div>
+		<!-- //Header -->
+
+		<!-- GNB -->
+		<!-- [D] GNB 노출 : aria-expanded=true -->
+		<div class="layout-gnb" aria-expanded="false">
+			<div class="container-gnb">
+
+				<div class="section-top">
+					<div class="logo-area"><h1 class="txt-logo"></h1></div>
+					<div class="close-area">
+						<button type="button" class="btn-close"></button>
+					</div>
+				</div>
+
+				<div class="section-nav">
+					<a href="javascript:;" class="item-nav type-intro">서비스 소개</a>
+					<a href="javascript:;" class="item-nav type-portal">API 포털로 이동</a>
+					<a href="javascript:;" class="item-nav type-notice">공지사항</a>
+				</div>
+
+			</div>
+		</div>
+		<!-- //GNB -->
+
+		<!-- Content -->
+		<!-- [D] 하단 확진자/백신접종자 영역 노출되는 유형 : is-bottom-fixed 클래스 추가 -->
+		<div class="layout-content">
+			<div class="container-content"></div>
+		</div>
+		<!-- //Content -->
+
+		<!-- 확진 / 백신 접종 -->
+		<div class="layout-fixed-bottom" aria-expanded="false">
+			<div class="section-target"></div>
+
+			<!-- 확지자 / 백신 점종자 -->
+			<div class="section-summary">
+				<div class="summary-area">
+					<span class="txt-label">확진 환자수</span>
+					<strong class="txt-total">
+						999,999 <em>명</em>
+					</strong>
+					<div class="txt-data">
+						오늘 <strong>9,999</strong>
+					</div>
+				</div>
+				<div class="summary-area type-vaccine">
+					<span class="txt-label">백신 접종자수</span>
+					<strong class="txt-total">
+						999,999 <em>명</em>
+					</strong>
+					<div class="txt-data">
+						어제 <strong>9,999</strong>
+					</div>
+				</div>
+			</div>
+			<!-- //확지자 / 백신 점종자 -->
+		</div>
+		<!-- //확진 / 백신 접종 -->
+
+	</div>
+	<!-- //Wrap -->
+
+</body>
+</html>

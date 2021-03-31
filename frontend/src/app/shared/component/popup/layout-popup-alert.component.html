@@ -1,0 +1,39 @@
+<!--&lt;!&ndash; Popup Wrap &ndash;&gt;-->
+<!--<div class="portal-popup-wrap" *ngIf="isShowPopup">-->
+<!--  <div class="layout-popup">-->
+<!--    <div class="container-popup">-->
+
+<!--      &lt;!&ndash; Popup : 500 &ndash;&gt;-->
+<!--      <div class="box-popup type-confirm">-->
+<!--        &lt;!&ndash; Popup Title &ndash;&gt;-->
+<!--        <div class="popup-title">-->
+<!--          <h1 class="txt-title">{{layoutPopupTitle}}</h1>-->
+<!--          <a href="javascript:;" class="btn-close" (click)="onClickCancel()"></a>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; //Popup Title &ndash;&gt;-->
+
+<!--        &lt;!&ndash; Popup Content &ndash;&gt;-->
+<!--        <div *ngIf="'' === layoutPopupMessageSub" class="popup-content">-->
+<!--          <div class="section-message" [innerHTML]="layoutPopupMessage | safeHtml"></div>-->
+<!--        </div>-->
+<!--        <div *ngIf="'' !== layoutPopupMessageSub" class="popup-content">-->
+<!--          <div class="section-message2" [innerHTML]="layoutPopupMessage | safeHtml"></div>-->
+<!--          <div class="section-message-data" [innerHTML]="layoutPopupMessageSub | safeHtml"></div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; //Popup Content &ndash;&gt;-->
+
+<!--        &lt;!&ndash; Popup Button &ndash;&gt;-->
+<!--        <div class="popup-button">-->
+<!--          <button type="button" class="btn-popup" *ngIf="layoutPopupType !== popupType.info" (click)="onClickCancel()">취소</button>-->
+<!--          <button type="button" class="btn-popup type-{{layoutPopupType !== popupType.caution ? 'action' : layoutPopupType}}" (click)="onClickConfirm()">-->
+<!--            {{layoutPopupRightButton}}-->
+<!--          </button>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; //Popup Button &ndash;&gt;-->
+<!--      </div>-->
+<!--      &lt;!&ndash; //Popup : 500 &ndash;&gt;-->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; //Popup Wrap &ndash;&gt;-->

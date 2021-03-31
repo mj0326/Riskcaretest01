@@ -1,0 +1,345 @@
+@charset "utf-8";
+
+/***************************************************************************************
+   Page : Detail View
+***************************************************************************************/
+.page-detail-view {
+	padding:0 rem(20);
+
+	// 현재 상태
+	.section-status {
+		padding:rem(30) 0 rem(26);
+
+		.status-area {
+			overflow:hidden;
+			display:block;
+			width:rem(220);
+			height:rem(220);
+			margin:0 auto;
+			text-align:center;
+
+			@include radius(50%);
+
+			@extend %status-risk;
+
+			.txt-status,
+			.txt-data,
+			.txt-date {
+				display:block;
+			}
+
+			.txt-status {
+				margin-top:rem(44);
+				line-height:rem(20);
+				font-size:rem(20);
+				font-weight:700;
+			}
+			.txt-data {
+				margin-top:rem(10);
+				line-height:rem(60);
+				font-size:rem(76);
+				font-weight:500;
+			}
+			.txt-date {
+				margin-top:rem(24);
+				line-height:rem(18);
+				font-size:rem(14);
+			}
+		}
+	}
+
+	.detail-info {
+		position:relative;
+
+		.section-message,
+		.section-info {
+			overflow:hidden;
+			height:0;
+			opacity:0;
+		}
+
+		&.is-complete {
+			.section-message,
+			.section-info {
+				overflow:visible;
+				height:auto;
+				opacity:1;
+
+				@include transition(opacity 0.3s ease);
+			}
+
+			.section-loader {
+				overflow:hidden;
+				height:0;
+				opacity:0;
+
+				@include transition(opacity 0.3s ease);
+			}
+		}
+	}
+
+	// Loader
+	.section-loader {
+		position:absolute;
+		left:0;
+		top:0;
+		width:100%;
+
+		> img {
+			overflow:hidden;
+			display:block;
+			width:100%;
+		}
+	}
+
+	// 위험 단계별 메세지
+	.section-message {
+		.message-area {
+			padding:rem(28) rem(24);
+			background-color:#fff;
+
+			@include radius(rem(15));
+			@include box-shadow(0 2px 6px 0 rgba(149, 149, 149, 0.1));
+
+			.txt-title {
+				display:block;
+				line-height:rem(20);
+				font-size:rem(22);
+				color:#495057;
+			}
+			.list-risk {
+				margin-top:rem(22);
+
+				> li:after {
+					@include clear();
+				}
+				> li + li {
+					margin-top:8px;
+				}
+				.icon-status {
+					float:left;
+					margin-right:6px;
+
+					&:before {
+						margin-top:-1px;
+						content:'';
+					}
+					&.type-a:before {
+						@include get-sprite($icon_emoji_a);
+					}
+					&.type-b:before {
+						@include get-sprite($icon_emoji_b);
+					}
+					&.type-c:before {
+						@include get-sprite($icon_emoji_c);
+					}
+					&.type-d:before {
+						@include get-sprite($icon_emoji_d);
+					}
+					&.type-e:before {
+						@include get-sprite($icon_emoji_e);
+					}
+					&.type-f:before {
+						@include get-sprite($icon_emoji_f);
+					}
+					&.type-g:before {
+						@include get-sprite($icon_emoji_g);
+					}
+					&.type-h:before {
+						@include get-sprite($icon_emoji_h);
+					}
+				}
+				.txt-desc {
+					overflow:hidden;
+					line-height:20px;
+					font-size:16px;
+					color:#888a8f;
+				}
+			}
+		}
+	}
+
+	// 언제,얼마나 위험할까
+	.section-info {
+		margin-top:rem(16);
+		padding:rem(24);
+		background-color:#fff;
+
+		@include radius(rem(15));
+		@include box-shadow(0 2px 6px 0 rgba(149, 149, 149, 0.1));
+
+		.when-area {
+			.title-block {
+				&:after {
+					@include clear();
+				}
+				.txt-title {
+					overflow:hidden;
+					display:block;
+					float:left;
+					line-height:rem(25);
+					font-size:rem(16);
+					color:#000;
+				}
+				.set-mode {
+					float:right;
+
+					&:after {
+						@include clear();
+					}
+					.btn-mode {
+						float:left;
+					}
+					.btn-mode + .btn-mode {
+						margin-left:rem(4);
+					}
+				}
+			}
+
+			// 주간, 일간
+			.view-block {
+				margin-top:rem(20);
+
+				.set-date {
+					text-align:center;
+
+					.btn-date-prev,
+					.btn-date-next {
+						display:inline-block;
+						position:relative;
+						width:18px;
+						height:18px;
+						margin-top:-1px;
+						vertical-align:top;
+
+						&:before {
+							display:block;
+							position:absolute;
+							left:50%;
+							top:50%;
+							content:'';
+
+							@include translate(-50%,-50%);
+						}
+					}
+					.btn-date-prev:before {
+						@include get-sprite($arr_prev);
+					}
+					.btn-date-next:before {
+						@include get-sprite($arr_next);
+					}
+					.txt-date {
+						display:inline-block;
+						vertical-align:top;
+						line-height:18px;
+						font-size:14px;
+						color:#222;
+						font-weight:700;
+					}
+				}
+				.box-graph {
+					height:rem(150);
+					margin-top:rem(20);
+				}
+
+				.weekly-info {
+					display:table;
+					table-layout:fixed;
+					width:100%;
+					margin-top:rem(20);
+
+					> [class^="column-"] {
+						display:table-cell;
+						width:14.2%;
+						vertical-align:top;
+						text-align:center;
+
+						&.is-today .txt-day {
+							background-color:#495057;
+							color:#fff;
+						}
+					}
+
+					.txt-day {
+						display:inline-block;
+						height:20px;
+						padding:0 6px;
+						line-height:20px;
+						font-size:12px;
+						color:#888a8f;
+
+						@include radius(10px);
+					}
+					.common-ui-status {
+						transform:scale(0.75);
+					}
+				}
+			}
+		}
+
+		.how-area {
+			margin-top:rem(40);
+
+			.title-block {
+				line-height:rem(17);
+				font-size:rem(16);
+				color:#000;
+				font-weight:bold;
+			}
+			.graph-block {
+				margin-top:rem(15);
+
+				[class^="legend-"] {
+					text-align:center;
+
+					.txt-legend {
+						display:block;
+						line-height:rem(16);
+						font-size:rem(14);
+						color:#888a8f;
+						letter-spacing:rem(-0.5);
+					}
+					.txt-status {
+						display:block;
+						margin-top:rem(3);
+						line-height:rem(16);
+						font-size:rem(14);
+						background-color:transparent !important;
+
+						@extend %status-risk;
+					}
+				}
+
+				.legend-top {
+					padding-bottom:rem(7);
+				}
+				.legend-bottom {
+					padding-top:rem(7);
+				}
+				.legend-left {
+					//padding-right:rem(7);
+				}
+				.legend-right {
+					//padding-left:rem(7);
+				}
+
+				.set-graph {
+					display:flex;
+					flex-direction:row;
+					flex-wrap:nowrap;
+					align-items:center;
+					height:rem(200);
+
+					.legend-left,
+					.legend-right {
+						flex:0 1 rem(70);
+					}
+					.box-graph {
+						flex:1 1 auto;
+						height:100%;
+					}
+				}
+			}
+		}
+	}
+}

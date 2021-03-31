@@ -1,0 +1,50 @@
+<!-- Component : Pagination -->
+<div *ngIf="page?.totalElements > 0" class="setting-area">
+  <div class="setting-block">
+    <!-- Component : Selectbox -->
+    <!-- [D] 레이어 노출 시 : aria-expanded = true -->
+    <div class="component-selectbox type-up" [attr.aria-expanded]="openPageSize" (click)="toggleOpenPageSize()">
+      <label class="txt-label">{{selectedPageSize.value}}개</label>
+
+      <!-- Layer : Options -->
+      <div class="layer-options">
+        <ul class="list-options">
+          <li *ngFor="let item of pageSizeList; let index = index;">
+            <div class="item-options">
+              <input type="radio" [id]="inputUUID+index" [checked]="item.checked" (change)="onChangePageSize(item)">
+              <label class="txt-label" [for]="inputUUID+index">{{item.name}}개</label>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!-- //Layer : Options -->
+    </div>
+    <!-- //Component : Selectbox -->
+  </div>
+  <span class="total-block"><strong>{{page.number + 1}}</strong> / {{page.totalPages}}</span>
+</div>
+
+<div *ngIf="page?.totalElements > 0" class="pagination-area">
+  <button type="button" class="link-page type-first"
+          [disabled]="page.number === 0"
+          (click)="setPage(1)"></button>
+  <button type="button" class="link-page type-prev"
+          [disabled]="prevPageFl === false"
+          (click)="prevPageFl && changePagePack(true)"
+  ></button>
+
+  <!-- [D] 선택 된 페이지 : aria-selected = true -->
+  <a href="javascript:;" class="link-page"
+     *ngFor="let item of pages"
+     (click)="setPage(item)"
+     [attr.aria-selected]="currentPage == item" >{{item}}</a>
+
+  <button type="button" class="link-page type-next"
+          [disabled]="lastPageFl === false"
+          (click)="lastPageFl && changePagePack(false)"></button>
+
+  <button type="button" class="link-page type-last"
+          [disabled]="page.number === page.totalPages - 1"
+          (click)="setPage(page.totalPages)"></button>
+</div>
+<!-- //Component : Pagination -->

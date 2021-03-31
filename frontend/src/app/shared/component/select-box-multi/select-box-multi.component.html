@@ -1,0 +1,39 @@
+<div class="component-selectbox"
+     [attr.aria-expanded]="isOpen"
+     [class.type-up]="typeUp"
+     [class.is-error]="isError"
+     [class.is-disabled]="isDisabled"
+     (click)="toggleSelectBox()">
+  <label class="txt-label">
+    {{ getSelectedItemListString() === '' ? name : getLabel() }}
+    {{ getSelectedItemListString() !== '' ? getSelectedItemListString() : '선택하세요.' }}</label>
+
+  <!-- Layer : Options -->
+  <div class="layer-options">
+    <!-- 전체 선택 -->
+    <div class="all-selected" *ngIf="enableCheckAll">
+      <!-- Component : Checkbox -->
+      <!-- [D] 일부 항목이 선택되어 있지 않는 경우 : is-not-all 클래스 추가 -->
+      <div class="component-checkbox" [class.is-not-all]="allChecked">
+        <input type="checkbox" [id]="radioUUID" [checked]="allChecked" (click)="onClickAllChecked()">
+        <label class="txt-label" [for]="radioUUID">All</label>
+      </div>
+      <!-- //Component : Checkbox -->
+    </div>
+    <!-- //전체 선택 -->
+
+    <ul class="list-options">
+      <li *ngFor="let item of itemList let i = index"  (click)="onClickCheckBox(item)">
+        <div class="item-multi">
+          <!-- Component : Checkbox -->
+          <div class="component-checkbox">
+            <input type="checkbox" [id]="radioUUIDList[i]" [checked]="item.checked">
+            <label class="txt-label" [for]="radioUUIDList[i]">{{item.label}}</label>
+          </div>
+          <!-- //Component : Checkbox -->
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!-- //Layer : Options -->
+</div>

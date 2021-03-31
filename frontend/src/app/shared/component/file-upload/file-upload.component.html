@@ -1,0 +1,7 @@
+<label class="btn-basic type-icon type-upload" for="fileInput">{{ '파일선택' }}</label>
+<input type="file" id="fileInput" class="input-file"
+	   #fileInput
+	   (click)="fileInput.value = null; findClick();"
+	   (change)="changeFile($event)"
+	   [multiple]="fileMaxLength > 1"
+	   [attr.accept]="acceptFileExt"/>

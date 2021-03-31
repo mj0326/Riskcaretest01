@@ -1,0 +1,29 @@
+<div class="flex-component">
+  <!-- Component : Input -->
+  <!-- [D] Error : is-error 클래스 추가 -->
+  <div class="component-input"
+       [class.is-error]="isError"
+  >
+<!--    - Active   : type-active-->
+<!--    - Inactive : type-inactive-->
+<!--    - Error    : type-error-->
+
+    <div class="box-input">
+      <input type="text" class="input-text" #inputElement
+             [id]="inputUUID"
+             [(ngModel)]="text"
+             [attr.maxlength]="maxlength"
+             [attr.placeholder]="placeholder"
+             [disabled]="disabled"
+             (focus)="onFocus()"
+             (blur)="onBlur()"
+             (custom-keyup)="onKeyup($event)">
+    </div>
+    <span class="txt-message">{{ errorMessage }}</span>
+  </div>
+  <!-- //Component : Input -->
+</div>
+<div class="flex-button">
+  <button type="button" class="btn-form type-confirm" (mousedown)="onClickConfirm($event)"><i></i></button>
+  <button type="button" class="btn-form type-cancel" (mousedown)="onClickCancel($event)"><i></i></button>
+</div>

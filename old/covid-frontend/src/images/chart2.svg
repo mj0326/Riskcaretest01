@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 8</title>
+    <defs>
+        <polygon id="path-1" points="0 17.9 17.893 17.9 17.893 -3.55271368e-15 0 -3.55271368e-15"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="05(11/19일-정리)-1" transform="translate(-30.000000, -149.000000)">
+            <g id="1" transform="translate(21.000000, 148.000000)">
+                <g id="Group-8" transform="translate(9.000000, 1.000000)">
+                    <path d="M1.2,1.2003 L14.3,1.2003 L14.3,10.2483 L15.5,10.2483 L15.5,1.0003 C15.5,0.4483 15.053,0.0003 14.5,0.0003 L1,0.0003 C0.448,0.0003 0,0.4483 0,1.0003 L0,14.4993 C0,15.0523 0.448,15.4993 1,15.4993 L10.242,15.4993 L10.242,14.3003 L1.2,14.3003 L1.2,1.2003 Z" id="Fill-1" fill="#AAAAAF"></path>
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-4"></g>
+                    <polygon id="Fill-3" fill="#AAAAAF" mask="url(#mask-2)" points="4.047 12.153 5.249 12.153 5.249 7.653 4.047 7.653"></polygon>
+                    <polygon id="Fill-5" fill="#AAAAAF" mask="url(#mask-2)" points="10.242 12.152 11.446 12.152 11.446 5.652 10.242 5.652"></polygon>
+                    <polygon id="Fill-6" fill="#AAAAAF" mask="url(#mask-2)" points="7.145 12.153 8.345 12.153 8.345 3.153 7.145 3.153"></polygon>
+                    <polygon id="Fill-7" fill="#AAAAAF" mask="url(#mask-2)" points="17.8933 14.3004 15.4933 14.3004 15.4933 11.9004 14.2923 11.9004 14.2923 14.3004 11.8933 14.3004 11.8933 15.4994 14.2923 15.4994 14.2923 17.9004 15.4933 17.9004 15.4933 15.4994 17.8933 15.4994"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

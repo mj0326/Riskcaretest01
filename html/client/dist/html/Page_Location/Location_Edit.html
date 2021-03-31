@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no,email=no,address=no">
+	<link rel="stylesheet" href="../../css/riskcare.css"/>
+	<title>Risk Care</title>
+</head>
+
+<body>
+
+	<!-- Wrap -->
+	<div class="care-wrap">
+
+		<!-- Header -->
+		<div class="layout-header">
+			<div class="container-header">
+				<div class="section-left">
+					<button type="button" class="btn-back"></button>
+				</div>
+				<h1 class="section-title">
+					<span class="txt-title">관심 장소 편집</span>
+				</h1>
+				<div class="section-right">
+				</div>
+			</div>
+		</div>
+		<!-- //Header -->
+
+		<!-- Content -->
+		<!-- [D] 하단 확진자/백신접종자 영역 노출되는 유형 : is-bottom-fixed 클래스 추가 -->
+		<div class="layout-content">
+			<div class="container-content">
+
+				<!-- Page : Location Edit -->
+				<div class="page-location">
+
+					<!-- 내 위치 -->
+					<div class="section-my">
+						<strong class="txt-location">분당구 정자동</strong>
+						<span class="txt-address">경기도 성남시 분당구 정자동</span>
+					</div>
+					<!-- //내 위치 -->
+
+					<!-- List -->
+					<ul class="list-location-edit">
+						<!-- [D] 아이템 삭제 시 : is-delete 클래스 추가 후 태그 삭제 -->
+						<li class="drag-location">
+							<div class="item-location">
+								<div class="drag-area">
+									<button type="button" class="btn-icon type-drag"></button>
+								</div>
+								<div class="location-area">
+									<strong class="txt-location">분당구 정자동</strong>
+									<span class="txt-address">경기도 성남시 분당구 정자동</span>
+								</div>
+								<div class="button-area">
+									<button type="button" class="btn-icon type-delete"></button>
+								</div>
+							</div>
+						</li>
+
+						<li class="drag-location gu-transit">
+							<div class="item-location">
+								<div class="drag-area">
+									<button type="button" class="btn-icon type-drag"></button>
+								</div>
+								<div class="location-area">
+									<strong class="txt-location">분당구 정자동</strong>
+									<span class="txt-address">경기도 성남시 분당구 정자동</span>
+								</div>
+								<div class="button-area">
+									<button type="button" class="btn-icon type-delete"></button>
+								</div>
+							</div>
+						</li>
+
+						<li class="drag-location">
+							<div class="item-location">
+								<div class="drag-area">
+									<button type="button" class="btn-icon type-drag"></button>
+								</div>
+								<div class="location-area">
+									<strong class="txt-location">분당구 정자동</strong>
+									<span class="txt-address">경기도 성남시 분당구 정자동</span>
+								</div>
+								<div class="button-area">
+									<button type="button" class="btn-icon type-delete"></button>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<!-- //List -->
+
+					<div class="section-button">
+						<button type="button" class="btn-normal type-icon type-add">관심 장소 추가</button>
+					</div>
+
+				</div>
+				<!-- //Page : Location Edit -->
+
+			</div>
+		</div>
+		<!-- //Content -->
+
+	</div>
+	<!-- //Wrap -->
+
+	<!-- gu-mirror -->
+	<li class="drag-location gu-mirror" style="position:fixed;left:0;top:300px;width:100%;">
+		<div class="item-location">
+			<div class="drag-area">
+				<button type="button" class="btn-icon type-drag"></button>
+			</div>
+			<div class="location-area">
+				<strong class="txt-location">분당구 정자동</strong>
+				<span class="txt-address">경기도 성남시 분당구 정자동</span>
+			</div>
+			<div class="button-area">
+				<button type="button" class="btn-icon type-delete"></button>
+			</div>
+		</div>
+	</li>
+	<!-- //gu-mirror -->
+
+</body>
+</html>

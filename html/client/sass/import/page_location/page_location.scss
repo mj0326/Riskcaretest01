@@ -1,0 +1,339 @@
+@charset "utf-8";
+
+/***************************************************************************************
+   Page : Location
+***************************************************************************************/
+.page-location {
+	.list-location {
+		> li {
+			//overflow:hidden;
+		}
+		> li + li {
+			margin-top:rem(10);
+		}
+
+		.item-location {
+			overflow:hidden;
+			display:flex;
+			flex-direction:row;
+			flex-wrap:nowrap;
+			align-items:center;
+			height:rem(96);
+			padding:0 rem(24) 0 rem(30);
+			opacity:1;
+
+			@include transition(height 0.3s cubic-bezier(0.550, 0.085, 0.680, 0.530), opacity 0.2s ease);
+
+			&:active {
+				background-color:rgba(0,152,255,0.1);
+			}
+			.status-area {
+				flex:0 1 rem(40);
+				//padding:rem(16) 0;
+			}
+			.location-area {
+				flex:1 1 auto;
+				padding:0 rem(6) 0 rem(24);
+
+				.txt-location {
+					display:inline-block;
+					vertical-align:top;
+					line-height:rem(28);
+					font-size:rem(24);
+					color:#111;
+					font-weight:500;
+				}
+				.txt-address {
+					display:block;
+					margin-top:rem(4);
+					line-height:rem(20);
+					font-size:rem(14);
+					color:#888a8f;
+				}
+
+				&.type-my {
+					.txt-location:after {
+						margin:rem(4) 0 0 rem(10);
+						vertical-align:top;
+						content:'';
+
+						@include get-sprite($icon_current_location);
+					}
+				}
+			}
+		}
+
+		// 확장
+		.item-expand {
+			overflow:hidden;
+			height:0;
+			padding:0 rem(20);
+			opacity:0;
+
+			@include transition(height 0.3s cubic-bezier(0.550, 0.085, 0.680, 0.530), opacity 0.2s ease);
+
+			.expand-area {
+				padding:rem(24) rem(24) rem(20);
+				background-color:#fff;
+
+				@include radius(rem(15));
+				@include box-shadow(0 2px 6px 0 rgba(149, 149, 149, 0.1));
+			}
+
+			.info-block {
+				display:flex;
+				flex-direction:row;
+				flex-wrap:nowrap;
+
+				.info-address {
+					flex:1 1 auto;
+					padding-right:rem(10);
+
+					.txt-location {
+						display:block;
+						line-height:rem(28);
+						font-size:rem(24);
+						color:#111;
+					}
+					.txt-address {
+						display:block;
+						margin-top:rem(6);
+						line-height:rem(20);
+						font-size:rem(16);
+						color:#888a8f;
+						letter-spacing:-0.5px;
+					}
+				}
+				.info-status {
+					flex:0 1 auto;
+					background-color:transparent !important;
+
+					@extend %status-risk;
+
+					.txt-data {
+						display:block;
+						line-height:rem(36);
+						font-size:rem(40);
+						font-weight:500;
+						letter-spacing:-0.5px;
+					}
+					.txt-status {
+						display:block;
+						margin-top:rem(2);
+						line-height:rem(20);
+						font-size:rem(14);
+						font-weight:bold;
+						letter-spacing:-0.5px;
+						text-align:center;
+					}
+				}
+			}
+
+			.button-block {
+				margin:rem(20) 0 0;
+				text-align:center;
+			}
+		}
+
+		> li[aria-expanded="true"] {
+			.item-location {
+				height:0;
+				opacity:0;
+			}
+			.item-expand {
+				height:rem(151);
+				opacity:1;
+			}
+		}
+	}
+
+	// 버튼 영역
+	.section-button {
+		margin-top:rem(30);
+		text-align:center;
+	}
+}
+
+/***************************************************************************************
+   Page : Location Edit
+***************************************************************************************/
+.page-location {
+	.section-my {
+		padding:rem(16) rem(24) rem(16) rem(30);
+
+		.txt-location {
+			display:inline-block;
+			vertical-align:top;
+			line-height:rem(28);
+			font-size:rem(24);
+			color:#111;
+			font-weight:500;
+		}
+		.txt-location:after {
+			margin:rem(4) 0 0 rem(10);
+			vertical-align:top;
+			content:'';
+
+			@include get-sprite($icon_current_location);
+		}
+		.txt-address {
+			display:block;
+			margin-top:rem(4);
+			line-height:rem(20);
+			font-size:rem(14);
+			color:#888a8f;
+		}
+	}
+
+	.list-location-edit {
+		margin-top:rem(10);
+
+		> li {
+			margin-bottom:rem(10);
+		}
+	}
+}
+
+.drag-location {
+	list-style:none;
+
+	&.is-delete {
+		margin-bottom:0 !important;
+
+		@include transition(margin 0.3s ease);
+
+		.item-location {
+			overflow:hidden;
+			height:0;
+			padding-top:0;
+			padding-bottom:0;
+			opacity:0;
+
+			@include transition(height 0.3s ease, opacity 0.4s ease, padding-top 0.2s ease, padding-bottom 0.2s ease);
+		}
+	}
+
+	.item-location {
+		display:flex;
+		flex-direction:row;
+		flex-wrap:nowrap;
+		align-items:center;
+		height:rem(84);
+		padding:rem(16) rem(10);
+		background-color:#f7f7f9;
+
+		.drag-area {
+			flex:0 1 rem(48);
+		}
+		.location-area {
+			flex:1 1 auto;
+			padding:0 10px;
+
+			.txt-location {
+				display:inline-block;
+				vertical-align:top;
+				line-height:rem(28);
+				font-size:rem(24);
+				color:#111;
+				font-weight:500;
+			}
+			.txt-address {
+				display:block;
+				margin-top:rem(4);
+				line-height:rem(20);
+				font-size:rem(14);
+				color:#888a8f;
+			}
+		}
+		.button-area {
+			flex:0 1 rem(48);
+		}
+	}
+
+	&.gu-transit {
+		opacity:0.2;
+
+		.item-location {
+			.drag-area,
+			.button-area {
+				opacity:0;
+			}
+		}
+	}
+
+	&.gu-mirror {
+		.item-location {
+			background-color:#fff;
+			cursor:grab;
+
+			@include box-shadow(0 2px 6px 0 rgba(149, 149, 149, 0.1));
+
+			.drag-area .btn-icon {
+				cursor:grab;
+			}
+			.button-area {
+				opacity:0;
+			}
+		}
+	}
+}
+
+/***************************************************************************************
+   Page : Location Add
+***************************************************************************************/
+.page-location {
+	.section-search {
+		padding:rem(20) rem(20) 0;
+	}
+
+	.section-result {
+		padding:rem(10) rem(20) 0;
+
+		.result-area {
+			.list-result {
+				position:relative;
+				border:1px solid #e8e8e8;
+				background-color:#fff;
+
+				@include radius(rem(8));
+
+				> li {
+					border-bottom:1px solid #e8e8e8;
+
+					&:last-child {
+						border-bottom:0 none;
+					}
+
+					&.type-my .item-result {
+						.txt-location:after {
+							margin:rem(4) 0 0 rem(6);
+							vertical-align:top;
+							content:'';
+
+							@include get-sprite($icon_current_location);
+						}
+					}
+				}
+
+				.item-result {
+					display:block;
+					padding:rem(16);
+
+					.txt-location {
+						display:block;
+						line-height:rem(28);
+						font-size:rem(20);
+						color:#111;
+					}
+					.txt-address {
+						display:block;
+						margin-top:rem(2);
+						line-height:rem(16);
+						font-size:rem(14);
+						color:#888a8f;
+					}
+				}
+			}
+		}
+	}
+}

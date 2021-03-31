@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SafeCaster</string>
+    <string name="appwidget_text">HELLO</string>
+    <string name="add_widget">Add widget</string>
+    <string name="kakao_app_key">ae6008b10c6ec228c21d9cee30a84314</string>
+    <string name="facebook_app_id">832581644251258</string>
+</resources>

@@ -1,0 +1,151 @@
+<div class="page-service">
+
+  <!-- TAB -->
+  <div class="section-tab">
+    <!-- Common UI : Tab -->
+    <div class="common-ui-tab">
+      <ul class="list-tab">
+        <li>
+          <a href="javascript:;" class="item-tab" [attr.aria-selected]="selectedTab === ServiceIntroduceTab.INTRO" (click)="onClickTab(ServiceIntroduceTab.INTRO)"><span>개요</span></a>
+        </li>
+        <li>
+          <a href="javascript:;" class="item-tab" [attr.aria-selected]="selectedTab === ServiceIntroduceTab.ANALYZE_DATA" (click)="onClickTab(ServiceIntroduceTab.ANALYZE_DATA)"><span>분석 데이터</span></a>
+        </li>
+        <li>
+          <a href="javascript:;" class="item-tab" [attr.aria-selected]="selectedTab === ServiceIntroduceTab.COVID_DANGER" (click)="onClickTab(ServiceIntroduceTab.COVID_DANGER)"><span>코로나19 위험도</span></a>
+        </li>
+        <li>
+          <a href="javascript:;" class="item-tab" [attr.aria-selected]="selectedTab === ServiceIntroduceTab.MAIN_INDEX" (click)="onClickTab(ServiceIntroduceTab.MAIN_INDEX)"><span>주요 지표</span></a>
+        </li>
+      </ul>
+    </div>
+    <!-- //Common UI : Tab -->
+  </div>
+  <!-- //TAB -->
+
+  <!-- 서비스 Content -->
+  <div class="section-content" *ngIf="selectedTab === ServiceIntroduceTab.INTRO">
+    <h2 class="txt-title">
+      <strong>RISK CARE</strong>는 어떤 서비스인가요?
+    </h2>
+
+    <p class="txt-desc">
+      RISK CARE는 빅데이터를 분석하여 사용자 위치 정보를 기반으로 개인화된 코로나19의 위험도를 예측하고 알려주는 서비스입니다.<br>
+      현재 위치에 대한 실시간 위험도뿐 아니라 미래에 대한 위험도 예측 정보도 제공하며, 사용중인 캘린더를 연동할 경우 일정에 등록된 위치 정보에 대한 맞춤 알림도 가능합니다.
+    </p>
+  </div>
+  <!-- //서비스 Content -->
+
+  <!-- 서비스 Content -->
+  <div class="section-content" *ngIf="selectedTab === ServiceIntroduceTab.ANALYZE_DATA">
+    <h2 class="txt-title">
+      <strong>어떤 데이터</strong>를 사용하나요?
+    </h2>
+
+    <p class="txt-desc">
+      기지국 기반의 이용자 위치 정보, 주요 POI별 유동인구 밀집도, 택시 및 지하철 수요, 실시간 재난 알림 문자 등 다양한 데이터를 수집하고 분석합니다.
+    </p>
+  </div>
+  <!-- //서비스 Content -->
+
+  <!-- 서비스 Content -->
+  <div class="section-content" *ngIf="selectedTab === ServiceIntroduceTab.COVID_DANGER">
+    <h2 class="txt-title">
+      <strong>코로나19 위험도</strong>는 무엇인가요?
+    </h2>
+
+    <p class="txt-desc">
+      코로나19 위험도는 코로나19 확진자를 유동 인구나 택시, 지하철의 수요 등 주요 지표 데이터와 함께 분석하여 산출한 수치입니다. 위험도는 아래와 같은 5개의 단계로 구분됩니다.
+    </p>
+
+    <ul class="risk-area">
+      <li>
+        <!-- Common UI : Status -->
+        <!--
+                            [D] 상태 정의
+                            양호 : type-a
+                            보통 : type-b
+                            주의 : type-c
+                            위험 : type-d
+                            심각 : type-e
+                        -->
+        <div class="common-ui-status type-a">
+          <div class="status-icon">
+            <span></span>
+          </div>
+          <span class="txt-status">양호</span>
+        </div>
+        <!-- //Common UI : Status -->
+      </li>
+      <li>
+        <div class="common-ui-status type-b">
+          <div class="status-icon">
+            <span></span>
+          </div>
+          <span class="txt-status">보통</span>
+        </div>
+        <!-- //Common UI : Status -->
+      </li>
+      <li>
+        <div class="common-ui-status type-c">
+          <div class="status-icon">
+            <span></span>
+          </div>
+          <span class="txt-status">주의</span>
+        </div>
+        <!-- //Common UI : Status -->
+      </li>
+      <li>
+        <div class="common-ui-status type-d">
+          <div class="status-icon">
+            <span></span>
+          </div>
+          <span class="txt-status">위험</span>
+        </div>
+        <!-- //Common UI : Status -->
+      </li>
+      <li>
+        <div class="common-ui-status type-e">
+          <div class="status-icon">
+            <span></span>
+          </div>
+          <span class="txt-status">심각</span>
+        </div>
+        <!-- //Common UI : Status -->
+      </li>
+    </ul>
+  </div>
+  <!-- //서비스 Content -->
+
+  <!-- 서비스 Content -->
+  <div class="section-content" *ngIf="selectedTab === ServiceIntroduceTab.MAIN_INDEX">
+    <h2 class="txt-title">
+      <strong>주요 지표</strong>가 무엇인지 궁금합니다.
+    </h2>
+
+    <p class="txt-desc">
+      분석에 사용하는 주요 지표는 아래와 같습니다.
+    </p>
+
+    <dl class="desc-area">
+      <dt>유동인구 지수</dt>
+      <dd>
+        특정지역을 기준으로 거주지나 직장이 500m이상 떨어져 있으면서, 해당 지역에 5분 이상 체류한 사람들을 시간대별로 집계했으며, 해당 값을 특정 지역 면적 (km2)으로 나눠 밀집도로 표현합니다.
+      </dd>
+      <dt>유동인구 변동 지수</dt>
+      <dd>
+        특정 지역에 체류한 유동인구의 과거 3개월 최대 유동인구 (요일/시간대별 평균 유동인구 중 최대값) 현재 유동인구의 비율로 나타낸 값입니다.
+      </dd>
+      <dt>택시 수요</dt>
+      <dd>
+        T-map, Kakao, 그 외 택시 앱들의 실사용 기록이 감지된 (App 데이터 기준) 횟수를 지역별로 집계하고 해당 지역의 면적으로 나눠 밀집도로 표현합니다.
+      </dd>
+      <dt>지하철 수요</dt>
+      <dd>
+        지하철 역 주변의 유동 인구들을 기반으로 지하철 탑승 고객 (역별 기지국을 대상으로 실제 지하철도착 시간과 비슷한 고객) 을 추정하여 지역단위로 집계한 후 특정 지역 면적으로 나눠 밀집도로 표현합니다.
+      </dd>
+    </dl>
+  </div>
+  <!-- //서비스 Content -->
+
+</div>

@@ -1,0 +1,28 @@
+<!-- 확진 / 백신 접종 -->
+<div class="layout-fixed-bottom" aria-expanded="false">
+  <div class="section-target"></div>
+
+  <!-- 확지자 / 백신 점종자 -->
+  <div class="section-summary">
+    <div class="summary-area">
+      <span class="txt-label">확진 환자수</span>
+      <strong class="txt-total">
+        {{ coronaState.patientsAccumulated | number }} <em>명</em>
+      </strong>
+      <div class="txt-data">
+        오늘 <strong>{{ coronaState.patientsToday | number }}</strong>
+      </div>
+    </div>
+    <div class="summary-area type-vaccine">
+      <span class="txt-label">백신 접종자수</span>
+      <strong class="txt-total">
+        {{ coronaState.vaccineAccumulated | number }} <em>명</em>
+      </strong>
+      <div class="txt-data">
+        어제 <strong> {{ coronaState.vaccineYesterDay | number }}</strong>
+      </div>
+    </div>
+  </div>
+  <!-- //확지자 / 백신 점종자 -->
+</div>
+<!-- //확진 / 백신 접종 -->

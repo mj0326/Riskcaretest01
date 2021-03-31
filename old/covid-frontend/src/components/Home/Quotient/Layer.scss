@@ -1,0 +1,14 @@
+@import "../../Common/common.scss";
+
+.layer {
+    width: 100%;
+    height: 300px;
+
+    .area {
+        position: relative;
+        font-size: 10px;
+        font-weight: bold;
+        color: #fff;
+        z-index: 0;
+    }
+}

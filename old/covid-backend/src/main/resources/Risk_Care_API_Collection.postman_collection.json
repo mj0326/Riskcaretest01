@@ -1,0 +1,782 @@
+{
+	"info": {
+		"_postman_id": "8863dcdc-bea4-47fc-8aa2-9ab266d94d35",
+		"name": "Risk Care API Collection",
+		"description": "Risk Care 관련 API Collection\n\n\n\n[참고 데이터]\n\n광역시/도 축약명 및 기본이름 매핑 테이블\n※ Request body 에 쓰이는 \"sido\" 속성은 축약명이 아닌 기본명으로 파라미터 전달 필요\n| 축약 | 기본이름     |\n| --- | ------- |\n| 제주  | 제주특별자치도 |\n| 경남  | 경상남도    |\n| 경북  | 경상북도    |\n| 전남  | 전라남도    |\n| 전북  | 전라북도    |\n| 충남  | 충청남도    |\n| 충북  | 충청북도    |\n| 강원  | 강원도     |\n| 경기  | 경기도     |\n| 세종  | 세종특별자치시 |\n| 울산  | 울산광역시   |\n| 대전  | 대전광역시   |\n| 광주  | 광주광역시   |\n| 인천  | 인천광역시   |\n| 대구  | 대구광역시   |\n| 부산  | 부산광역시   |\n| 서울  | 서울특별시   |",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "로그인",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic cmlza19jYXJlOmNvdmlk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "write",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://20.194.5.125:8180/oauth/token",
+					"protocol": "http",
+					"host": [
+						"20",
+						"194",
+						"5",
+						"125"
+					],
+					"port": "8180",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "코로나 메시지 목록 가져오기",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"siDo\": [\n        \"경기도\"\n    ],\n    \"siGunGu\": [\n        \"용인시\",\n        \"포천시\"\n    ],\n    \"siDo\": [\n        \"경기도\"\n    ],\n    \"limit\": \"10\",\n    \"interval\": \"2020-11-10T00:00:00+09:00/2020-11-15T00:00:00+09:00\",\n    \"includeZeroConfirmed\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://20.194.5.125:8080/api/search/covid/list",
+					"protocol": "http",
+					"host": [
+						"20",
+						"194",
+						"5",
+						"125"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"search",
+						"covid",
+						"list"
+					]
+				},
+				"description": "[Request Body]\n\n| Property             | Type          | Requrid | Description                                                 | Etc. |\n| -------------------- | ------------- | ------- | ----------------------------------------------------------- | ---- |\n| siDo                 | Array<String> | N       | 가져올 광역 행정시/도 이름                                             |      |\n| siGunGu              | Array<String> | N       | 가져올 시/군/구 이름                                                |      |\n| limit                | Integer       | N       | 가져올 최대 개수                                                   |      |\n| interval             | Stirng        | Y       | 가져올 기간 (ISO DateTime 형태로 전달) ex. \"fromDateTime/endDateTime\" |      |\n| includeZeroConfirmed | Boolean       | N       | 만약 true 이면 문자내 확진자 현황이 나오지 않은 문자 까지 가져도도록 합니다. 기본값은 false   |      |\n\n※ Request Sample\n\n```\n{\n    \"siDo\": [\n        \"string\", \"string\"\n    ],\n    \"siGunGu\": [\n        \"string\", \"string\"\n    ],\n    \"limit\": \"integer\",\n    \"interval\": \"ISO-8601 DateTime/ISO-8601 DateTime\",\n    \"includeZeroConfirmed\": boolean  // 확진 현황이 표현되지 않은 메시지까지 전달, 기본값 false\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "코로나 시간/일별 현황 (Chart 용)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"extractUnit\": \"hour\",\n    \"aggregation\": \"sum\",\n    \"ranges\": [\n        \"2020-11-11T07:00:00+09:00/2020-11-11T15:00:00+09:00\",\n        \"2020-11-12T07:00:00+09:00/2020-11-12T15:00:00+09:00\"\n    ],\n    \"labels\": [\n        \"yesterday\",\n        \"today\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://20.194.5.125:8080/api/search/timeextract/patients",
+					"protocol": "http",
+					"host": [
+						"20",
+						"194",
+						"5",
+						"125"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"search",
+						"timeextract",
+						"patients"
+					]
+				},
+				"description": "[Request Body]\n\n| Property    | Type          | Requrid | Description                                                                                 | Etc. |\n| ----------- | ------------- | ------- | ------------------------------------------------------------------------------------------- | ---- |\n| siDo        | Array<String> | N       | 가져올 광역 행정시/도 이름                                                                             |      |\n| siGunGu     | Array<String> | N       | 가져올 시/군/구 이름                                                                                |      |\n| extractUnit | Enum          | N       | 추출할 집계 기간 (HOUR: 0~23, DAY: 1~31, MONTH: 1~12)                                              |      |\n| aggregation | Enum          | N       | 집계 종류 (AVG, SUM, MIN, MAX)                                                                  |      |\n| ranges      | Array<String> | Y       | 구간별 기간 (ISO DateTime 형태로 전달) ex. \\[\"fromDateTime/endDateTime\", \"fromDateTime/endDateTime\"\\] |      |\n| labels      | Array<String> | Y       | 구간별 기간에 대한 라벨 지정                                                                            |      |\n\n※ Request Sample\n\n```\n{\n    \"extractUnit\": \"enum\",\n    \"aggregation\": \"enum\",\n    \"ranges\": [\n        \"ISO8601 Datetime/ISO8601 Datetime\",\n        \"ISO8601 Datetime/ISO8601 Datetime\"\n    ],\n    \"labels\": [\n        \"string\",\n        \"string\"\n    ]\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "코로나 범위별 일자/시간 구간별 확진자 현황 (Chart 용)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"extractUnit\": \"hour\",\n    \"aggregation\": \"sum\",\n    \"ranges\": [\n        \"2020-11-11T07:00:00+09:00/2020-11-11T15:00:00+09:00\",\n        \"2020-11-12T07:00:00+09:00/2020-11-12T15:00:00+09:00\"\n    ],\n    \"labels\": [\n        \"yesterday\",\n        \"today\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://20.194.5.125:8080/api/search/trend/patients",
+					"protocol": "http",
+					"host": [
+						"20",
+						"194",
+						"5",
+						"125"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"search",
+						"trend",
+						"patients"
+					]
+				},
+				"description": "[Request Body]\n\n| Property    | Type          | Requrid | Description                                                                                 | Etc. |\n| ----------- | ------------- | ------- | ------------------------------------------------------------------------------------------- | ---- |\n| siDo        | Array<String> | N       | 가져올 광역 행정시/도 이름                                                                             |      |\n| siGunGu     | Array<String> | N       | 가져올 시/군/구 이름                                                                                |      |\n| extractUnit | Enum          | N       | 추출할 집계 기간 (HOUR: 0~23, DAY: 1~31, MONTH: 1~12)                                              |      |\n| aggregation | Enum          | N       | 집계 종류 (AVG, SUM, MIN, MAX)                                                                  |      |\n| ranges      | Array<String> | Y       | 구간별 기간 (ISO DateTime 형태로 전달) ex. \\[\"fromDateTime/endDateTime\", \"fromDateTime/endDateTime\"\\] |      |\n| labels      | Array<String> | Y       | 구간별 기간에 대한 라벨 지정                                                                            |      |\n\n※ Request Sample\n\n```\n{\n    \"extractUnit\": \"enum\",\n    \"aggregation\": \"enum\",\n    \"ranges\": [\n        \"ISO8601 Datetime/ISO8601 Datetime\",\n        \"ISO8601 Datetime/ISO8601 Datetime\"\n    ],\n    \"labels\": [\n        \"string\",\n        \"string\"\n    ]\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "지역별 기준 시간(금일) 대비 전일 확진자 현황",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"baseDateTime\": \"2020-11-11T21:00:00+09:00\",\n    \"baseGroup\" : \"siGunGu\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://20.194.5.125:8080/api/search/location/patients/daily",
+					"protocol": "http",
+					"host": [
+						"20",
+						"194",
+						"5",
+						"125"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"search",
+						"location",
+						"patients",
+						"daily"
+					]
+				},
+				"description": "[Request Body]\n\n| Property     | Type          | Requrid | Description                 | Etc. |\n| ------------ | ------------- | ------- | --------------------------- | ---- |\n| siDo         | Array<String> | N       | 가져올 광역 행정시/도 이름             |      |\n| siGunGu      | Array<String> | N       | 가져올 시/군/구 이름                |      |\n| baseDateTime | String        | Y       | 기준 기간 (ISO DateTime 형태로 전달) |      |\n| baseGroup    | String        | N       | 집계 그룹 대상(siDo/siGunGu), 기본값 \"siDo\" |      |\n\n※ Request Sample\n\n```\n{\n    \"siDo\": [\n        \"string\", \"string\"\n    ],\n    \"siGunGu\": [\n        \"string\", \"string\"\n    ],\n    \"baseDateTime\": \"ISO-8601 DateTime\",\n    \"baseGroup\": \"string\"\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "지역별 기준 시간(금일) 대비 전일 누적 확진자 현황",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"baseDateTime\": \"2020-11-11T21:00:00+09:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://20.194.5.125:8080/api/search/location/patients/total",
+					"protocol": "http",
+					"host": [
+						"20",
+						"194",
+						"5",
+						"125"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"search",
+						"location",
+						"patients",
+						"total"
+					]
+				},
+				"description": "[Request Body]\n\n| Property     | Type          | Requrid | Description                 | Etc. |\n| ------------ | ------------- | ------- | --------------------------- | ---- |\n| siDo         | Array<String> | N       | 가져올 광역 행정시/도 이름             |      |\n| siGunGu      | Array<String> | N       | 가져올 시/군/구 이름                |      |\n| baseDateTime | String        | Y       | 기준 기간 (ISO DateTime 형태로 전달) |      |\n\n※ Request Sample\n\n```\n{\n    \"siDo\": [\n        \"string\", \"string\"\n    ],\n    \"siGunGu\": [\n        \"string\", \"string\"\n    ],\n    \"baseDateTime\": \"ISO-8601 DateTime\"\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "관심장소 편집",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"op\": \"add\",\n        \"locationName\": \"테스트 장소\",\n        \"locationCode\": \"1111000011\",\n        \"seq\": 1\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://20.194.5.125:8080/api/favorlocations",
+					"protocol": "http",
+					"host": [
+						"20",
+						"194",
+						"5",
+						"125"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"favorlocations"
+					]
+				},
+				"description": "내 관심 장소를 일괄적으로 편집할수 있습니다.\n\n[Request Body]\n\n| Property     | Type    | Requrid | Description                                   | Etc. |\n| ------------ | ------- | ------- | --------------------------------------------- | ---- |\n| op           | Enum    | Y       | 관심장소 편집 옵션 - 추가(ADD), 변경(REPLACE), 삭제(REMOVE) |      |\n| id           | Long    | ?       | 옵션이 REPLACE, REMOVE 일 경우 반드시 기입               |      |\n| locationName | Array   | Y       | 관심 장소 명                                       |      |\n| locationCode | Integer | Y       | 관심 장소 행정동 코드                                  |      |\n| seq          | Stirng  | Y       | 표시 순서                                         |      |\n| username     | String  | N       | 현재는 \"admin\" 계정으로 하드코드 함                       |      |\n\n※ Request Sample\n\n```\n[\n    {\n        \"op\": \"add\",\n        \"locationName\": \"테스트 장소\",\n        \"locationCode\": \"1111000011\",\n        \"seq\": 1\n    },\n    {\n        \"op\": \"replace\",\n        \"id\": 1000,\n        \"locationName\": \"테스트 장소 UPDATE\",\n        \"seq\": 2\n    },\n    {\n        \"op\": \"remove\",\n        \"id\": 2000\n    }\n]\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "관심장소 - 내 관심 장소 가져오기",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://20.194.5.125:8080/api/favorlocations/my",
+					"protocol": "http",
+					"host": [
+						"20",
+						"194",
+						"5",
+						"125"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"favorlocations",
+						"my"
+					],
+					"query": [
+						{
+							"key": "includeIndex",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "baseDateTime",
+							"value": "2020-10-01T21:00:00%2B09:00",
+							"disabled": true
+						}
+					]
+				},
+				"description": "내 관심장소 목록을 가져옵니다.\n\n[Request Parameter]\n\n| Parameter     | Type    | Description                     | Etc. |\n| ------------ | ------- | ------------------------------- | ---- |\n| includeIndex  | Boolean    | 장소관련 특정 지수를 포함 할지 여부, 기본값 false |      |\n| baseDateTime  | DateTime    | 기준 일자, 기본값 현재 시간 |      |\n\n[Response Body]\n\n| Property     | Type    | Description                     | Etc. |\n| ------------ | ------- | ------------------------------- | ---- |\n| id           | Long    | 관심장소 식별자(ID) |      |\n| locationName | String  | 관심 장소 명                         |      |\n| locationCode | Stirng  | 관심 장소 행정동 코드                    |      |\n| seq          | Integer | 표시 순서                           |      |\n| username     | String  | 현재는 \"admin\" 계정으로 하드코드 함         |      |\n| locationScore | Double  | includeIndex 파라미터를 true 로 지정한 경우 접촉 지수 전달         |      |"
+			},
+			"response": []
+		},
+		{
+			"name": "장소 검색하기 - 행정동 기준",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://20.194.5.125:8080/api/locations/dong/search?name=송파",
+					"protocol": "http",
+					"host": [
+						"20",
+						"194",
+						"5",
+						"125"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"locations",
+						"dong",
+						"search"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "송파"
+						},
+						{
+							"key": "includeIndex",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "baseDateTime",
+							"value": "2020-12-12T10:00:00.000+09:00",
+							"disabled": true
+						}
+					]
+				},
+				"description": "장소를 검색합니다.\n\n[Request Parameter]\n\n| Parameter     | Type    | Description                     | Etc. |\n| ------------ | ------- | ------------------------------- | ---- |\n| name          | String    | 검색어 |      |\n| includeIndex  | Boolean    | 장소관련 특정 지수를 포함 할지 여부, 기본값 false |      |\n| baseDateTime  | DateTime    | includeIndex 가 true 일 경우, 기준 일자, 기본값 현재 시간 |      |\n| page          | Integer    | 페이지 인덱스, 기본값 0 |      |\n| size          | Integer    | 페이지 목록 사이즈, 기본값 100 |      |\n\n[Response Body]\n\n| Property    | Sub-Property | Type   | Description                     | Etc. |\n| ----------- | ------------ | ------ | ------------------------------- | ---- |\n| content\\[\\] |              |   |  |\n|             | code         | String | 법정동 코드                          |      |\n|             | sido         | String | 광역시/도 명                         |      |\n|             | siGunGu      | Stirng | 시/군/구 명                         |      |\n|             | dong         | Stirng | 동 명                             |      |\n| page        |              | Object | 페이지 정보                          |      |\n| sort        |              | Object | 정렬 정보                           |      |"
+			},
+			"response": []
+		},
+		{
+			"name": "일정 등록",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"summary\": \"created event\",\n    \"description\": \"created description\",\n    \"location\": \"created location\",\n    \"locationCode\": \"1111000011\",\n    \"startTime\": \"2020-11-25T13:53:44.430+09:00\",\n    \"endTime\": \"2020-11-25T15:53:44.430+09:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://20.194.5.125:8080/api/events",
+					"protocol": "http",
+					"host": [
+						"20",
+						"194",
+						"5",
+						"125"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"events"
+					]
+				},
+				"description": "일정을 등록 합니다. \n\n[Request Body]\n\n| Property     | Type   | Requrid | Description                                | Etc. |\n| ------------ | ------ | ------- | ------------------------------------------ | ---- |\n| summary      | String | Y       | 일정 제목                                      |      |\n| description  | String | N       | 일정 설명                                      |      |\n| location     | String | N       | 일정 장소 (표시되는 장소)                            |      |\n| locationCode | Stirng | N       | 일정 코드 (표시되는 장소와 매칭되는 법정동 코드)               |      |\n| startTime    | DateTime | Y       | 시작시간 ISO8601 타입, yyyy-MM-ddTHH:mm:ss.SSS.Z |      |\n| endTime      | DateTime | Y       | 종료시간 ISO8601 타입, yyyy-MM-ddTHH:mm:ss.SSS.Z |      |\n| username     | String  | N       | 현재는 \"admin\" 계정으로 하드코드 함                       |      |\n\n※ Request Sample\n\n```\n{\n    \"summary\": \"created event\",\n    \"description\": \"created description\",\n    \"location\": \"created location\",\n    \"locationCode\": \"1111000011\",\n    \"startTime\": \"2020-11-25T13:53:44.430+09:00\",\n    \"endTime\": \"2020-11-25T15:53:44.430+09:00\"\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "일정 수정",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"summary\": \"updated event!!\",\n    \"description\": \"updated description!!\",\n    \"startTime\": \"2020-11-25T15:53:44.430+09:00\",\n    \"endTime\": \"2020-11-25T17:53:44.430+09:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://20.194.5.125:8080/api/events/ac584fd7-89db-4396-b9a0-28e207b75ccf",
+					"protocol": "http",
+					"host": [
+						"20",
+						"194",
+						"5",
+						"125"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"events",
+						"ac584fd7-89db-4396-b9a0-28e207b75ccf"
+					]
+				},
+				"description": "기 등록된 일정의 ID 를 통해 수정할 항목을 선별적으로 수정이 가능합니다. \n\n[Request Body]\n\n| Property     | Type   | Requrid | Description                                | Etc. |\n| ------------ | ------ | ------- | ------------------------------------------ | ---- |\n| summary      | String | N       | 일정 제목                                      |      |\n| description  | String | N       | 일정 설명                                      |      |\n| location     | String | N       | 일정 장소 (표시되는 장소)                            |      |\n| locationCode | Stirng | N       | 일정 코드 (표시되는 장소와 매칭되는 법정동 코드)               |      |\n| startTime    | String | N       | 시작시간 ISO8601 타입, yyyy-MM-ddTHH:mm:ss.SSS.Z |      |\n| endTime      | String | N       | 종료시간 ISO8601 타입, yyyy-MM-ddTHH:mm:ss.SSS.Z |      |\n\n\n※ Request Sample\n\n```\n{\n    \"summary\": \"updated event!!\",\n    // \"description\": \"updated description!!\",\n    \"startTime\": \"2020-11-25T15:53:44.430+09:00\",\n    \"endTime\": \"2020-11-25T17:53:44.430+09:00\"\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "일정 삭제",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://20.194.5.125:8080/api/events/ac584fd7-89db-4396-b9a0-28e207b75ccf",
+					"protocol": "http",
+					"host": [
+						"20",
+						"194",
+						"5",
+						"125"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"events",
+						"ac584fd7-89db-4396-b9a0-28e207b75ccf"
+					]
+				},
+				"description": "기 등록된 일정의 ID 를 통해 일정을 삭제합니다.\n\n성공시 204 코드를 리턴합니다."
+			},
+			"response": []
+		},
+		{
+			"name": "일정 단건 조회",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://20.194.5.125:8080/api/events/aba3ff11-6afc-4792-9088-3e35d3b3783c",
+					"protocol": "http",
+					"host": [
+						"20",
+						"194",
+						"5",
+						"125"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"events",
+						"aba3ff11-6afc-4792-9088-3e35d3b3783c"
+					],
+					"query": [
+						{
+							"key": "includeIndex",
+							"value": "true",
+							"disabled": true
+						}
+					]
+				},
+				"description": "기 등록된 일정의 ID 를 통해 상세조회를 하고 아래와 같은 결과를 전달합니다.\n\n[Request Parameter]\n\n| Parameter     | Type    | Description                     | Etc. |\n| ------------ | ------- | ------------------------------- | ---- |\n| includeIndex  | Boolean    | 장소관련 특정 지수를 포함 할지 여부, 기본값 false |      |\n\n\n[Response Body]\n\n| Property     | Type   | Description                                | Etc. |\n| ------------ | ------ | ------------------------------------------ | ---- |\n| summary      | String | 일정 제목                                      |      |\n| description  | String | 일정 설명                                      |      |\n| location     | String | 일정 장소 (표시되는 장소)                            |      |\n| locationCode | Stirng | 일정 코드 (표시되는 장소와 매칭되는 법정동 코드)               |      |\n| startTime    | DateTime | 시작시간 ISO8601 타입, yyyy-MM-ddTHH:mm:ss.SSS.Z |      |\n| endTime      | DateTime | 종료시간 ISO8601 타입, yyyy-MM-ddTHH:mm:ss.SSS.Z |      |\n| createdBy  | String | 일정 등록자                                      |      |\n| createdTime    | DateTime | 일정 등록 일시 ISO8601 타입, yyyy-MM-ddTHH:mm:ss.SSS.Z |      |\n| modifiedBy  | String | 일정 수정자                                      |      |\n| modifiedTime      | DateTime | 일정 수정 일시 ISO8601 타입, yyyy-MM-ddTHH:mm:ss.SSS.Z |      |"
+			},
+			"response": []
+		},
+		{
+			"name": "일정 기간별 조회",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://20.194.5.125:8080/api/events/search?startTime=2020-11-01T00:00:00.000%2B09:00&endTime=2020-11-30T00:00:00.000%2B09:00",
+					"protocol": "http",
+					"host": [
+						"20",
+						"194",
+						"5",
+						"125"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"events",
+						"search"
+					],
+					"query": [
+						{
+							"key": "startTime",
+							"value": "2020-11-01T00:00:00.000%2B09:00"
+						},
+						{
+							"key": "endTime",
+							"value": "2020-11-30T00:00:00.000%2B09:00"
+						},
+						{
+							"key": "includeIndex",
+							"value": "true",
+							"disabled": true
+						}
+					]
+				},
+				"description": "장소를 검색합니다.\n\n[Request Parameter]\n\n| Parameter     | Type    | Description                     | Etc. |\n| ------------ | ------- | ------------------------------- | ---- |\n| q          | String    | 검색어, summary/location 내 통합 검색 |      |\n| username          | String    | 기본값은 로그인 username  |      |\n| locationCode          | String    | 법정동 코드  |      |\n| includeIndex  | Boolean    | 장소관련 특정 지수를 포함 할지 여부, 기본값 false |      |\n| startTime          | Integer    | 조회 시작 시간 ISO8601 타입, yyyy-MM-ddTHH:mm:ss.SSS.Z |      |\n| endTime          | Integer    | 조회 종료 시간 ISO8601 타입, yyyy-MM-ddTHH:mm:ss.SSS.Z |      |\n\n[Response Body]\n\n별도 페이징 없이 리스트 형태로 전달됩니다. \n\n| Property     | Type   | Description                                | Etc. |\n| ------------ | ------ | ------------------------------------------ | ---- |\n| summary      | String | 일정 제목                                      |      |\n| description  | String | 일정 설명                                      |      |\n| location     | String | 일정 장소 (표시되는 장소)                            |      |\n| locationCode | Stirng | 일정 코드 (표시되는 장소와 매칭되는 법정동 코드)               |      |\n| startTime    | DateTime | 시작시간 ISO8601 타입, yyyy-MM-ddTHH:mm:ss.SSS.Z |      |\n| endTime      | DateTime | 종료시간 ISO8601 타입, yyyy-MM-ddTHH:mm:ss.SSS.Z |      |\n| createdBy  | String | 일정 등록자                                      |      |\n| createdTime    | DateTime | 일정 등록 일시 ISO8601 타입, yyyy-MM-ddTHH:mm:ss.SSS.Z |      |\n| modifiedBy  | String | 일정 수정자                                      |      |\n| modifiedTime      | DateTime | 일정 수정 일시 ISO8601 타입, yyyy-MM-ddTHH:mm:ss.SSS.Z |      |"
+			},
+			"response": []
+		},
+		{
+			"name": "사회적 접촉지수 조회",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"baseDateTime\": \"2020-10-01T21:00:00+09:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://20.194.5.125:8080/api/search/socialcontact",
+					"protocol": "http",
+					"host": [
+						"20",
+						"194",
+						"5",
+						"125"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"search",
+						"socialcontact"
+					]
+				},
+				"description": "[Request Body]\n\n| Property     | Type          | Required | Description                 | Etc. |\n| ------------ | ------------- | ------- | --------------------------- | ---- |\n| baseDateTime | String        | Y       | 기준 기간 (ISO DateTime 형태로 전달) |      |\n| siGunGu      | String | N       | 가져올 서울시의 구 이름               |      |\n| ldongCd      | String | N       | 가져올 동의 법정동 코드              |      |\n\n\n※ Request Sample\n\n```\n{\n    \"baseDateTime\": \"ISO-8601 DateTime\",\n    \"siGunGu\": \"string\"\n}\n```\n\n[Response Body]\n* siGunGu, ldongCd 파라미터 입력하지 않을 경우 (서울시 구별 사회적 접촉지수 리스트)\n| Property     | Type    | Description                     | Etc. |\n| ------------ | ------- | ------------------------------- | ---- |\n| dt           | String  | yyyyMMdd |      |\n| si_gun_gu    | String  | 시군구                         |      |\n| flow_score   | Integer | 유동인구수                    |      |\n| taxi_score   | Integer | 택시수요                           |      |\n| subway_score | Integer | 지하철총수요         |      |\n| outdoor_activity_score     | Integer  | 외부활동지수         |      |\n| contact_score    | Integer  | 사회적 접촉지수         |      |\n| contact_rank     | Integer  | 사회적 접촉지수 순위         |      |\n\n\n* siGunGu 파라미터 입력할 경우 (해당 구의 사회적 접촉지수 리스트)\n| Property     | Type    | Description                     | Etc. |\n| ------------ | ------- | ------------------------------- | ---- |\n| dt           | String  | yyyyMMdd |      |\n| dong         | String  | 법정동                         |      |\n| ldong_cd     | String  | 법정동 코드                         |      |\n| flow_score   | Integer | 유동인구수                    |      |\n| taxi_score   | Integer | 택시수요                           |      |\n| subway_score | Integer | 지하철총수요         |      |\n| outdoor_activity_score     | Integer  | 외부활동지수         |      |\n| contact_score    | Integer  | 사회적 접촉지수         |      |\n| contact_rank     | Integer  | 시군구내 사회적 접촉지수 순위         |      |\n| total_in_si_gun_gu     | Integer  | 시군구내 동 수         |      |\n| rank_in_si_do     | Integer  | 시도내 사회적 접촉지수 순위         |      |\n| total_in_si_do     | Integer  | 시도내 동 수         |      |\n\n* ldongCd 파라미터 입력할 경우 (해당 동의 사회적 접촉지수)\n| Property     | Type    | Description                     | Etc. |\n| ------------ | ------- | ------------------------------- | ---- |\n| dt           | String  | yyyyMMdd                        |      |\n| si_do        | String  | 시도                             |      |\n| si_gun_gu    | String  | 시군구                            |      |\n| dong         | String  | 법정동                            |      |\n| ldong_cd     | String  | 법정동 코드                        |      |\n| flow_score   | Integer | 유동인구수                         |      |\n| taxi_score   | Integer | 택시수요                          |      |\n| subway_score | Integer | 지하철총수요                        |      |\n| outdoor_activity_score     | Integer  | 외부활동지수        |      |\n| contact_score    | Integer  | 사회적 접촉지수         |      |\n| contact_rank     | Integer  | 시군구내 사회적 접촉지수 순위         |      |\n| total_in_si_gun_gu     | Integer  | 시군구내 동 수         |      |\n| rank_in_si_do     | Integer  | 시도내 사회적 접촉지수 순위         |      |\n| total_in_si_do     | Integer  | 시도내 동 수         |      |"
+			},
+			"response": []
+		},
+		{
+			"name": "사회적 접촉지수 현황 (Chart 용)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"interval\": \"2020-10-01T00:00:00+09:00/2020-10-21T23:00:00+09:00\",\n    \"ldongCd\": \"1168010600\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://20.194.5.125:8080/api/search/trend/socialcontact",
+					"protocol": "http",
+					"host": [
+						"20",
+						"194",
+						"5",
+						"125"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"search",
+						"trend",
+						"socialcontact"
+					]
+				},
+				"description": "기 등록된 일정의 ID 를 통해 수정할 항목을 선별적으로 수정이 가능합니다. \n\n[Request Body]\n\n| Property     | Type   | Requrid | Description                                | Etc. |\n| ------------ | ------ | ------- | ------------------------------------------ | ---- |\n| interval    | Stirng | N       | 가져올 기간 (ISO DateTime 형태로 전달) ex. \"fromDateTime/endDateTime\" | 기본 현재시간 기준 3주     |\n| ldongCd     | String | Y       | 가져올 동의 법정동 코드                               |      |\n\n\n※ Request Sample\n\n```\n{\n    \"interval\": \"2020-10-01T00:00:00+09:00/2020-10-21T23:00:00+09:00\",\n    \"ldongCd\": \"1168010600\"\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "코로나 블루지수 조회",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"baseDateTime\": \"2020-10-01T21:00:00+09:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://20.194.5.125:8080/api/search/covidblue",
+					"protocol": "http",
+					"host": [
+						"20",
+						"194",
+						"5",
+						"125"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"search",
+						"covidblue"
+					]
+				},
+				"description": "[Request Body]\n\n| Property     | Type          | Required | Description                 | Etc. |\n| ------------ | ------------- | ------- | --------------------------- | ---- |\n| baseDateTime | String        | Y       | 기준 기간 (ISO DateTime 형태로 전달) |      |\n| siGunGu      | String        | N       | 가져올 서울시의 구 이름               |      |\n\n\n※ Request Sample\n\n```\n{\n    \"baseDateTime\": \"ISO-8601 DateTime\",\n    \"siGunGu\": \"string\"\n}\n```\n\n[Response Body]\n* siGunGu 파라미터 입력하지 않을 경우 (서울시 구별 심리적 지수 리스트)\n| Property     | Type    | Description                     | Etc. |\n| ------------ | ------- | ------------------------------- | ---- |\n| ym           | String  | yyyyMM                          |      |\n| si_gun_gu    | String  | 시군구                            |      |\n| call_15770199_score  | Integer | 상담전화 지수              |      |\n| job_score    | Integer | 구직 지수                         |      |\n| move_score   | Integer | 이동 지수                         |      |\n| preg_score   | Integer | 임신 지수                         |      |\n| security_score    | Integer  | 보안 지수                   |      |\n| date_score   | Integer  | 연애 지수                        |      |\n| total_score  | Integer  | 심리적 지수                       |      |\n| total_rank   | Integer  | 심리적 지수 순위                   |      |\n\n* siGunGu 파라미터 입력할 경우 (해당 구의 심리적 지수 리스트)\n| Property     | Type    | Description                     | Etc. |\n| ------------ | ------- | ------------------------------- | ---- |\n| dt           | String  | yyyyMMdd |      |\n| dong         | String  | 법정동                         |      |\n| ldong_cd     | String  | 법정동 코드                         |      |\n| call_15770199_score  | Integer | 상담전화 지수              |      |\n| job_score    | Integer | 구직 지수                         |      |\n| move_score   | Integer | 이동 지수                         |      |\n| preg_score   | Integer | 임신 지수                         |      |\n| security_score    | Integer  | 보안 지수                   |      |\n| date_score   | Integer  | 연애 지수                        |      |\n| total_score  | Integer  | 심리적 지수                       |      |\n| total_rank   | Integer  | 심리적 지수 순위                   |      |\n| total_in_si_gun_gu     | Integer  | 시군구내 동 수         |      |\n| rank_in_si_do     | Integer  | 시도내 심리적 지수 순위         |      |\n| total_in_si_do     | Integer  | 시도내 동 수         |      |"
+			},
+			"response": []
+		},
+		{
+			"name": "코로나 통계 일자/시간 구간별 확진자 현황 (Chart 용)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"interval\": \"2020-11-21T07:00:00+09:00/2020-11-27T15:00:00+09:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://20.194.5.125:8080/api/search/trend/covidstat",
+					"protocol": "http",
+					"host": [
+						"20",
+						"194",
+						"5",
+						"125"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"search",
+						"trend",
+						"covidstat"
+					]
+				},
+				"description": "[Request Body]\n\n| Property    | Type          | Requrid | Description                                                                                 | Etc. |\n| ----------- | ------------- | ------- | ------------------------------------------------------------------------------------------- | ---- |\n| interval    | Stirng | N       | 가져올 기간 (ISO DateTime 형태로 전달) ex. \"fromDateTime/endDateTime\" | 기본 현재시간 기준 1주     |\n| siDo        | String | N       | 가져올 광역 행정시/도 이름                                     | 기본 합계     |\n\n※ Request Sample\n\n```\n{\n    \"interval\": \"ISO8601 Datetime/ISO8601 Datetime\",\n    \"siDo\": \"string\"\n}\n```"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "body",
+				"type": "string"
+			},
+			{
+				"key": "scope",
+				"value": "write",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "admin",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "covid",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "risk_care",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "http://20.194.5.125:8180/oauth/token",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "access_token",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "password_credentials",
+				"type": "string"
+			},
+			{
+				"key": "challengeAlgorithm",
+				"value": "S256",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f6c92a84-523a-4f5d-9d9d-ef38c34a0e87",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "92fbea13-47ac-40d9-85e9-892cd16da926",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

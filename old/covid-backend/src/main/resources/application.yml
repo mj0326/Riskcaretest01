@@ -1,0 +1,160 @@
+spring:
+  profiles:
+    active: local,h2-default-db,logging-console-debug
+  application:
+    name: ${METATRON_NAME:metatron-extensions-covid}
+  datasource:
+    initialization-mode: never
+    sql-script-encoding: UTF-8
+    continue-on-error: true
+
+server:
+  port: 8080
+
+---
+spring:
+  profiles: initial
+  datasource:
+    initialization-mode: always
+    continue-on-error: false
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: create
+          import_files: /scripts/default.sql
+          charset_name: utf-8
+          import_files_sql_extractor: org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor
+
+---
+spring:
+  profiles: local
+  security:
+    oauth2:
+      client:
+        registration:
+          metatron:
+            client-id: risk_care
+            client-secret: covid
+            client-authentication-method: basic
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8080/login/oauth2/code/metatron
+            scope: [read, write]
+            client-name: metatron
+        provider:
+          metatron:
+            authorization-uri: http://localhost:8180/oauth/authorize
+            token-uri: http://localhost:8180/oauth/token
+            jwk-set-uri:
+            user-info-uri: http://localhost:8180/api/oauth/user/info
+            user-info-authentication-method: header
+            user-name-attribute: username
+covid:
+  oauth2:
+    defaultTargetUrl: /
+  storage:
+    druid:
+      query-url: http://20.194.5.125:8082
+      data-sources:
+        msg: covid_msg_v1
+    rdbms:
+      covid:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://20.194.5.125:3306/covid?useUnicode=yes&characterEncoding=UTF-8
+        username: covid
+        password: covid
+
+---
+# (mysql|mariadb DB creation script)
+# create database risk_care CHARACTER SET utf8;
+# grant all privileges on risk_care.* TO riskcare@localhost identified by 'riskcare';
+# grant all privileges on risk_care.* TO riskcare@'%' identified by 'riskcare';
+#
+# flush privileges;
+
+spring:
+  profiles: mysql-default-db
+  datasource:
+    platform: mysql
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/risk_care?useUnicode=yes&characterEncoding=UTF-8
+    username: riskcare
+    password: riskcare
+    max-active: 50
+    max-idle: 10
+    min-idle: 10
+    initial-size: 10
+    test-on-borrow: false
+    test-on-return: false
+    test-while-idle: true
+    max-wait: 1000
+    validation-query: SELECT 1
+  jpa:
+    show-sql: false
+    hibernate:
+      use-new-id-generator-mappings: false
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 25
+        order_inserts: true
+        order_updates: true
+        hbm2ddl:
+          auto: update
+        dialect: org.hibernate.dialect.MariaDB103Dialect
+        naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+
+---
+spring:
+  profiles: h2-default-db
+  datasource:
+    platform: h2
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:${METATRON_H2_DATA_DIR:.}/h2db/risk_care;MODE=MYSQL;AUTO_SERVER=TRUE;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: sa
+    max-active: 10
+  jpa:
+    show-sql: false
+    hibernate:
+      use-new-id-generator-mappings: false
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 25
+        order_inserts: true
+        order_updates: true
+        hbm2ddl:
+          auto: update
+        #dialect: org.hibernate.dialect.H2Dialect
+        dialect: org.hibernate.dialect.MariaDB103Dialect
+        naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+  h2:
+    console:
+      enabled: false
+      path: /console
+---
+spring:
+  profiles: h2-in-memory-db
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:risk_care;MODE=MYSQL;DB_CLOSE_DELAY\=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    platform: h2
+  jpa:
+    hibernate:
+      use-new-id-generator-mappings: false
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 25
+        order_inserts: true
+        order_updates: true
+        dialect: org.hibernate.dialect.MariaDB103Dialect
+        format_sql: true
+---
+spring:
+  profiles: logging-console-debug
+logging:
+  config: classpath:logback-console.xml

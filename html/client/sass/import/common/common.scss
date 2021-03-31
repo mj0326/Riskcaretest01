@@ -1,0 +1,168 @@
+@charset "utf-8";
+
+/***************************************************************************************
+   Mixin
+***************************************************************************************/
+@mixin ellipsis() {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+@mixin clear() {
+	display: block;
+	clear: both;
+	content: '';
+}
+
+@mixin break() {
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+@mixin bg-cover() {
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: cover;
+}
+
+@mixin hide-input() {
+	position:absolute;
+	left:0;
+	top:0;
+	width:1px;
+	height:1px;
+	opacity:0;
+}
+
+@mixin get-svg($name) {
+	@extend .svg-#{$name};
+	@extend .svg-#{$name}-dims;
+
+	display: inline-block;
+	vertical-align: top;
+}
+
+@mixin radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	border-radius: $radius;
+}
+
+@mixin ellipsisMultiline($line, $lineHeight) {
+	$maxHeight: $lineHeight * $line;
+	display: -webkit-box;
+	overflow: hidden;
+	max-height: #{$maxHeight}rem;
+	line-height: #{$lineHeight}rem;
+	-webkit-line-clamp: $line;
+	-webkit-box-orient: vertical;
+}
+
+@mixin ellipsisMultilineFix($line, $lineHeight) {
+	$maxHeight: $lineHeight * $line;
+	display: -webkit-box;
+	overflow: hidden;
+	height: #{$maxHeight}px;
+	line-height: #{$lineHeight}px;
+	-webkit-line-clamp: $line;
+	-webkit-box-orient: vertical;
+}
+
+@mixin transition($args...) {
+	-webkit-transition: $args;
+	-moz-transition: $args;
+	-ms-transition: $args;
+	transition: $args;
+}
+
+@mixin box-shadow($args...) {
+	-webkit-box-shadow: $args;
+	-moz-box-shadow: $args;
+	box-shadow: $args;
+}
+
+@mixin rotate($deg) {
+	-webkit-transform: rotate(#{$deg}deg);
+	-moz-transform: rotate(#{$deg}deg);
+	-ms-transform: rotate(#{$deg}deg);
+	transform: rotate(#{$deg}deg);
+}
+
+@mixin translate($x,$y) {
+	-webkit-transform: translate($x, $y);
+	-moz-transform: translate($x, $y);
+	-ms-transform: translate($x, $y);
+	transform: translate($x, $y);
+}
+
+@mixin placeholder($color) {
+	&::-webkit-input-placeholder {
+		color: $color !important;
+		font-weight: normal !important;
+	}
+	&::-moz-placeholder {
+		color: $color !important;
+		font-weight: normal !important;
+	}
+	&:-ms-input-placeholder {
+		color: $color !important;
+		font-weight: normal !important;
+	}
+	&:-moz-placeholder {
+		color: $color !important;
+		font-weight: normal !important;
+	}
+}
+
+@mixin webFont($fontName,$fontFile,$fontWeight) {
+	font-family: $fontName;
+	src: local('#{$fontName}'),
+	url("../fonts/#{$fontFile}.woff2") format("woff2"),
+	url("../fonts/#{$fontFile}.woff") format("woff"),
+	url("../fonts/#{$fontFile}.ttf") format("truetype");
+	font-weight: $fontWeight;
+	font-style: normal;
+}
+
+/***************************************************************************************
+   Function
+***************************************************************************************/
+// px to rem
+@function rem($base) {
+	$result: $base / 16;
+
+	@return #{$result}rem;
+}
+
+@function remMixin($base) {
+	$result: $base / 16;
+
+	@return $result;
+}
+
+
+/***************************************************************************************
+   Break Point
+***************************************************************************************/
+$breakpoints: (
+	//'xs': 'screen and (min-width: 280px)',
+	'sm': 'screen and (min-width: 320px)',
+	'md': 'screen and (min-width: 360px)',
+	'lg': 'screen and (min-width: 414px)'
+) !default;
+
+@mixin response($breakpoint) {
+	@if map-has-key($breakpoints, $breakpoint) {
+		@media #{inspect(map-get($breakpoints, $breakpoint))} {
+			@content;
+		}
+	}
+	@else {
+		@warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+	}
+}
+
+

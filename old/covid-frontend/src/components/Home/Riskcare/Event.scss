@@ -1,0 +1,17 @@
+@import '../../Common/common.scss';
+
+.event {
+    padding-top: $header-height + 15px;
+
+    > div {
+        margin-top: 15px;
+    }
+
+    > .buttons {
+        margin-top: 50px;
+    }
+
+    .bottom-margin {
+        margin-bottom: $horizontal-padding;
+    }
+}

@@ -1,0 +1,54 @@
+@import '../../Common/common.scss';
+
+.calendar {
+    padding-top: $vertical-padding * 2;
+
+    .table {
+        color: $font-dark;
+        font-size: 16px;
+        text-align: center;
+
+        .month {
+            margin: 30px 0;
+            font-weight: 600;
+
+            > span {
+                margin: 0 20px;
+            }
+        }
+
+        table {
+            width: 100%;
+            table-layout: fixed;
+            border-spacing: 1px;
+
+            td {
+                font-weight: 400;
+                height: 70px;
+                vertical-align: top;
+                padding: 0;
+
+                &:nth-of-type(1) {
+                    color: $main-orange;
+                }
+                &:nth-of-type(7) {
+                    color: $font-grey2;
+                }
+
+                > div.item {
+                    font-size: 10px;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    color: #fff;
+                    margin-top: 1px;
+                    line-height: 1.2;
+                }
+
+                > div.ellipsis {
+                    font-size: 10px;
+                }
+            }
+        }    
+    }
+}

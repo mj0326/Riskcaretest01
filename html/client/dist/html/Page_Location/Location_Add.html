@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no,email=no,address=no">
+	<link rel="stylesheet" href="../../css/riskcare.css"/>
+	<title>Risk Care</title>
+</head>
+
+<body>
+
+	<!-- Wrap -->
+	<div class="care-wrap">
+
+		<!-- Header -->
+		<div class="layout-header">
+			<div class="container-header">
+				<div class="section-left">
+					<button type="button" class="btn-back"></button>
+				</div>
+				<h1 class="section-title">
+					<span class="txt-title">관심 장소 추가</span>
+				</h1>
+				<div class="section-right">
+				</div>
+			</div>
+		</div>
+		<!-- //Header -->
+
+		<!-- Content -->
+		<!-- [D] 하단 확진자/백신접종자 영역 노출되는 유형 : is-bottom-fixed 클래스 추가 -->
+		<div class="layout-content">
+			<div class="container-content">
+
+				<!-- Page : Location Edit -->
+				<div class="page-location">
+
+					<div class="section-search">
+						<!-- Common UI : Input -->
+						<!-- [D] Input Focus : is-focus 클래스 추가 -->
+						<div class="common-ui-input is-focus">
+							<input type="text" class="input-text" placeholder="관심 장소로 추가할 주소를 입력하세요">
+							<button type="button" class="btn-clear"></button>
+						</div>
+						<!-- //Common UI : Input -->
+					</div>
+
+					<div class="section-button">
+						<button type="button" class="btn-action">장소 검색</button>
+					</div>
+
+					<!-- 검색 결과 -->
+					<div class="section-result">
+						<div class="result-area">
+							<ul class="list-result">
+								<!-- [D] 현재 내위치 : type-my 클래스 추가 -->
+								<li class="type-my">
+									<a href="javascript:;" class="item-result">
+										<span class="txt-location">
+											<strong>을지로 11</strong>길
+										</span>
+										<span class="txt-address">
+											서울특별시 중구 을지로 3가
+										</span>
+									</a>
+								</li>
+								<li>
+									<a href="javascript:;" class="item-result">
+										<span class="txt-location">
+											<strong>을지로 11</strong>길
+										</span>
+										<span class="txt-address">
+											서울특별시 중구 을지로 3가
+										</span>
+									</a>
+								</li>
+								<li>
+									<a href="javascript:;" class="item-result">
+										<span class="txt-location">
+											<strong>을지로 11</strong>길
+										</span>
+										<span class="txt-address">
+											서울특별시 중구 을지로 3가
+										</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- //검색 결과 -->
+
+				</div>
+				<!-- //Page : Location Edit -->
+
+			</div>
+		</div>
+		<!-- //Content -->
+
+	</div>
+	<!-- //Wrap -->
+
+</body>
+</html>

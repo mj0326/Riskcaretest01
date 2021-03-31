@@ -1,0 +1,13 @@
+@import '../../Common/common.scss';
+
+.place {
+    padding-top: $vertical-padding;
+
+    .freeze {
+        pointer-events: none;
+    }
+
+    .button {
+        margin-top: 30px;
+    }
+}

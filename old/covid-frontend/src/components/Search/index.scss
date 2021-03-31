@@ -1,0 +1,35 @@
+@import '../Common/common.scss';
+
+.search { 
+    .input {
+        $padding: 10px;
+        padding: $padding;
+        border-radius: 6px;
+        border: solid 1px $line-grey3;      
+        display: flex;
+        margin-top: 20px;
+        align-items: center;
+
+        input {
+            font-size: 14px;
+            padding: 0;
+            border: none;
+            outline: none;
+            caret-color: $main-orange;
+            width: 100%;
+            margin-right: $padding;
+
+            &::placeholder {
+                color: $font-grey3;
+            }
+        }
+    }
+
+    .result {
+        .title {
+            font-size: 12px;
+            color: $font-dark;
+            margin-top: 20px;
+        }
+    }
+}

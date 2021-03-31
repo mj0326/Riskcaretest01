@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi"/>
+    <link rel="stylesheet" href="style.css">
+    <title>COVID-19</title>
+    <style type="text/css">
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed, 
+        figure, figcaption, footer, header, hgroup, 
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video, main {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            color: inherit;
+            vertical-align: baseline;
+            text-decoration: none;
+        }
+        html { font-size:12px; }
+        ul { padding:0; list-style:none; }
+        ul > li > strong { display:block; font-size:16px; color:#000; }
+        dl { padding:20px; margin:0; color:#555; }
+        dd { padding:5px 0; }
+        dt { font-weight:bold; }
+        * + dt { margin-top:15px; }
+        span{display: inline-block;}
+    </style>
+</head>
+<body>
+    <div class="covid-wrap">
+        <div class="backdrop"></div>
+        <div class="drawer is-open">
+            <ul class="menu-list">
+                <li>
+                    <div style="background-color: #bbb; height: 24px; width: 24px;"></div>
+                    <span class="menu-txt">위치 동의 상태</span>
+                    <div class="toggle-area">
+                            <input class="switch-input" type="checkbox" id="8ae" checked>
+                            <label class="switch-label" for="8ae">Switch</label>
+                    </div>
+                </li>
+                <li>
+                    <div style="background-color: #bbb; height: 24px; width: 24px;"></div>
+                    <span class="menu-txt">알림</span>
+                    <label class="count-label">5</label>
+                </li>
+                <li>
+                    <div style="background-color: #bbb; height: 24px; width: 24px;"></div>
+                    <span class="menu-txt">확진자 리포트</span>
+                </li>
+                <li>
+                    <div style="background-color: #bbb; height: 24px; width: 24px;"></div>
+                    <span class="menu-txt">위험 단계 정보</span>
+                </li>
+                <li>
+                    <div style="background-color: #bbb; height: 24px; width: 24px;"></div>
+                    <span class="menu-txt">정보 수신 설정</span>
+                </li>
+                <li>
+                    <div style="background-color: #bbb; height: 24px; width: 24px;"></div>
+                    <span class="menu-txt">로그아웃</span>
+                </li>
+            </ul>
+        </div>
+        <header>
+            <div class="menu" style="background-color: #bbb; height: 24px; width: 24px;"></div>
+            <div class="logo">
+            <span>
+                COVID-19
+            </span>
+            </div>
+            <div>
+                <div style="background-color: #bbb; height: 22px; width: 22px; display: inline-block;"></div>
+                <div style="background-color: #bbb; height: 22px; width: 22px; display: inline-block;"></div>
+            </div>
+        </header>
+        <main>
+            <div class="section-1">
+                <div class="realtime-area">
+                    <span class="txt-title txt-margin">실시간 현황</span>
+                    <div class="local-bar clearfix">
+                        <span class="txt-title">
+                            <strong>
+                                서울시 강남구
+                            </strong>
+                        </span>
+                        <span class="txt-title">1명 추가</span>
+                        <span class="sub-title">22분 전</span>
+                        <div class="pull-right" style="background-color: #bbb; height: 15px; width: 12px;"></div>
+                    </div>
+                </div>
+                <div class="confirmed-area">
+                    <span class="txt-title txt-margin">확진자 현황</span>
+                    <div class="person-area">
+                        <div>
+                            <span style="color: #808081;">총 확진자 수</span>
+                            <span class="txt-count">
+                                <strong>1,234</strong>
+                            </span>
+                            <span class="up"></span>
+                            <span class="txt-sm">10월 29일 10시 기준</span>
+                        </div>
+                        <div>
+                            <span style="color: #808081;">금일 실시간 추가 확진자 수</span>
+                            <span class="txt-count">
+                                <strong>35</strong>
+                            </span>
+                            <span class="down" style="margin: 0;"></span>
+                            <span class="txt-sm">오늘발생 40명 중 5명 어제 집계</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-2">
+                <div class="toggle-area">
+                    <h2>그래프 현황</h2>
+                    <div class="switch-field">
+                        <input type="radio" id="radio-three" name="switch-two" value="yes" checked>
+                        <label for="radio-three">오늘</label>
+                        <input type="radio" id="radio-four" name="switch-two" value="maybe">
+                        <label for="radio-four">일별</label>
+                        <input type="radio" id="radio-five" name="switch-two" value="no">
+                        <label for="radio-five">확진률</label>
+                    </div>
+                </div>
+                <div class="chart-area" style="height: 160px; background-color: #bbb;">
+                </div>
+                <div class="daily-bar">
+                    <div class="today">
+                        <span>오늘</span>
+                        <strong>75명</strong>
+                    </div>
+                    <div class="yesterday">
+                        <span>어제</span>
+                        <strong>75명</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="section-3">
+                <div class="toggle-area">
+                    <h2>지역별 현황</h2>
+                    <div class="switch-field">
+                        <input type="radio" id="radio1" name="switch-one" value="yes" checked>
+                        <label for="radio1">리스트</label>
+                        <input type="radio" id="radio2" name="switch-one" value="maybe">
+                        <label for="radio2">지도</label>
+                    </div>
+                </div>
+                <div class="table-area">
+                    <table cellpadding="0">
+                        <thead>
+                            <tr>
+                                <th class="text-left">지역</th>
+                                <th class="text-left">총 확진자</th>
+                                <th class="text-left">오늘</th>
+                                <th class="text-right">업데이트 시간</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><strong>서울</strong></td>
+                            <td>
+                                <strong>132</strong>
+                                <span>명</span>
+                                <span class="up"></span>
+                            </td> 
+                            <td>
+                                <strong>12</strong>
+                                <span>명</span>
+                                <span class="down"></span>
+                            </td>
+                            <td class="text-right">
+                                <span>30분 전</span>
+                                <span style="background-color: #bbb;height: 12px;width: 10px;"></span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td><strong>대구</strong></td>
+                            <td>
+                                <strong>132</strong>
+                                <span>명</span>
+                                <span class="up"></span>
+                            </td> 
+                            <td>
+                                <strong>12</strong>
+                                <span>명</span>
+                                <span class="down"></span>
+                            </td>
+                            <td class="text-right">
+                                <span>30분 전</span>
+                                <span style="background-color: #bbb;height: 12px;width: 10px;"></span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td><strong>제주</strong></td>
+                            <td>
+                                <strong>132</strong>
+                                <span>명</span>
+                                <span class="up"></span>
+                            </td> 
+                            <td>
+                                <strong>12</strong>
+                                <span>명</span>
+                                <span class="down"></span>
+                            </td>
+                            <td class="text-right">
+                                <span>30분 전</span>
+                                <span style="background-color: #bbb;height: 12px;width: 10px;"></span>
+                            </td>
+                          </tr>
+                          
+                          
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

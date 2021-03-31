@@ -1,0 +1,91 @@
+@charset "utf-8";
+
+// [ 가이드 ]
+//
+// 1. 마크업 레벨(Depth) Class 가이드
+// {project code}-wrap > layout-xxx > container-xxx > section-xxx > xxx-area > xxx-block
+//
+// 2. 클래스명 가이드
+// table-xxx, list-xxx, form-xxx, flex-xxx,
+// input-xxx, textarea-xxx, btn(button)-xxx, link(a tag)-xxx,
+// item-xxx, txt(text)-xxx, num(number)-xxx, data-xxx, desc(description)-xxx
+//
+// 3. 동적 클래스
+// is-activated, is-selected, is-disabled, is-fold(unfold), is-show(hide), is-xxx
+// aria-selected, aria-expanded 활용
+//
+// 4. 유형 클래스 : type-xxx
+//
+// 5. 컴포넌트 클래스 정의 : component-xxx (ex:component-selectbox)
+//
+// 6. 화면 별 클래스 정의 : page-xxx (ex:page-login), popup-xxx (ex:popup-login)
+//
+// 7. css 작성 가이드
+// overflow,visibility,display,position(left,right,top,bottom),z-index,width,height,margin,padding,border,background ~ 자유배치
+// @include, @extend는 마지막에 삽입
+//
+// 8. z-index 가이드
+// 팝업 500
+// 로딩 1000
+//
+// 9. 이미지 파일명 가이드
+// Type : icon, bg, arrow
+// 파일명 구성 : type_사용처_형태.png (ex: icon_btn_add, bg_main, arrow_selectbox)
+//
+// 10. Image, SVG 사용법
+// 이미지 : @include get-sprite($이미지_파일명);
+// SVG : @include get-svg(SVG_파일명);
+
+/***************************************************************************************
+   SVG Sprite
+***************************************************************************************/
+//@import "import/svg/css/sprite";
+
+/***************************************************************************************
+   Image Sprite
+***************************************************************************************/
+@import "import/common/sprite";
+
+/***************************************************************************************
+   기본설정, 공통 SCSS
+***************************************************************************************/
+@import "import/common/common"; // 공통(mixin, extend(placeholder))
+@import "import/common/base"; // 기본설정
+
+/***************************************************************************************
+   Common UI
+***************************************************************************************/
+@import "import/common_ui/common_ui";
+@import "import/common_ui/button";
+@import "import/common_ui/input";
+@import "import/common_ui/selectbox";
+@import "import/common_ui/tab";
+
+@import "import/common_ui/popup";
+
+/***************************************************************************************
+   LAYOUT
+***************************************************************************************/
+@import "import/layout/layout";
+
+/***************************************************************************************
+   Page : Location
+***************************************************************************************/
+@import "import/page_location/page_location"; // 관심 장소 목록,추가,편집
+@import "import/page_location/page_detail_view"; // Detail View
+
+/***************************************************************************************
+   Page : Map
+***************************************************************************************/
+@import "import/page_map/page_map"; // 지도
+
+/***************************************************************************************
+   Page : 서비스 소개
+***************************************************************************************/
+@import "import/page_service/page_service";
+
+/***************************************************************************************
+   Page : 공지 사항
+***************************************************************************************/
+@import "import/page_notice/page_notice";
+

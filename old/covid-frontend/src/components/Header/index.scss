@@ -1,0 +1,39 @@
+@import '../Common/common.scss';
+
+.header { 
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+
+    &.has-drawer {
+        bottom: 0;
+    }
+
+    > .bar {
+        height: $header-height;
+        padding: $header-padding;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid $line-grey2;
+        // backdrop-filter: blur(50px);
+        background-color: white;
+        
+        $back-width: 10px;
+
+        > .more {
+            margin-right: auto;
+        }
+
+        > span {
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;      
+            width: 100%;    
+            padding-right: 48px;
+        }
+    }
+}
+

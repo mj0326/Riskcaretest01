@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<!-- 배포 환경 기준 작성.
+     METATONR_LOG_DIR : 배포환경에서 실행 script에 변수로 지정된 값 사용.
+     하루 단위 또는 10MB 단위로 rolling & gzip 압축. - 1개당 대략 0.7MB
+     1000개(약 700MB)부터 에이징.
+-->
+
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <property name="CONSOLE_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} [%15.15X{ip}-%12.12X{username}] [%t] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+
+    <appender name="FILE_SIZE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${METATRON_LOG_DIR}/application.log</file>
+        <encoder>
+            <pattern>${CONSOLE_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>${METATRON_LOG_DIR}/application.%i.log.gz</fileNamePattern>
+        </rollingPolicy>
+        <triggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>10MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+
+    <appender name="FILE_TIME" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${METATRON_LOG_DIR}/application.log</file>
+        <encoder>
+            <pattern>${CONSOLE_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${METATRON_LOG_DIR}/%d{yyyy-MM}/application-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxHistory>10</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 10MB -->
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>1000</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${METATRON_LOG_DIR}/error.log</file>
+        <encoder>
+            <pattern>${CONSOLE_PATTERN}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>error</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${METATRON_LOG_DIR}/%d{yyyy-MM-dd}/error-%d{yyyy-MM-dd}.%i.txt</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>60</maxHistory>
+            <totalSizeCap>10GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <!-- show hibernate sql -->
+    <logger name="org.hibernate.SQL" level="info"/>
+
+    <!-- show bound hibernate parameters with trace -->
+    <logger name="org.hibernate.type" level="info"/>
+
+    <logger name="org.springframework.web" level="info"/>
+
+    <logger name="org.springframework.web.client" level="info"/>
+
+    <logger name="org.springframework.web.servlet.mvc" level="info"/>
+
+    <logger name="org.apache.http" level="info"/>
+
+    <logger name="org.springframework.security" level="info"/>
+
+    <logger name="org.thymeleaf" level="info"/>
+
+    <logger name="app.metatron.apm" level="info"/>
+
+    <root level="WARN">
+        <appender-ref ref="FILE_TIME"/>
+        <appender-ref ref="ERROR"/>
+    </root>
+
+    <jmxConfigurator/>
+
+</configuration>

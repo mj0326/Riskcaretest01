@@ -1,0 +1,12 @@
+<div class="box-textarea">
+    <textarea class="text-area"
+              [id]="inputUUID"
+              [(ngModel)]="text"
+              [attr.maxlength]="maxlength ? maxlength : useTextCount ? 100 : null"
+              [attr.placeholder]="placeholder"
+              [attr.disabled]="disabled ? true : null"
+    >
+    </textarea>
+  <div class="max-size" *ngIf="useTextCount">{{text ? text.length : 0}}/{{maxlength ? maxlength : 100}}</div>
+</div>
+<span class="txt-message" *ngIf="isError">{{errorMessage}}</span>

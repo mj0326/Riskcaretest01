@@ -1,0 +1,334 @@
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.clearfix:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.switch-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.switch-field input {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  width: 1px;
+  border: 0;
+  overflow: hidden;
+}
+
+.switch-field input:checked + label {
+  background-color: #FFFFFF;
+}
+
+.switch-field label {
+  background-color: #F0F0F0;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  line-height: 1;
+  text-align: center;
+  padding: 8px 16px;
+  margin-right: -1px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.switch-field label:first-of-type {
+  border-radius: 4px 0 0 4px;
+}
+
+.switch-field label:last-of-type {
+  border-radius: 0 4px 4px 0;
+}
+
+.covid-wrap {
+  min-width: 340px;
+  position: relative;
+}
+
+.covid-wrap header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 16px 0 13px;
+}
+
+.covid-wrap header .logo {
+  font-size: 17px;
+}
+
+.covid-wrap header .logo > span {
+  vertical-align: middle;
+}
+
+.covid-wrap .sub-area {
+  margin-bottom: 22px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.covid-wrap .table-area > table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.covid-wrap .table-area th {
+  font-size: 9px;
+  color: #444444;
+  padding: 0 14px;
+}
+
+.covid-wrap .table-area td {
+  padding: 14px;
+  border-bottom: solid 1px #F4F4F4;
+}
+
+.covid-wrap .table-area td strong {
+  font-size: 14px;
+}
+
+.covid-wrap .table-area td span {
+  color: #808081;
+  font-size: 10px;
+  vertical-align: middle;
+}
+
+.covid-wrap .table-area tr td:first-child:after {
+  content: '|';
+  display: inline-block;
+  font-size: 14px;
+  color: #EAEAEA;
+  margin-left: 15px;
+}
+
+.covid-wrap .table-area .text-left {
+  text-align: left;
+}
+
+.covid-wrap .table-area .text-right {
+  text-align: right;
+}
+
+.covid-wrap main {
+  position: relative;
+  padding: 42px 0 0 0;
+}
+
+.covid-wrap main .up {
+  margin-left: 5px;
+}
+
+.covid-wrap main .up:before {
+  content: '';
+  display: inline-block;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 7px solid #EA483F;
+}
+
+.covid-wrap main .up::after {
+  content: '125';
+  margin-left: 2px;
+  display: inline-block;
+  color: #EA483F;
+}
+
+.covid-wrap main .down {
+  margin-left: 5px;
+}
+
+.covid-wrap main .down:before {
+  content: '';
+  display: inline-block;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 7px solid #439EF6;
+}
+
+.covid-wrap main .down::after {
+  content: '13';
+  margin-left: 2px;
+  display: inline-block;
+  color: #439EF6;
+}
+
+.covid-wrap main .section-1 {
+  background-color: #385F91;
+  height: 170px;
+  padding: 20px 16px 0 16px;
+}
+
+.covid-wrap main .section-1 .realtime-area {
+  margin-bottom: 20px;
+}
+
+.covid-wrap main .section-1 .txt-title {
+  color: #fff;
+  margin-right: 8px;
+}
+
+.covid-wrap main .section-1 .txt-title.txt-margin {
+  margin-bottom: 7px;
+}
+
+.covid-wrap main .section-1 .sub-title {
+  min-width: 45px;
+  opacity: 0.5;
+  text-align: right;
+  color: #fff;
+  border-left: 1px solid #fff;
+}
+
+.covid-wrap main .section-1 .local-bar {
+  padding: 14px 10px 14px 15px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.covid-wrap main .section-1 .confirmed-area .person-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 125px;
+  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.4);
+          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  position: relative;
+  border: 1px solid #E9ECEF;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: none;
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+.covid-wrap main .section-1 .confirmed-area .person-area:before {
+  content: '';
+  position: absolute;
+  display: block;
+  left: 50%;
+  top: 20px;
+  bottom: 20px;
+  width: 1px;
+  background-color: #EAEAEA;
+}
+
+.covid-wrap main .section-1 .confirmed-area .person-area > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-width: 155px;
+}
+
+.covid-wrap main .section-1 .confirmed-area .person-area .txt-count {
+  font-size: 24px;
+  margin: 7px 0 0 0;
+}
+
+.covid-wrap main .section-1 .confirmed-area .person-area .txt-sm {
+  margin-top: 8px;
+  font-size: 9px;
+  color: #444444;
+  opacity: 0.5;
+}
+
+.covid-wrap main .section-2 {
+  padding: 95px 16px 28px 16px;
+  border-bottom: 9px solid #F5F6F8;
+}
+
+.covid-wrap main .section-2 .chart-area {
+  margin: 0 0 18px 0;
+}
+
+.covid-wrap main .section-2 .daily-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 40px;
+  border: 1px solid #E9ECEF;
+  border-radius: 6px;
+}
+
+.covid-wrap main .section-2 .daily-bar strong {
+  color: #333;
+}
+
+.covid-wrap main .section-2 .today {
+  font-size: 13px;
+  color: #EA483F;
+}
+
+.covid-wrap main .section-2 .today:before {
+  content: '';
+  display: inline-block;
+  border-radius: 50%;
+  height: 6px;
+  width: 6px;
+  background-color: #EA483F;
+  margin-bottom: 2px;
+}
+
+.covid-wrap main .section-2 .yesterday {
+  font-size: 13px;
+  color: #9EAEB5;
+}
+
+.covid-wrap main .section-2 .yesterday:before {
+  content: '';
+  display: inline-block;
+  border-radius: 50%;
+  height: 6px;
+  width: 6px;
+  background-color: #9EAEB5;
+  margin-bottom: 2px;
+}
+
+.covid-wrap main .section-3 {
+  padding: 22px 16px 28px 16px;
+}
+/*# sourceMappingURL=covid_19_main.css.map */

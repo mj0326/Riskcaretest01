@@ -1,0 +1,24 @@
+<div class="common-ui-form-textarea" [ngClass]="isFocusIn ? 'is-focus': ''">
+  <!-- Component : Input -->
+  <!-- [D] Error : is-error 클래스 추가 -->
+  <div class="component-textarea type-max"
+       [class.is-error]="isError">
+    <div class="box-textarea">
+     <textarea class="text-area"
+               [id]="inputUUID"
+               [(ngModel)]="text"
+               [attr.maxlength]="maxlength"
+               [attr.placeholder]="placeholder"
+               [attr.disabled]="disabled ? true : null"
+               (focus)="onFocus($event)"
+               (blur)="onFocusOut($event)"></textarea>
+      <div *ngIf="useTextCount" class="max-size">{{text? text.length : 0}}/{{maxlength? maxlength : 100}}</div>
+    </div>
+    <span class="txt-message">{{ errorMessage }}</span>
+  </div>
+  <!-- //Component : Input -->
+  <div class="buttons">
+    <button type="button" class="btn-form type-confirm" (click)="onClickConfirm()"><i></i></button>
+    <button type="button" class="btn-form type-cancel" (click)="onClickCancel()"><i></i></button>
+  </div>
+</div>

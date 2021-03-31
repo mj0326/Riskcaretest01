@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no,email=no,address=no">
+	<link rel="stylesheet" href="../../css/riskcare.css"/>
+	<title>Risk Care</title>
+</head>
+
+<body>
+
+	<!-- Wrap -->
+	<!-- [D] 지도 화면 : type-map 클래스 추가 -->
+	<div class="care-wrap type-map">
+
+		<!-- Header -->
+		<div class="layout-header">
+			<div class="container-header">
+				<div class="section-left">
+					<button type="button" class="btn-menu"></button>
+				</div>
+				<h1 class="section-title">
+					<span class="txt-title">위험도 지도</span>
+				</h1>
+			</div>
+		</div>
+		<!-- //Header -->
+
+		<!-- Content -->
+		<div class="layout-content">
+			<div class="container-content">
+
+				<!-- Page : Map -->
+				<!-- [D] 위험도 정보 노출 시 : is-show 클래스 추가 -->
+				<div class="page-map is-show">
+
+					<div class="section-map">지도 영역</div>
+
+					<!-- 지역/전체 -->
+					<div class="section-mode">
+						<!-- [D] 선택 된 버튼 : aria-selected=true -->
+						<button type="button" class="btn-map-mode" aria-selected="false">지역</button>
+						<button type="button" class="btn-map-mode" aria-selected="true">전체</button>
+					</div>
+					<!-- //지역/전체 -->
+
+					<!-- 기능 버튼 -->
+					<div class="section-button">
+						<button type="button" class="btn-map type-zoomin" aria-label="지도 확대"></button>
+						<button type="button" class="btn-map type-zoomout" aria-label="지도 축소"></button>
+						<button type="button" class="btn-map type-mylocation" aria-label="현재 위치로 이동"></button>
+					</div>
+					<!-- //기능 버튼 -->
+
+					<!-- 위험도 정보 -->
+					<div class="section-info">
+						<div class="info-area">
+							<div class="location-block">
+								삼평동 680-1
+							</div>
+							<div class="risk-block">
+								<div class="risk-info type-d">
+									<strong class="txt-data">84</strong>
+									<span class="txt-status">위험</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //위험도 정보 -->
+
+				</div>
+				<!-- //Page : Map -->
+
+
+			</div>
+		</div>
+		<!-- //Content -->
+
+	</div>
+	<!-- //Wrap -->
+
+</body>
+</html>

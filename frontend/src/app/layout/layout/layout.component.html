@@ -1,0 +1,31 @@
+<!-- Wrap -->
+<div class="care-wrap">
+
+  <!-- Header -->
+  <div header class="layout-header" *ngIf="!isSubMode"></div>
+  <!-- //Header -->
+
+  <!-- Header -->
+  <div header-sub class="layout-header" *ngIf="isSubMode"
+       [isSectionRight]="isSectionRight"
+       [subTitle]="subTitle"
+       [ldongCd]="ldongCd"></div>
+  <!-- //Header -->
+
+  <!-- LNB -->
+  <!-- [D] LNB 노출 : aria-expanded=true -->
+  <lnb></lnb>
+  <!-- //LNB -->
+
+  <!-- Content -->
+  <!-- [D] 하단 확진자/백신접종자 영역 노출되는 유형 : is-bottom-fixed 클래스 추가 -->
+  <div class="layout-content" [ngClass]="{'is-bottom-fixed' : !isSubMode}">
+    <div class="contaniner-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <!-- //Content -->
+
+  <div bottom class="layout-fixed-bottom" *ngIf="!isSubMode"></div>
+</div>
+<!-- //Wrap -->

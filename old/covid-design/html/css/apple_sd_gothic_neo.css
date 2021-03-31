@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../font/AppleSDGothicNeoL.woff');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../font/AppleSDGothicNeoM.woff');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../font/AppleSDGothicNeoB.woff');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../font/AppleSDGothicNeoEB.woff');
+    font-weight: 800;
+}
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../font/AppleSDGothicNeoH.woff');
+    font-weight: 900;
+}

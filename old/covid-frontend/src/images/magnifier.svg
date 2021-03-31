@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Buttons (Icon) / L / Basic Copy</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="[Marketing]-Product-info-1-/-Mobile-/-Menus-Copy-8" transform="translate(-253.000000, -8.000000)">
+            <g id="Navbar-/-Light-/-Mobile-Copy" fill="#FFFFFF00">
+                <rect id="BG" x="0" y="0" width="360" height="64"></rect>
+            </g>
+            <g id="Buttons-(Icon)-/-L-/-Basic-Copy" transform="translate(253.000000, 8.000000)">
+                <rect id="BG" fill="#FFFFFF00" x="0" y="0" width="48" height="48" rx="24"></rect>
+                <g id="Icon-/-Filled-/-add" transform="translate(12.000000, 12.000000)" fill="#5B5C60">
+                    <path d="M21.6,20.4103468 L16.8537232,15.669672 C17.9977595,14.2691456 18.6843869,12.4811741 18.6843869,10.5325831 C18.6843869,6.041122 15.0390309,2.4 10.5421937,2.4 C6.04542463,2.4 2.4,6.041122 2.4,10.5325831 C2.4,15.0241127 6.04542463,18.6651661 10.5421937,18.6651661 C12.4814346,18.6651661 14.2619224,17.9874281 15.6603337,16.8569973 L20.408941,21.6 L20.5400013,21.4690944 L20.5402755,21.4693682 L21.4922452,20.518522 L21.4919711,20.5182482 L21.6,20.4103468 Z M10.5421937,16.9825626 C6.9814917,16.9825626 4.08459169,14.0891503 4.08459169,10.532583 C4.08459169,6.97608413 6.9814917,4.08260328 10.5421937,4.08260328 C14.1029638,4.08260328 16.9997952,6.97608413 16.9997952,10.532583 C16.9997952,14.0891503 14.1029638,16.9825626 10.5421937,16.9825626 Z" id="Shape"></path>
+                </g>
+            </g>
+            <g id="Buttons-(Icon)-/-L-/-Basic" transform="translate(300.000000, 8.000000)" fill="#FFFFFF00">
+                <rect id="BG" x="0" y="0" width="48" height="48" rx="24"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

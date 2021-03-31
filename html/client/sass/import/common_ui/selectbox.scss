@@ -1,0 +1,113 @@
+@charset "utf-8";
+
+/***************************************************************************************
+   Common UI : Selectbox
+***************************************************************************************/
+.common-ui-selectbox {
+	.txt-label {
+		position:relative;
+		height:rem(56);
+		padding:0 rem(56) 0 rem(16);
+		border:1px solid #e8e8e8;
+		background-color:#fff;
+		line-height:rem(54);
+		font-size:rem(18);
+		color:#111;
+		font-weight:500;
+
+		@include radius(rem(8));
+		@include ellipsis();
+	}
+	.txt-label > em {
+		display:block;
+		position:absolute;
+		right:rem(8);
+		top:50%;
+		width:rem(40);
+		height:rem(40);
+
+		@include translate(0,-50%);
+
+		&:before {
+			position:absolute;
+			left:50%;
+			top:50%;
+			transform:translate(-50%,-50%) rotate(180deg);
+			content:'';
+
+			@include get-sprite($arr_selectbox);
+			@include transition(transform 0.4s ease);
+		}
+	}
+
+	.selectbox-option {
+		height:0;
+		margin-top:rem(10);
+
+		.list-options {
+			position:relative;
+			top:rem(10);
+			border:1px solid #e8e8e8;
+			background-color:#fff;
+			opacity:0;
+
+			@include radius(rem(8));
+			@include transition(top 0.4s ease, opacity 0.4s ease);
+
+			> li {
+				border-bottom:1px solid #e8e8e8;
+
+				&:last-child {
+					border-bottom:0 none;
+				}
+
+				&.type-my .item-option {
+					.txt-location:after {
+						margin:rem(4) 0 0 rem(6);
+						vertical-align:top;
+						content:'';
+
+						@include get-sprite($icon_current_location);
+					}
+				}
+			}
+
+			.item-option {
+				display:block;
+				padding:rem(16);
+
+				.txt-location {
+					display:block;
+					line-height:rem(28);
+					font-size:rem(20);
+					color:#111;
+				}
+				.txt-address {
+					display:block;
+					margin-top:rem(2);
+					line-height:rem(16);
+					font-size:rem(14);
+					color:#888a8f;
+				}
+			}
+		}
+	}
+
+	&[aria-expanded="true"] {
+		.txt-label > em:before {
+			transform:translate(-50%,-50%) rotate(0);
+		}
+
+		.selectbox-option {
+			height:auto;
+
+			.list-options {
+				top:0;
+				transition-delay:0.4s;
+				opacity:1;
+
+				@include translate(0,0);
+			}
+		}
+	}
+}

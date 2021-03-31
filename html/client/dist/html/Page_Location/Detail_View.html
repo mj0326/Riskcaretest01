@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no,email=no,address=no">
+	<link rel="stylesheet" href="../../css/riskcare.css"/>
+	<title>Risk Care</title>
+</head>
+
+<body>
+
+	<!-- Wrap -->
+	<div class="care-wrap">
+
+		<!-- Header -->
+		<div class="layout-header">
+			<div class="container-header">
+				<div class="section-left">
+					<button type="button" class="btn-back"></button>
+				</div>
+				<h1 class="section-title">
+					<span class="txt-title">삼평동 680-1</span>
+				</h1>
+				<div class="section-right">
+					<!-- [D] 좋아요 선택 시 is-active 클래스 추가 -->
+					<button type="button" class="btn-like is-active"></button>
+					<button type="button" class="btn-share"></button>
+				</div>
+			</div>
+		</div>
+		<!-- //Header -->
+
+		<!-- Content -->
+		<!-- [D] 하단 확진자/백신접종자 영역 노출되는 유형 : is-bottom-fixed 클래스 추가 -->
+		<div class="layout-content">
+			<div class="container-content">
+
+				<!-- Page : Detail View -->
+				<div class="page-detail-view">
+
+					<!-- 현재 상태 -->
+					<div class="section-status">
+						<!--
+							[D] 상태 정의
+							양호 : type-a
+							보통 : type-b
+							주의 : type-c
+							위험 : type-d
+							심각 : type-e
+						-->
+						<div class="status-area type-a">
+							<span class="txt-status">위험</span>
+							<strong class="txt-data">84</strong>
+							<span class="txt-date">3월 8일 12:00 현재</span>
+						</div>
+					</div>
+					<!-- //현재 상태 -->
+
+					<!-- [D] 화면 로딩 완료되면 is-complete 클래스 추가 -->
+					<div class="detail-info is-complete">
+						<!-- 상세화면 로더 -->
+						<div class="section-loader">
+							<img src="../../images/detail-skeleton.gif">
+						</div>
+						<!-- //상세화면 로더 -->
+
+						<!-- 위험도 단계별 메세지 -->
+						<div class="section-message">
+							<!-- 위험도 단계 : 심각 -->
+							<div class="message-area">
+								<strong class="txt-title">코로나19 위험도가 매우 높습니다.</strong>
+
+								<ul class="list-risk">
+									<li>
+										<div class="icon-status type-f"></div>
+										<div class="txt-desc">
+											위험도가 낮아질 때까지는 방문을 피하세요.
+										</div>
+									</li>
+									<li>
+										<div class="icon-status type-h"></div>
+										<div class="txt-desc">
+											지금 이 곳에 계시다면 다른 곳으로 이동하시기 바랍니다.
+										</div>
+									</li>
+									<li>
+										<div class="icon-status type-e"></div>
+										<div class="txt-desc">
+											집에서는 외출을 삼가하고, 손님들의 방문을 피하세요.
+										</div>
+									</li>
+									<li>
+										<div class="icon-status type-g"></div>
+										<div class="txt-desc">
+											코로나19 의심 증상 시 가까운 보건소에서 선별진료를 받으시기 바랍니다.
+										</div>
+									</li>
+								</ul>
+							</div>
+							<!-- //위험도 단계 : 심각 -->
+
+							<!-- 위험도 단계 : 위험 -->
+							<div class="message-area">
+								<strong class="txt-title">코로나19 위험이 높은 장소입니다.</strong>
+
+								<ul class="list-risk">
+									<li>
+										<div class="icon-status type-f"></div>
+										<div class="txt-desc">
+											이 곳을 방문해야 한다면, 사람이 많은 곳은 최대한 피하세요.
+										</div>
+									</li>
+									<li>
+										<div class="icon-status type-a"></div>
+										<div class="txt-desc">
+											마스크를 상시 착용하고, 수시로 손소독을 해주세요.
+										</div>
+									</li>
+									<li>
+										<div class="icon-status type-e"></div>
+										<div class="txt-desc">
+											집에서는 외출을 삼가하고 손님들의 방문은 최소화 해주세요.
+										</div>
+									</li>
+								</ul>
+							</div>
+							<!-- //위험도 단계 : 위험 -->
+
+							<!-- 위험도 단계 : 주의 -->
+							<div class="message-area">
+								<strong class="txt-title">코로나19 위험에 주의가 필요합니다.</strong>
+
+								<ul class="list-risk">
+									<li>
+										<div class="icon-status type-d"></div>
+										<div class="txt-desc">
+											일상적인 활동이 가능한 수준입니다.
+										</div>
+									</li>
+									<li>
+										<div class="icon-status type-e"></div>
+										<div class="txt-desc">
+											불필요한 외출이나 모임은 자제하시는 것이 좋습니다.
+										</div>
+									</li>
+									<li>
+										<div class="icon-status type-a"></div>
+										<div class="txt-desc">
+											사회적 거리두기와 생활 방역을 철저히 지켜주세요.
+										</div>
+									</li>
+								</ul>
+							</div>
+							<!-- //위험도 단계 : 주의 -->
+
+							<!-- 위험도 단계 : 보통 -->
+							<div class="message-area">
+								<strong class="txt-title">코로나19 위험도가 보통입니다.</strong>
+
+								<ul class="list-risk">
+									<li>
+										<div class="icon-status type-c"></div>
+										<div class="txt-desc">
+											일상 생활과 사회 활동에 큰 문제가 없습니다.
+										</div>
+									</li>
+									<li>
+										<div class="icon-status type-a"></div>
+										<div class="txt-desc">
+											사전 예방을 위해 거리두기와 방역 수칙은 항상 지켜주세요.
+										</div>
+									</li>
+								</ul>
+							</div>
+							<!-- //위험도 단계 : 보통 -->
+
+							<!-- 위험도 단계 : 양호 -->
+							<div class="message-area">
+								<strong class="txt-title">코로나19 위험도가 양호한 편입니다.</strong>
+
+								<ul class="list-risk">
+									<li>
+										<div class="icon-status type-b"></div>
+										<div class="txt-desc">
+											일상 생활이 가능한 안전한 장소입니다.
+										</div>
+									</li>
+									<li>
+										<div class="icon-status type-a"></div>
+										<div class="txt-desc">
+											마스크 착용과 손소독을 잘 해주세요.
+										</div>
+									</li>
+								</ul>
+							</div>
+							<!-- //위험도 단계 : 양호 -->
+						</div>
+						<!-- //위험도 단계별 메세지 -->
+
+						<!-- 언제 얼마나 위험할까 -->
+						<div class="section-info">
+
+							<!-- 언제가 위험할까 -->
+							<div class="when-area">
+								<div class="title-block">
+									<strong class="txt-title">언제가 위험할까?</strong>
+									<div class="set-mode">
+										<!-- [D] 선택 된 버튼 : aria-selected=true -->
+										<button type="button" class="btn-mode" aria-selected="true">일간</button>
+										<button type="button" class="btn-mode" aria-selected="false">주간</button>
+									</div>
+								</div>
+
+								<!-- 일간 -->
+								<div class="view-block">
+									<div class="set-date">
+										<button type="button" class="btn-date-prev"></button>
+										<span class="txt-date">3월 8일 월요일</span>
+										<button type="button" class="btn-date-next"></button>
+									</div>
+
+									<div class="box-graph" style="background-color:red;"></div>
+								</div>
+								<!-- //일간 -->
+
+								<!-- 주간 -->
+								<div class="view-block">
+									<div class="set-date">
+										<button type="button" class="btn-date-prev"></button>
+										<span class="txt-date">3월 8일 (월) ~ 3월 14일 (일)</span>
+										<button type="button" class="btn-date-next"></button>
+									</div>
+
+									<div class="weekly-info">
+										<!-- [D] 오늘 is-today 클래스 추가 -->
+										<div class="column-a is-today">
+											<span class="txt-day">오늘</span>
+
+											<!-- Common UI : Status -->
+											<!--
+                                                [D] 상태 정의
+                                                양호 : type-a
+                                                보통 : type-b
+                                                주의 : type-c
+                                                위험 : type-d
+                                                심각 : type-e
+                                            -->
+											<div class="common-ui-status type-a">
+												<div class="status-icon">
+													<span></span>
+												</div>
+											</div>
+											<!-- //Common UI : Status -->
+										</div>
+										<div class="column-b">
+											<span class="txt-day">화</span>
+
+											<!-- Common UI : Status -->
+											<!--
+                                                [D] 상태 정의
+                                                양호 : type-a
+                                                보통 : type-b
+                                                주의 : type-c
+                                                위험 : type-d
+                                                심각 : type-e
+                                            -->
+											<div class="common-ui-status type-b">
+												<div class="status-icon">
+													<span></span>
+												</div>
+											</div>
+											<!-- //Common UI : Status -->
+										</div>
+										<div class="column-c">
+											<span class="txt-day">수</span>
+
+											<!-- Common UI : Status -->
+											<!--
+                                                [D] 상태 정의
+                                                양호 : type-a
+                                                보통 : type-b
+                                                주의 : type-c
+                                                위험 : type-d
+                                                심각 : type-e
+                                            -->
+											<div class="common-ui-status type-b">
+												<div class="status-icon">
+													<span></span>
+												</div>
+											</div>
+											<!-- //Common UI : Status -->
+										</div>
+										<div class="column-d">
+											<span class="txt-day">목</span>
+
+											<!-- Common UI : Status -->
+											<!--
+                                                [D] 상태 정의
+                                                양호 : type-a
+                                                보통 : type-b
+                                                주의 : type-c
+                                                위험 : type-d
+                                                심각 : type-e
+                                            -->
+											<div class="common-ui-status type-c">
+												<div class="status-icon">
+													<span></span>
+												</div>
+											</div>
+											<!-- //Common UI : Status -->
+										</div>
+										<div class="column-e">
+											<span class="txt-day">금</span>
+
+											<!-- Common UI : Status -->
+											<!--
+                                                [D] 상태 정의
+                                                양호 : type-a
+                                                보통 : type-b
+                                                주의 : type-c
+                                                위험 : type-d
+                                                심각 : type-e
+                                            -->
+											<div class="common-ui-status type-d">
+												<div class="status-icon">
+													<span></span>
+												</div>
+											</div>
+											<!-- //Common UI : Status -->
+										</div>
+										<div class="column-f">
+											<span class="txt-day">토</span>
+
+											<!-- Common UI : Status -->
+											<!--
+                                                [D] 상태 정의
+                                                양호 : type-a
+                                                보통 : type-b
+                                                주의 : type-c
+                                                위험 : type-d
+                                                심각 : type-e
+                                            -->
+											<div class="common-ui-status type-e">
+												<div class="status-icon">
+													<span></span>
+												</div>
+											</div>
+											<!-- //Common UI : Status -->
+										</div>
+										<div class="column-g">
+											<span class="txt-day">일</span>
+
+											<!-- Common UI : Status -->
+											<!--
+                                                [D] 상태 정의
+                                                양호 : type-a
+                                                보통 : type-b
+                                                주의 : type-c
+                                                위험 : type-d
+                                                심각 : type-e
+                                            -->
+											<div class="common-ui-status type-b">
+												<div class="status-icon">
+													<span></span>
+												</div>
+											</div>
+											<!-- //Common UI : Status -->
+										</div>
+									</div>
+								</div>
+								<!-- //주간 -->
+							</div>
+							<!-- //언제가 위험할까 -->
+
+							<!-- 얼마나 위험할까 -->
+							<div class="how-area">
+								<div class="title-block">
+									얼마나 위험할까?
+								</div>
+
+								<div class="graph-block">
+									<!--
+										[D] 'txt-status' 상태 정의
+										양호 : type-a
+										보통 : type-b
+										주의 : type-c
+										위험 : type-d
+										심각 : type-e
+									-->
+									<div class="legend-top">
+										<span class="txt-legend">유동인구 지수</span>
+										<strong class="txt-status type-d">위험</strong>
+									</div>
+									<div class="set-graph">
+										<div class="legend-left">
+											<span class="txt-legend">지하철 수요</span>
+											<strong class="txt-status type-a">양호</strong>
+										</div>
+										<div class="box-graph" style="background-color:red;"></div>
+										<div class="legend-right">
+											<span class="txt-legend">택시 수요</span>
+											<strong class="txt-status type-b">보통</strong>
+										</div>
+									</div>
+									<div class="legend-bottom">
+										<span class="txt-legend">유동인구 변동 지수</span>
+										<strong class="txt-status type-e">심각</strong>
+									</div>
+								</div>
+							</div>
+							<!-- //얼마나 위험할까 -->
+
+						</div>
+						<!-- //언제 얼마나 위험할까 -->
+					</div>
+
+				</div>
+				<!-- //Page : Detail View -->
+
+				<!-- Popup : 관심장소 등록 -->
+				<div class="popup-place" style="display:none;">
+					<span class="icon-like"></span>
+					<p class="txt-desc">
+						관심 장소에<br>
+						등록되었습니다.
+					</p>
+				</div>
+				<!-- //Popup : 관심장소 등록 -->
+
+			</div>
+		</div>
+		<!-- //Content -->
+
+	</div>
+	<!-- //Wrap -->
+
+</body>
+</html>

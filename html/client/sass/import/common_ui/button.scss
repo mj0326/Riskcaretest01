@@ -1,0 +1,145 @@
+@charset "utf-8";
+
+/***************************************************************************************
+   Common UI : 공통 Button
+***************************************************************************************/
+.btn-normal {
+	display:inline-block;
+	height:40px;
+	padding:0 16px;
+	border:1px solid #d3d3d3;
+	vertical-align:top;
+	line-height:40px;
+	font-size:16px;
+	color:#888a8f;
+	font-weight:500;
+
+	@include radius(20px);
+}
+
+.btn-normal.type-icon {
+	&:before {
+		display:inline-block;
+		margin:11px 8px 0 0;
+		vertical-align:top;
+		content:'';
+	}
+
+	&.type-edit:before {
+		@include get-sprite($icon_btn_edit);
+	}
+
+	&.type-add:before {
+		@include get-sprite($icon_btn_add);
+	}
+}
+
+.btn-action {
+	display:inline-block;
+	height:48px;
+	padding:0 24px;
+	background-color:#e7e9f0;
+	vertical-align:top;
+	line-height:48px;
+	font-size:18px;
+	color:#262f5c;
+	font-weight:700;
+
+	@include radius(24px);
+}
+
+/***************************************************************************************
+   Common UI : 공통 Icon Button
+***************************************************************************************/
+.btn-icon {
+	display:inline-block;
+	position:relative;
+	width:rem(48);
+	height:rem(48);
+	vertical-align:top;
+
+	&:before {
+		position:absolute;
+		left:50%;
+		top:50%;
+		content:'';
+
+		@include translate(-50%,-50%);
+	}
+
+	&.type-drag:before {
+		@include get-sprite($icon_btn_drag);
+	}
+	&.type-delete:before {
+		@include get-sprite($icon_btn_delete);
+	}
+}
+
+/***************************************************************************************
+   Common UI : Button
+***************************************************************************************/
+// 자세히 보기
+.btn-more {
+	display:inline-block;
+	height:29px;
+	padding:9px 10px 8px;
+	line-height:16px;
+	font-size:14px;
+	color:#888a8f;
+	font-weight:bold;
+
+	&:after {
+		display:inline-block;
+		margin:-1px 0 0 4px;
+		vertical-align:top;
+		content:'';
+
+		@include get-sprite($icon_btn_more);
+	}
+}
+
+// 열기,닫기
+.btn-expand {
+	display:inline-block;
+	height:29px;
+	padding:9px 10px 8px;
+	line-height:16px;
+	font-size:14px;
+	color:#888a8f;
+	font-weight:bold;
+
+	&:after {
+		display:inline-block;
+		margin:-1px 0 0 4px;
+		vertical-align:top;
+		content:'';
+	}
+	&.type-fold:after {
+		@include get-sprite($arr_fold);
+	}
+	&.type-unfold:after {
+		@include get-sprite($arr_unfold);
+	}
+}
+
+// 주간,일간
+.btn-mode {
+	display:inline-block;
+	height:rem(25);
+	padding:0 rem(10);
+	border:1px solid #d3d3d3;
+	background-color:#fff;
+	vertical-align:top;
+	line-height:rem(25);
+	font-size:rem(12);
+	color:#717278;
+	font-weight:bold;
+
+	@include radius(rem(12));
+
+	&[aria-selected="true"] {
+		border-color:#888a8f;
+		background-color:#888a8f;
+		color:#fff;
+	}
+}

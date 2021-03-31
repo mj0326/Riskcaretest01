@@ -1,0 +1,17 @@
+<!-- Header -->
+<div class="layout-header">
+  <div class="container-header">
+    <div class="section-left">
+      <button type="button" class="btn-back" (click)="goToBack()"></button>
+    </div>
+    <h1 class="section-title">
+      <span class="txt-title">{{ subTitle }}</span>
+    </h1>
+    <div class="section-right" *ngIf="isSectionRight">
+      <!-- [D] 좋아요 선택 시 is-active 클래스 추가 -->
+      <button type="button" class="btn-like" [class.is-active]="isFavorite" (click)="onClickLike()"></button>
+      <button type="button" class="btn-share" (click)="onClickShare()"></button>
+    </div>
+  </div>
+</div>
+<!-- //Header -->

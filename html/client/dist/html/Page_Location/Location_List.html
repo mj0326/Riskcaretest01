@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no,email=no,address=no">
+	<link rel="stylesheet" href="../../css/riskcare.css"/>
+	<title>Risk Care</title>
+</head>
+
+<body>
+
+	<!-- Wrap -->
+	<div class="care-wrap">
+
+		<!-- Header -->
+		<div class="layout-header">
+			<div class="container-header">
+				<div class="section-left">
+					<button type="button" class="btn-menu"></button>
+				</div>
+				<h1 class="section-title">
+					<span class="txt-logo" aria-label="Covid-19 Riskcare"></span>
+				</h1>
+				<div class="section-right">
+					<button type="button" class="btn-map"></button>
+				</div>
+			</div>
+		</div>
+		<!-- //Header -->
+
+		<!-- Content -->
+		<!-- [D] 하단 확진자/백신접종자 영역 노출되는 유형 : is-bottom-fixed 클래스 추가 -->
+		<div class="layout-content">
+			<div class="container-content">
+
+				<!-- Page : Location List -->
+				<div class="page-location">
+
+					<!-- List -->
+					<ul class="list-location">
+						<!-- [D] 아이템 확장 : aria-expanded=true -->
+						<li aria-expanded="false">
+							<div class="item-location">
+								<div class="status-area">
+									<!-- Common UI : Status -->
+									<!--
+										[D] 상태 정의
+										양호 : type-a
+										보통 : type-b
+										주의 : type-c
+										위험 : type-d
+										심각 : type-e
+									-->
+									<div class="common-ui-status type-a">
+										<div class="status-icon">
+											<span></span>
+										</div>
+										<span class="txt-status">양호</span>
+									</div>
+									<!-- //Common UI : Status -->
+								</div>
+
+								<!-- [D] 내 위치의 경우 : type-my 클래스 추가 -->
+								<div class="location-area type-my">
+									<strong class="txt-location">분당구 정자동</strong>
+									<span class="txt-address">경기도 성남시 분당구 정자동</span>
+								</div>
+							</div>
+
+							<!-- Item Expand -->
+							<div class="item-expand">
+								<div class="expand-area">
+									<div class="info-block">
+										<div class="info-address">
+											<strong class="txt-location">삼평동 680-1</strong>
+											<span class="txt-address">코로나 위험이 높은 장소입니다.</span>
+										</div>
+
+										<!--
+											[D] 상태 정의
+											양호 : type-a
+											보통 : type-b
+											주의 : type-c
+											위험 : type-d
+											심각 : type-e
+										-->
+										<div class="info-status type-d">
+											<strong class="txt-data">84</strong>
+											<span class="txt-status">위험</span>
+										</div>
+									</div>
+
+									<div class="button-block">
+										<button type="button" class="btn-more">자세히 보기</button>
+									</div>
+								</div>
+							</div>
+							<!-- //Item Expand -->
+						</li>
+
+						<!-- [D] 아이템 확장 : aria-expanded=true -->
+						<li aria-expanded="false">
+							<div class="item-location">
+								<div class="status-area">
+									<!-- Common UI : Status -->
+									<!--
+										[D] 상태 정의
+										양호 : type-a
+										보통 : type-b
+										주의 : type-c
+										위험 : type-d
+										심각 : type-e
+									-->
+									<div class="common-ui-status type-b">
+										<div class="status-icon">
+											<span></span>
+										</div>
+										<span class="txt-status">보통</span>
+									</div>
+									<!-- //Common UI : Status -->
+								</div>
+
+								<!-- [D] 내 위치의 경우 : type-my 클래스 추가 -->
+								<div class="location-area">
+									<strong class="txt-location">을지로2가 11</strong>
+									<span class="txt-address">경기도 성남시 분당구 정자동</span>
+								</div>
+							</div>
+
+							<!-- Item Expand -->
+							<div class="item-expand">
+								<div class="expand-area">
+									<div class="info-block">
+										<div class="info-address">
+											<strong class="txt-location">삼평동 680-1</strong>
+											<span class="txt-address">코로나 위험이 높은 장소입니다.</span>
+										</div>
+
+										<!--
+											[D] 상태 정의
+											양호 : type-a
+											보통 : type-b
+											주의 : type-c
+											위험 : type-d
+											심각 : type-e
+										-->
+										<div class="info-status type-d">
+											<strong class="txt-data">84</strong>
+											<span class="txt-status">위험</span>
+										</div>
+									</div>
+
+									<div class="button-block">
+										<button type="button" class="btn-more">자세히 보기</button>
+									</div>
+								</div>
+							</div>
+							<!-- //Item Expand -->
+						</li>
+
+						<!-- [D] 아이템 확장 : aria-expanded=true -->
+						<li aria-expanded="false">
+							<div class="item-location">
+								<div class="status-area">
+									<!-- Common UI : Status -->
+									<!--
+										[D] 상태 정의
+										양호 : type-a
+										보통 : type-b
+										주의 : type-c
+										위험 : type-d
+										심각 : type-e
+									-->
+									<div class="common-ui-status type-b">
+										<div class="status-icon">
+											<span></span>
+										</div>
+										<span class="txt-status">보통</span>
+									</div>
+									<!-- //Common UI : Status -->
+								</div>
+
+								<!-- [D] 내 위치의 경우 : type-my 클래스 추가 -->
+								<div class="location-area">
+									<strong class="txt-location">을지로2가 11</strong>
+									<span class="txt-address">경기도 성남시 분당구 정자동</span>
+								</div>
+							</div>
+
+							<!-- Item Expand -->
+							<div class="item-expand">
+								<div class="expand-area">
+									<div class="info-block">
+										<div class="info-address">
+											<strong class="txt-location">삼평동 680-1</strong>
+											<span class="txt-address">코로나 위험이 높은 장소입니다.</span>
+										</div>
+
+										<!--
+											[D] 상태 정의
+											양호 : type-a
+											보통 : type-b
+											주의 : type-c
+											위험 : type-d
+											심각 : type-e
+										-->
+										<div class="info-status type-d">
+											<strong class="txt-data">84</strong>
+											<span class="txt-status">위험</span>
+										</div>
+									</div>
+
+									<div class="button-block">
+										<button type="button" class="btn-more">자세히 보기</button>
+									</div>
+								</div>
+							</div>
+							<!-- //Item Expand -->
+						</li>
+					</ul>
+					<!-- //List -->
+
+					<div class="section-button">
+						<button type="button" class="btn-normal type-icon type-edit">관심 장소 편집</button>
+					</div>
+
+				</div>
+				<!-- //Page : Location List -->
+
+			</div>
+		</div>
+		<!-- //Content -->
+
+	</div>
+	<!-- //Wrap -->
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+@import "./common.scss";
+
+.common-input-set {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    $titleWidth: 80px;
+    > div.title {
+        display: inline-block;
+        width: $titleWidth;
+        font-weight: bold;
+        color: $font-grey5;
+        font-size: 14px;
+    }
+
+    $padding: 10px;
+    > div.wrapper {        
+        display: inline-flex;
+        border-radius: 2px;
+        width: calc(100% - #{$titleWidth});
+        align-items: center;
+        border: 1px solid $line-grey6;
+        padding: 7px $padding $padding $padding;
+        
+        > * {
+            padding: 0;
+            font-size: 15px;            
+        }
+
+        > span {
+            margin-right: $padding;
+        }
+
+        > input {    
+            -webkit-appearance: none;
+            width: 100%;
+            border: none;
+            caret-color: $main-orange;
+         
+            &:focus {
+                outline: none;
+            }
+    
+            &::placeholder {
+                color: $font-grey6;
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+<p>웰컴 페이지</p>
+<br><br>
+<button [routerLink]="['/home']">홈 화면 이동</button>
+<br><br>
+<button (click)="isPopupOpen = true;">코로나 19 위험도 알아보기</button>
+
+<check-risk-degree-popup *ngIf="isPopupOpen"
+                         (onClose)="isPopupOpen = false;"></check-risk-degree-popup>

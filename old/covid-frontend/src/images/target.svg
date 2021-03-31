@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="19px" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 2</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="01-1" transform="translate(-282.000000, -156.000000)" stroke="#979797" stroke-width="1.5">
+            <g id="Group-2" transform="translate(282.000000, 156.000000)">
+                <path d="M9.5,0.75 C11.1530193,0.75 12.6990755,1.20815634 14.0177771,2.00487387 C15.3825916,2.82945131 16.5040847,4.01616292 17.2490003,5.43193189 C17.8884398,6.64723558 18.25,8.03141023 18.25,9.5 C18.25,11.9162458 17.2706229,14.1037458 15.6871843,15.6871843 C14.1037458,17.2706229 11.9162458,18.25 9.5,18.25 C7.08375422,18.25 4.89625422,17.2706229 3.31281566,15.6871843 C1.72937711,14.1037458 0.75,11.9162458 0.75,9.5 C0.75,7.08375422 1.72937711,4.89625422 3.31281566,3.31281566 C4.89625422,1.72937711 7.08375422,0.75 9.5,0.75 Z" id="Oval" fill="#FFFFFF"></path>
+                <line x1="9.5" y1="4.5" x2="9.5" y2="1.5" id="Line" stroke-linecap="square"></line>
+                <line x1="9.5" y1="17.5" x2="9.5" y2="14.5" id="Line-Copy" stroke-linecap="square"></line>
+                <line x1="4" y1="9.5" x2="1" y2="9.5" id="Line" stroke-linecap="square"></line>
+                <line x1="18" y1="9.5" x2="15" y2="9.5" id="Line-Copy" stroke-linecap="square"></line>
+            </g>
+        </g>
+    </g>
+</svg>

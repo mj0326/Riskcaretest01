@@ -1,0 +1,123 @@
+<!-- Page : Location List -->
+<div class="page-location">
+
+  <!-- List -->
+  <ul class="list-location">
+    <!-- [D] 아이템 확장 : aria-expanded=true -->
+    <li [attr.aria-expanded]="currLocation?.isExpand" *ngIf="useGeolocation" (click)="applyExpand(currLocation)">
+      <div class="item-location">
+        <div class="status-area">
+          <!-- Common UI : Status -->
+          <!--
+            [D] 상태 정의 - 양호 : type-a, 보통 : type-b, 주의 : type-c, 위험 : type-d, 심각 : type-e
+          -->
+          <div class="common-ui-status" [ngClass]="currLocation?.covidContent?.typeNameCss">
+            <div class="status-icon">
+              <span></span>
+            </div>
+            <span class="txt-status">{{currLocation?.covidContent?.step}}</span>
+          </div>
+          <!-- //Common UI : Status -->
+        </div>
+
+        <!-- [D] 내 위치의 경우 : type-my 클래스 추가 -->
+        <div class="location-area type-my">
+          <strong class="txt-location">{{currLocation?.dong}}</strong>
+          <span class="txt-address">{{currLocation?.siDo}} {{currLocation?.siGunGu}} {{currLocation?.dong}}</span>
+        </div>
+      </div>
+
+      <!-- Item Expand -->
+      <div class="item-expand">
+        <div class="expand-area">
+          <div class="info-block">
+            <div class="info-address">
+              <strong class="txt-location">{{currLocation?.dong}}</strong>
+              <span class="txt-address">{{currLocation?.covidContent?.title}}</span>
+            </div>
+
+            <!--
+            [D] 상태 정의 - 양호 : type-a, 보통 : type-b, 주의 : type-c, 위험 : type-d, 심각 : type-e
+          -->
+            <div class="info-status" [ngClass]="currLocation?.covidContent?.typeNameCss">
+              <strong class="txt-data">{{bom.Math.floor(currLocation?.contactDensityPercentile)}}</strong>
+              <span class="txt-status">{{currLocation?.covidContent?.step}}</span>
+            </div>
+          </div>
+
+          <div class="button-block">
+            <button type="button" class="btn-more" (click)="moveDetailPage(currLocation)">자세히 보기</button>
+          </div>
+        </div>
+      </div>
+      <!-- //Item Expand -->
+    </li>
+
+    <!-- [D] 아이템 확장 : aria-expanded=true -->
+    <li [attr.aria-expanded]="location?.isExpand" *ngFor="let location of locations" (click)="applyExpand(location)">
+      <div class="item-location">
+        <div class="status-area">
+          <!-- Common UI : Status -->
+          <!--
+            [D] 상태 정의
+            양호 : type-a
+            보통 : type-b
+            주의 : type-c
+            위험 : type-d
+            심각 : type-e
+          -->
+          <div class="common-ui-status" [ngClass]="location?.covidContent?.typeNameCss">
+            <div class="status-icon">
+              <span></span>
+            </div>
+            <span class="txt-status">{{location?.covidContent?.step}}</span>
+          </div>
+          <!-- //Common UI : Status -->
+        </div>
+
+        <!-- [D] 내 위치의 경우 : type-my 클래스 추가 -->
+        <div class="location-area">
+          <strong class="txt-location">{{location?.dong}}</strong>
+          <span class="txt-address">{{location?.siDo}} {{location?.siGunGu}} {{location?.dong}}</span>
+        </div>
+      </div>
+
+      <!-- Item Expand -->
+      <div class="item-expand">
+        <div class="expand-area">
+          <div class="info-block">
+            <div class="info-address">
+              <strong class="txt-location">{{location?.dong}}</strong>
+              <span class="txt-address">{{location?.covidContent?.title}}</span>
+            </div>
+
+            <!--
+              [D] 상태 정의
+              양호 : type-a
+              보통 : type-b
+              주의 : type-c
+              위험 : type-d
+              심각 : type-e
+            -->
+            <div class="info-status" [ngClass]="location?.covidContent?.typeNameCss">
+              <strong class="txt-data">{{bom.Math.floor(location.contactDensityPercentile)}}</strong>
+              <span class="txt-status">{{location?.covidContent?.step}}</span>
+            </div>
+          </div>
+
+          <div class="button-block">
+            <button type="button" class="btn-more" (click)="moveDetailPage(location)">자세히 보기</button>
+          </div>
+        </div>
+      </div>
+      <!-- //Item Expand -->
+    </li>
+  </ul>
+  <!-- //List -->
+
+  <div class="section-button">
+    <button type="button" class="btn-normal type-icon type-edit" (click)="moveEditInterestPage()">관심 장소 편집</button>
+  </div>
+
+</div>
+<!-- //Page : Location List -->

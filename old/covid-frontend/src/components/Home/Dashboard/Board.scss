@@ -1,0 +1,55 @@
+@import '../../Common/common.scss';
+
+.board {
+    padding-top: $vertical-padding;
+
+    > .panel {
+        margin-top: 10px;
+        background-color: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $back-grey2;
+
+        > .count {
+            width: 49%;
+            text-align: center;
+            padding: 25px;
+
+            > .text { 
+                font-size: 12px;
+            }
+
+            > .number {
+                font-size: 24px;
+                font-weight: 600;
+            }
+
+            > .delta {
+                font-size: 14px;
+                font-weight: 600;
+                color: $main-orange;
+            }
+        }
+
+        > .divider {
+            width: 1px;
+            height: 50px;
+            background-color: $font-grey;
+        }
+    }
+
+    .recharts-default-legend {
+        display: flex;
+        justify-content: flex-end;
+
+        .recharts-legend-item {
+            margin-left: 10px !important;
+            margin-right: 0 !important;
+        }
+
+        .recharts-legend-item-text {
+            font-size: 12px;
+        }
+    }
+}

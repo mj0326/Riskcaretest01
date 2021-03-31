@@ -1,0 +1,123 @@
+@import "../Common/common.scss";
+
+.popup {
+    @include common-background;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .inner {
+        position: relative;
+        background-color: #fff;
+        border-radius: 5px;
+        min-width: 300px;
+        min-height: 100px;
+
+        > div {
+            padding: $horizontal-padding;
+            padding-top: 45px;
+        }
+
+        .close {
+            position: absolute;
+            top: $horizontal-padding;
+            right: $horizontal-padding;
+        }
+    }
+
+    .search-popup {
+        text-align: center;
+        
+        .text {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;                
+            white-space: pre-wrap;
+        }
+
+        .emoji {
+            width: 100px;
+            height: 100px;            
+        }
+
+        .label {
+            margin-top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            color: $main-orange;
+        }
+
+        .button {
+            margin-top: $vertical-padding;
+            
+            &:last-of-type {
+                margin-top: 15px;                
+            }
+
+            > span {
+                > b {
+                    color: $main-orange;
+                }    
+            }
+        }
+    }
+
+    .information-popup {
+        width: calc(100vw - #{$horizontal-padding} * 2);
+        padding-top: 66px !important;
+
+        table {
+            border-spacing: 0;
+        }
+
+        $border: 1px solid $line-grey2;
+        table { border: $border; }
+        td:not(:last-child) { border-right: $border; }
+        tr:not(:last-child) td { border-bottom: $border; }
+
+        td:first-child { width: 30%; }
+        td:last-child { width: 70%; }
+
+        td { padding: 0; }
+    
+        td:first-child {
+            background-color: $back-grey2;
+            text-align: center;
+
+            > img {
+                $size: 50px;
+                width: $size;
+                height: $size;
+            }
+
+            > div {
+                font-size: 20px;
+                font-weight: bold;
+                color: $main-orange;
+            }
+        }
+
+        td:last-child {
+            padding: 15px 0;
+
+            > div{
+                padding: 0px 10px;
+                color: $main-purple2;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            > ul {
+                padding-right: 10px;
+                padding-left: 30px;
+                font-size: 12px;
+                line-height: 1.6;
+                color: $font-grey7;
+
+                > li:not(:last-child) {
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+}
